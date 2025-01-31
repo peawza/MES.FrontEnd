@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\WEB.APP.csproj": {}
+    "G:\\ProjectAll\\CSI-THNS-MES\\gitclone\\MES.FrontEnd\\WEB.APP.csproj": {}
   },
   "projects": {
-    "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\WEB.APP.csproj": {
+    "G:\\ProjectAll\\CSI-THNS-MES\\gitclone\\MES.FrontEnd\\WEB.APP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\WEB.APP.csproj",
+        "projectUniqueName": "G:\\ProjectAll\\CSI-THNS-MES\\gitclone\\MES.FrontEnd\\WEB.APP.csproj",
         "projectName": "WEB.APP",
-        "projectPath": "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\WEB.APP.csproj",
+        "projectPath": "G:\\ProjectAll\\CSI-THNS-MES\\gitclone\\MES.FrontEnd\\WEB.APP.csproj",
         "packagesPath": "C:\\Users\\agile\\.nuget\\packages\\",
-        "outputPath": "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\obj\\",
+        "outputPath": "G:\\ProjectAll\\CSI-THNS-MES\\gitclone\\MES.FrontEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\agile\\AppData\\Roaming\\NuGet\\NuGet.Config",
