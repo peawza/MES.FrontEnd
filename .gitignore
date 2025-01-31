@@ -391,3 +391,5 @@ FodyWeavers.xsd
 /10-code/IOT-WEB/80 - Presentation/MvcWebApp/obj/Debug/net6.0/WEB.APP.csproj.AssemblyReference.cache
 /10-code/IOT-WEB/80 - Presentation/MvcWebApp/obj/Debug/net6.0/WEB.APP.GeneratedMSBuildEditorConfig.editorconfig
 /10-code/IOT-WEB/Master.libs.Infrastructure/obj/Debug/net6.0/Master.libs.Infrastructure.csproj.AssemblyReference.cache
+bin
+obj

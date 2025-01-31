@@ -17,21 +17,22 @@
   <ItemGroup>
     <Folder Include="Areas\UserManages\Models\" />
     <Folder Include="Extensions\Models\" />
-    <Folder Include="ModuleProduction\UserManages\Models\" />
+    <Folder Include="Areas\ProductionUser\Models\" />
+    <Folder Include="ModuleProduction\" />
     <Folder Include="wwwroot\assets\js\screenfuntion\" />
     <Folder Include="wwwroot\assets\js\screenShared\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="ModuleProduction\UserManages\Views\User\Inquiry.cshtml">
+    <Content Update="Areas\ProductionUser\Views\ProductionUser\Inquiry.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="ModuleProduction\UserManages\Views\_ViewImports.cshtml">
+    <Content Update="Areas\ProductionUser\Views\_ViewImports.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="ModuleProduction\UserManages\Views\_ViewStart.cshtml">
+    <Content Update="Areas\ProductionUser\Views\_ViewStart.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
