@@ -1,0 +1,83 @@
+{
+  "format": 1,
+  "restore": {
+    "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\WEB.APP.csproj": {}
+  },
+  "projects": {
+    "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\WEB.APP.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\WEB.APP.csproj",
+        "projectName": "WEB.APP",
+        "projectPath": "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\WEB.APP.csproj",
+        "packagesPath": "C:\\Users\\agile\\.nuget\\packages\\",
+        "outputPath": "G:\\github\\Microservices_WebMvc\\Microservices_WebMvc\\FrontEnd\\WEB.APP\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\agile\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "G:\\ProjectAll\\agt-iss\\lib": {},
+          "G:\\ProjectAll\\btmt-tisi\\00-Libs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.19.6, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

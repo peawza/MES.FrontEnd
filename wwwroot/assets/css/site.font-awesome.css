@@ -1,0 +1,6 @@
+﻿
+i.fa:after,
+i.fas:after {
+    content: ' ';
+    padding-right: 0.25rem;
+}

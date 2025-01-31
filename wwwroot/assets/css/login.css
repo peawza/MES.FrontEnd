@@ -1,0 +1,68 @@
+.login-aside .aside-img {
+    min-height: 450px;
+}
+
+.login-signin .k-textbox {
+    background-color: #F3F6F9;
+    border-color: #F3F6F9;
+}
+
+        .login-signin .k-textbox.k-state-focused {
+            background-color: #eef0f3;
+            border-color: #eef0f3;
+        }
+
+.login.login-1.login-signin-on .login-signup {
+    display: none;
+}
+
+.login.login-1.login-signin-on .login-signin {
+    display: block;
+}
+
+.login.login-1.login-signin-on .login-forgot {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .login .login-aside {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .login .login-content {
+        width: 100%;
+        max-width: 500px;
+    }
+
+        .login .login-content .login-form {
+            width: 100%;
+            max-width: 450px;
+        }
+}
+
+@media (min-width: 992px) and (max-width: 1399.98px) {
+    .login .login-aside {
+        width: 100%;
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .login .login-content .login-form {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .login .aside-img {
+        min-height: 300px !important;
+        background-size: 400px;
+    }
+
+    .login .login-content .login-form {
+        width: 100%;
+        max-width: 100%;
+    }
+}

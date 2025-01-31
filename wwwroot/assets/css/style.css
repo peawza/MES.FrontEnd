@@ -1,0 +1,563 @@
+﻿fieldset.scheduler-border {
+    padding: 0 1.4em 1.4em 1.4em !important;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+}
+
+.grid-display-none {
+    display: none;
+}
+
+.text-color-red {
+    color: red;
+}
+
+.set-text-table {
+    margin: 0;
+    /*padding:0;*/
+}
+
+
+
+/* Kendo Number Grid */
+
+.k-dirty {
+    display: none;
+}
+
+.k-select .k-link.k-link-increase {
+    display: none;
+}
+
+.k-select .k-link.k-link-decrease {
+    display: none;
+}
+
+.k-numeric-wrap.k-state-default .k-select {
+    display: none;
+}
+
+
+.empty-grid::before {
+    padding: 1em;
+    line-height: 3em;
+    content: "No Data" !important;
+}
+
+.empty-grid {
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+}
+
+
+
+
+
+
+.table-set-ipput-text {
+    margin: 0;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+}
+
+
+.k-widget.k-dropdown.set-text-table {
+    width: 100% !important;
+}
+
+.k-widget.k-textbox.set-text-table {
+    width: 100% !important;
+}
+
+.delete-padding-right {
+    padding-right: 1px !important;
+}
+
+.delete-padding-left {
+    padding-left: 1px !important;
+}
+
+
+
+label.col-form-label.col-1.label-dete {
+    margin-top: -10px;
+}
+
+
+
+.hide-btn-delete-tab {
+    /*display:none;*/
+}
+
+table.table-bordered thead tr {
+    background-color: #9BC2E6;
+    text-align: center;
+}
+
+    table.table-bordered thead tr th {
+        vertical-align: middle !important;
+    }
+
+
+        table.table-bordered thead tr th .formular-input {
+            vertical-align: middle !important;
+        }
+
+
+table.table-bordered tbody tr {
+    background-color: #DDEBF7;
+    text-align: center;
+}
+
+
+
+    table.table-bordered tbody tr td.formular-input {
+        background-color: #DBDBDB !important;
+        text-align: center;
+        width: 220px
+    }
+
+
+.table-bordered td, .table-bordered th {
+    border: 1px solid #00000029 !important;
+}
+
+
+.card-result {
+    margin-top: -15px;
+    height: 76px;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+
+.card-result-formular {
+    background-color: #9BC2E6;
+}
+
+
+
+.img-search-data {
+    width: 13rem;
+}
+
+.row-by-peaw {
+    display: flex !important;
+}
+
+
+tr.k-footer-template td span.k-widget.k-dropdown {
+    width: 100%;
+}
+
+
+.status-pass {
+    color: green;
+}
+
+.status-ncr {
+    color: red;
+}
+
+.status-ocl {
+    color: #FFC000;
+}
+
+.k-grid-footer td {
+    background-color: #bbb5b500 !important;
+}
+
+.grid-sample {
+    height: 40px !important;
+}
+
+
+
+.k-checkbox {
+    border-radius: .25rem;
+    /*  margin: 0;
+    padding: 0;*/
+    width: 1rem;
+    height: 1rem;
+    /*line-height: initial;
+    border-width: 1px;
+    border-style: solid;
+    outline: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    -webkit-appearance: none;*/
+}
+
+.ui-submenu {
+    margin-left: 40px;
+}
+
+aside .side-inner .nav-menu .ui-submenu ul li a:before {
+    background-color: #08e4ff !important;
+}
+
+
+.k-grid .k-grid-edit, .k-grid .k-grid-info, .k-grid .k-grid-add {
+    color: white;
+    background-color: #11439E !important;
+}
+
+.background-loading {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 12000;
+}
+
+
+
+
+
+
+/* ---------------------------------------------------
+    loading STYLE
+----------------------------------------------------- */
+@keyframes ldio-xhmm28kfnl {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+.ldio-xhmm28kfnl div {
+    left: 94px;
+    top: 48px;
+    position: absolute;
+    animation: ldio-xhmm28kfnl linear 1s infinite;
+    background: #34a4e4;
+    width: 12px;
+    height: 24px;
+    border-radius: 6px / 12px;
+    transform-origin: 6px 52px;
+}
+
+    .ldio-xhmm28kfnl div:nth-child(1) {
+        transform: rotate(0deg);
+        animation-delay: -0.9166666666666666s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(2) {
+        transform: rotate(30deg);
+        animation-delay: -0.8333333333333334s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(3) {
+        transform: rotate(60deg);
+        animation-delay: -0.75s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(4) {
+        transform: rotate(90deg);
+        animation-delay: -0.6666666666666666s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(5) {
+        transform: rotate(120deg);
+        animation-delay: -0.5833333333333334s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(6) {
+        transform: rotate(150deg);
+        animation-delay: -0.5s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(7) {
+        transform: rotate(180deg);
+        animation-delay: -0.4166666666666667s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(8) {
+        transform: rotate(210deg);
+        animation-delay: -0.3333333333333333s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(9) {
+        transform: rotate(240deg);
+        animation-delay: -0.25s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(10) {
+        transform: rotate(270deg);
+        animation-delay: -0.16666666666666666s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(11) {
+        transform: rotate(300deg);
+        animation-delay: -0.08333333333333333s;
+        background: #34a4e4;
+    }
+
+    .ldio-xhmm28kfnl div:nth-child(12) {
+        transform: rotate(330deg);
+        animation-delay: 0s;
+        background: #34a4e4;
+    }
+
+.loadingio-spinner-spinner-mzf1gu50i5s {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    overflow: hidden;
+    background: none;
+    background: #222;
+}
+
+.ldio-xhmm28kfnl {
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transform-origin: 0 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -10vh;
+    margin-left: -5vw;
+    z-index: 1200;
+}
+
+    .ldio-xhmm28kfnl div {
+        box-sizing: content-box;
+    }
+
+.background-loading {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 12000;
+}
+/* ---------------------------------------------------
+    loading STYLE
+----------------------------------------------------- */
+
+
+.k-filter-row th, .k-grid-header th.k-header {
+    background-color: #404040 !important;
+}
+
+fieldset.scheduler-border {
+    padding: 0 1.4em 1.4em 1.4em !important;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+}
+
+.k-tabstrip-content.k-focus, .k-tabstrip-content.k-state-focused, .k-tabstrip-content:focus, .k-tabstrip > .k-content.k-focus, .k-tabstrip > .k-content.k-state-focused, .k-tabstrip > .k-content:focus {
+    outline-width: 1px;
+    outline-style: none;
+    outline-offset: -1px;
+}
+
+
+.focus-sub-menu-nav {
+    /*margin-left:5px;*/
+    background: #f1f1f1;
+    color: #000;
+}
+
+/**/
+
+
+.k-upload .k-upload-button-remove {
+    min-width: 7em;
+}
+
+
+.k-disabled {
+    outline: 0;
+    cursor: default;
+    opacity: 1;
+    -webkit-filter: grayscale(.1);
+    filter: grayscale(.1);
+    pointer-events: none;
+    box-shadow: none;
+    background-color: #EBEDF0 !important;
+    border-color: #ced4da !important;
+    color: #495057 !important;
+}
+
+.k-window-titlebar {
+    border-color: #c9c9c9;
+    background: #353535;
+    color: #fff;
+}
+
+.k-dialog.k-confirm {
+    min-width: 400px !important;
+}
+
+.k-command-cell .k-button-icontext {
+    min-height: 33px !important;
+}
+
+
+
+.disabled-input-screen-load {
+    opacity: 0.98;
+    pointer-events: none;
+    z-index: 9999999;
+}
+
+
+
+.k-picker-solid {
+    border-color: #e4e7eb;
+    color: #212529;
+    background-color: #ffffff;
+}
+
+    .k-picker-solid.k-focus, .k-picker-solid:focus {
+        border-color: #e4e7eb;
+        color: #212529;
+        background-color: #ffffff;
+    }
+
+    .k-picker-solid.k-hover, .k-picker-solid:hover {
+        border-color: #c7cdd5;
+        background-color: #ffffff;
+    }
+
+
+#text-status {
+    display:none !important;
+}
+
+
+input[type=file], /* FF, IE7+, chrome (except button) */
+input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
+    cursor: pointer;
+}
+
+
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.icon-card {
+    background-color: #1b2a3d;
+    color: white;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+    .icon-card:hover {
+        transform: scale(1.05);
+    }
+
+    .icon-card i {
+        font-size: 40px;
+        margin-bottom: 10px;
+        color: #00d7c1;
+    }
+
+    .icon-card.red i {
+        color: #ff4d4d;
+    }
+
+    .icon-card.green i {
+        color: #00ff00;
+    }
+
+    .icon-card h3 {
+        font-size: 18px;
+        margin: 0;
+    }
+
+.menu-button-ev {
+    background-color: #4CAF50; /* สีเขียว */
+    color: white; /* สีตัวอักษร */
+    border: none;
+    border-radius: 8px; /* ขอบมน */
+    padding: 10px 20px;
+    font-size: 16px;
+    /* cursor: pointer; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-button-user {
+    background-color: red; /* สีเขียว */
+    color: white; /* สีตัวอักษร */
+    border: none;
+    border-radius: 8px; /* ขอบมน */
+    padding: 10px 20px;
+    font-size: 16px;
+    /* cursor: pointer; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}

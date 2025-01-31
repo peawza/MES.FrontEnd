@@ -1,0 +1,499 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.k-widget {
+    font-size: 1rem;
+}
+
+.k-input.k-textbox,
+.k-textarea,
+.k-textbox {
+    border-radius: 0rem !important;
+}
+
+.k-button,
+.k-textbox,
+.k-textarea {
+    font-size: 1rem;
+    border-radius: .05rem;
+}
+
+    .k-textbox.k-no-click {
+        
+    }
+
+    .k-widget.k-textbox > .k-state-disabled,
+    .k-textbox.k-no-click,
+    .k-textarea.k-state-disabled {
+        background-color: #e4e7eb33;
+    }
+
+.k-loading-mask .k-loading-image {
+    background-image: none;
+}
+
+textarea.k-textbox {
+    white-space: normal;
+}
+
+.k-numeric-wrap > input.k-formatted-value {
+    text-align: right;
+}
+
+    .k-numeric-wrap > input.k-formatted-value[readonly="readonly"],
+    .k-numeric-wrap > input.k-formatted-value[disabled="disabled"] {
+        background-color: #f8f9fa;
+        pointer-events: none;
+    }
+
+
+.k-edit-form-container {
+    width: 99%;
+}
+
+.k-dateinput-wrap .k-input,
+.k-dropdown-wrap .k-input,
+.k-multiselect-wrap .k-input,
+.k-numeric-wrap .k-input,
+.k-picker-wrap .k-input {
+    padding: .3rem .75rem;
+    height: -webkit-calc(.6rem + 1.5em);
+    height: calc(.6rem + 1.5em);
+}
+
+/* =========================
+    Button Style
+============================ */
+.k-button {
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: .25rem;
+}
+
+.k-button-cmd {
+    min-width: 30px !important;
+    padding: 1px !important;
+}
+
+.k-button-sm {
+    padding: 1px 2px !important;
+}
+
+.k-button-xs {
+    padding: 1px;
+}
+
+.k-button.k-primary > .k-icon,
+.k-button.k-danger > .k-icon,
+.k-button.k-success > .k-icon,
+.k-button.k-warning > .k-icon,
+.k-button.k-dark > .k-icon {
+    color: #fff;
+}
+
+.k-button.k-button-xs {
+    padding: 0.2rem 0.2rem;
+    margin: 0.1rem 0.1rem;
+}
+
+.k-button.k-button-sm {
+    padding: 0.25rem 0.25rem;
+    margin: 0.1rem 0.1rem;
+}
+
+.k-button.k-button-lg {
+    font-size: 1.25rem;
+    min-width: 120px;
+}
+
+.k-button-sm.k-button-icontext .k-icon {
+    margin: 0;
+}
+
+.k-button.k-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+    .k-button.k-primary:hover {
+        background-color: #11439E;
+        border-color: #11439E;
+    }
+
+    .k-button.k-primary.k-state-disabled {
+        color: #868585;
+        background-color: #d9d9da;
+        border-color: #c5c5c5;
+    }
+
+.k-button.k-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+    .k-button.k-secondary:hover {
+        color: #fff;
+        background-color: #5d6369;
+        border-color: #5d6369;
+    }
+
+
+    .k-button.k-secondary.k-state-disabled {
+        color: #868585;
+        background-color: #d9d9da;
+        border-color: #c5c5c5;
+    }
+
+.k-button.k-info {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.k-button.k-info:hover {
+    background-color: #147d8e;
+    border-color: #147d8e;
+}
+
+.k-button.k-info.k-state-disabled {
+    color: #868585;
+    background-color: #d9d9da;
+    border-color: #c5c5c5;
+}
+
+.k-button.k-success {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
+    .k-button.k-success:hover {
+        color: #fff;
+        background-color: #62cc48;
+        border-color: #62cc48;
+    }
+
+    .k-button.k-success.k-state-disabled {
+        color: #868585;
+        background-color: #d9d9da;
+        border-color: #c5c5c5;
+    }
+
+.k-button.k-warning {
+    color: #fff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+    .k-button.k-warning:hover {
+        background-color: #ea8d1b;
+        border-color: #ea8d1b;
+    }
+
+    .k-button.k-warning.k-state-disabled {
+        color: #868585;
+        background-color: #d9d9da;
+        border-color: #c5c5c5;
+    }
+
+.k-button.k-dark {
+    color: #fff !important;
+    background-color: #1a1a18;
+    border-color: #10100e;
+}
+
+    .k-button.k-dark:hover {
+        color: #fff;
+        background-color: #353531;
+        border-color: #353531;
+    }
+
+    .k-button.k-dark.k-state-disabled {
+        color: #868585;
+        background-color: #d9d9da;
+        border-color: #c5c5c5;
+    }
+
+.k-button.k-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .k-button.k-danger:hover {
+        background-color: #a22727;
+        border-color: #a22727;
+    }
+
+    .k-button.k-danger.k-state-disabled {
+        color: #868585;
+        background-color: #d9d9da;
+        border-color: #c5c5c5;
+    }
+
+.k-button.k-danger-alt {
+    color: #fff;
+    background-color: #dd6868;
+    border-color: #dd6868;
+}
+
+    .k-button.k-danger-alt:hover {
+        background-color: #952626;
+        border-color: #952626;
+    }
+
+    .k-button.k-danger-alt.k-state-disabled {
+        color: #868585;
+        background-color: #d9d9da;
+        border-color: #c5c5c5;
+    }
+
+.k-button.k-success-alt {
+    color: #179b3e;
+    background-color: #a9f8c0;
+    border-color: #a9f8c0;
+}
+
+
+    .k-button.k-success-alt:hover {
+        color: #fbfbfb;
+        background-color: #70cc8a;
+        border-color: #70cc8a;
+    }
+
+    .k-button.k-success-alt.k-state-disabled {
+        color: #868585;
+        background-color: #d9d9da;
+        border-color: #c5c5c5;
+    }
+
+.k-button.k-upload-button {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.k-sprite.fa {
+    margin-top: 0px !important;
+}
+
+/* ===============================
+* Numeric TextBox Style
+* ============================== */
+.k-numerictextbox.text-right > .k-numeric-wrap {
+    padding-right: 10px;
+}
+
+/* ===============================
+* Kendo Grid Styles 
+* ============================== */
+.k-filter-row th, .k-grid-header th.k-header {
+    text-align: center !important;
+    background-color: #11439E;
+    color: #fff;
+}
+
+th.k-header {
+    font-weight: 600 !important;
+    vertical-align: middle !important;
+}
+
+    th.k-header.text-center {
+        text-align: center !important;
+    }
+
+.k-list-optionlabel.k-state-selected,
+.k-list .k-item.k-state-selected {
+    background-color: #aaadb5;
+}
+
+.k-grid td {
+    padding: .25rem !important;
+}
+
+    .k-grid td a.k-link {
+        font-weight: 600;
+        color: #007bff !important;
+    }
+
+        .k-grid td a.k-link:hover {
+            color: #2480ae !important;
+        }
+
+.k-grid th {
+    
+}
+
+    .k-grid th a {
+        position: static;
+    }
+
+.k-grid .k-grid-header th a {
+    padding: .5rem .2rem .4rem;
+}
+
+.k-grid-header .k-header > span.k-link {
+    font-weight: 600;
+}
+
+.k-grid-content.k-auto-scrollable {
+    /*height: auto !important;
+    overflow-y: visible !important;*/
+}
+
+.k-group-footer td {
+    background-color: #93dbff;
+}
+
+    .k-group-footer td:hover {
+        background-color: #93dbff;
+    }
+
+.k-grid-footer td {
+    background-color: #91c6ff;
+}
+
+
+
+/* Kendo Validation Summary */
+.k-validation-summary {
+}
+
+.k-state-invalid {
+    background-color: rgb(242, 222, 222);
+}
+
+/* Validation */
+.k-tooltip-validation.k-widget {
+    /*border-color: transparent!important;
+    background-color: transparent!important;*/
+    color: #990000 !important;
+}
+
+.k-tooltip-validation .k-i-warning {
+    color: #990000 !important;
+}
+
+.k-tooltip-validation .k-icon.k-warning {
+    color: #ea8d1b !important;
+}
+
+/* Font-Aweseome Integrate Kendo UI */
+.fa.k-sprite,
+.fa.k-sprite::before {
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.k-grid-row-hover,
+.k-grid-column-hover {
+    background-color: #6db4f2 !important;
+}
+
+/* Notification */
+.k-notification-container {
+    font-size: 1rem;
+}
+
+.k-notification.k-notification-progress {
+    background-color: #1a1a18;
+    border: 1px solid #10100e;
+    color: #fff;
+}
+
+.k-checkbox-label::before {
+    background-color: #fff;
+    border-color: #bbbaba;
+}
+
+.k-autocomplete,
+.k-dropdown-wrap, .k-multiselect-wrap {
+    border-radius: 0rem;
+}
+
+    input.k-invalid,
+    .k-numeric-wrap.k-invalid,
+    .k-dropdown-wrap.k-invalid,
+    .k-multiselect-wrap.k-invalid{
+        background-color: #f8d7da !important;
+    }
+
+ 
+ 
+.k-upload .k-upload-files .k-file-preview-wrapper {
+    display: block;
+    margin-left: calc(24px + 1rem);
+    overflow: hidden;
+    min-height: 38px;
+}
+
+/* Fixes style for filter in dropdownlist */
+.k-popup {
+    padding-top: 0.25rem;
+}
+
+.k-list-filter {
+    padding: 0.25rem;
+    height: 3rem;
+    min-height: 3rem;
+}
+
+.k-dialog-titlebar.k-dialog-titlebar-primary {
+    background-color: #166de5;
+    color: #fff;
+}
+
+.k-dialog-titlebar.k-dialog-titlebar-info {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+
+.k-dialog-titlebar.k-dialog-titlebar-danger {
+    background-color: #d00707;
+    color: #fff;
+}
+
+.k-dialog-titlebar.k-dialog-titlebar-warning {
+    background-color: #ffc107;
+}
+
+.k-dialog-titlebar.k-dialog-titlebar-success {
+    background-color: #198754;
+    color: #fff;
+}
+
+.k-dialog-buttongroup > .k-button.k-primary {
+    /*   color: #fff;
+    background-color: #1a1a18;
+    border-color: #10100e;*/
+}
+
+.k-window-content.k-dialog-content {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-size: 1rem;
+}
+
+.k-window-title.k-dialog-title {
+    font-size: 1.5rem;
+}
+
+.k-widget.k-dialog,
+.k-dialog-buttongroup,
+.k-dialog-buttongroup > .k-button {
+    font-size: 1.25rem;
+}
+
+/* ---------------------------------------------------
+    Drop Down List
+----------------------------------------------------- */
+.k-dropdown-wrap {
+    background-color: #fff!important;
+}
+
+    .k-dropdown-wrap.k-state-disabled {
+        background-color: #e4e7eb !important;
+    }
