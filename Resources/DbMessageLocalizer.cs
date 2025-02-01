@@ -10,19 +10,19 @@ namespace WEB.APP.Localization
         private readonly TimeSpan _timeToLive = TimeSpan.FromSeconds(30);
         private readonly IMemoryCache _memoryCache;
         private readonly IHttpClientFactory _httpClientFactory;
-        private static bool _isLoaded = false;
+        private static bool _isLoaded = true;
         private static List<ResourceMessage> _resourceMessages = new();
-        public DbMessageLocalizer(IMemoryCache memoryCache)
-            : this(memoryCache, TimeSpan.FromSeconds(300))
+        public DbMessageLocalizer(IHttpClientFactory httpClientFactory, IMemoryCache memoryCache)
+            : this(memoryCache, TimeSpan.FromSeconds(300), httpClientFactory)
         {
-
         }
 
-        public DbMessageLocalizer(IMemoryCache memoryCache, TimeSpan timeToLive)
+        public DbMessageLocalizer(IMemoryCache memoryCache, TimeSpan timeToLive, IHttpClientFactory httpClientFactory)
         {
             ///_dbContext = dbContext;
             _timeToLive = timeToLive;
             _memoryCache = memoryCache;
+            _httpClientFactory = httpClientFactory;
         }
 
         public LocalizedString this[string name]

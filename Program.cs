@@ -6,8 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ISiteMapProvider, DbSiteMapProvider>();
+
+
+
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<DbMessageLocalizer>();
+//builder.Services.AddSingleton<IMessageLocalizer>();
+//builder.Services.AddSingleton<IMessageResources>();
+//builder.Services.AddSingleton<IMessageResources, DbMessageLocalizer>();
+builder.Services.AddSingleton<IMessageLocalizer, DbMessageLocalizer>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

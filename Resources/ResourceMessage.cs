@@ -11,5 +11,27 @@
         public string? MessageType { get; set; }
         public string? MessageNameTH { get; set; }
         public string? MessageNameEN { get; set; }
+
+    }
+    public class LocalizedResources_model
+    {
+        public string? ScreenCode { get; set; }
+        public string? ObjectID { get; set; }
+        public string? ResourcesTH { get; set; }
+        public string? ResourcesEN { get; set; }
+        public string? MessageName { get; set; }
+
+    }
+
+    public class LocalizedResources
+    {
+        public string? ScreenCode { get; set; }
+        public string? ObjectID { get; set; }
+        public string? ResourcesTH { get; set; }
+        public string? ResourcesEN { get; set; }
+
+
     }
 }
+
+
