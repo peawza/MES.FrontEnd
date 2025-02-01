@@ -59,17 +59,6 @@ async function APIGet(url, data) {
         }
         return response.data; // Return the response data if the request is successful
     } catch (error) {
-
-        //$.notify({
-        //    icon: 'fas fa-times-circle',
-        //    message: error.message
-        //}, {
-        //    delay: 3000,
-        //    type: 'danger'
-        //});
-        // console.error('Error:', error);
-        //return error.response;
-
         throw TypeError(error.message);
     }
 }
@@ -84,24 +73,13 @@ async function APIPost(url, data) {
             validateStatus: (status) => {
                 return status >= 200 && status < 400; // Default validation status (2xx and 3xx)
             }
-            //, validateStatus: () => true
+         
         });
         if (response.headers['content-type'] === 'text/html; charset=utf-8') {
             window.location.href = response.request.responseURL;
         }
         return response.data; // Return the response data if the request is successful
     } catch (error) {
-
-        //$.notify({
-        //    icon: 'fas fa-times-circle',
-        //    message: error.message
-        //}, {
-        //    delay: 3000,
-        //    type: 'danger'
-        //});
-        // console.error('Error:', error);
-        //return error.response;
-
         throw TypeError(error.message);
     }
 }
@@ -112,10 +90,8 @@ function objectToFormData(obj) {
     Object.entries(obj).forEach(([key, value]) => {
 
         if (value instanceof Date) {
-            // ทำการจัดรูปแบบพิเศษของคุณที่นี่
-            //var date1 = new Date("2020-06-24 22:57:36");
             formData.append(key, moment(value).format("MM/DD/YYYY HH:mm:ss"));
-            //return "10/15/2023 02:57:23"
+           
         } else if (value === "" || value == null) {
             //return 
            // formData.append(key, null);
@@ -159,32 +135,9 @@ async function APIPostUploadFile(url, data) {
     }
 }
 
-//,
-
-
-//async function APIPost(url, data) {
-//    // Default options are marked with {}
-//    const response = await fetch(url, {
-//        method: 'POST', // HTTP request method
-//        headers: {
-//            'Content-Type': 'application/json', // Specify the content type as JSON
-//            // Add any additional headers if needed
-//        },
-//        body: JSON.stringify(dateTransformer(data)), // Convert data to JSON format
-//    });
-
-//    // Handle the response
-//    if (!response.ok) {
-//        throw new Error('Network response was not ok');
-//    }
-
-//    return await response.json(); // Parse and return the response data as JSON
-//}
 
 
 /** Call Api End  **/
-
-
 
 
 /*** Function Fix bug kendo Start ***/
@@ -215,13 +168,11 @@ function SetFormatsDate(date) {
     let result = null
     try {
         if (date != null) {
-            //console.log("Grid DateTime ", date);
             result = kendo.toString(kendo.parseDate(date, 'yyyy-MM-ddTHH:mm:ss'), formatDateWithTime)
 
             if (result == null) {
                 result = kendo.toString(date, formatDateWithTime)
             }
-            // return kendo.toString(kendo.parseDate(Date.parse(date), 'yyyy-MM-ddTHH:mm:ss'), 'dd-MMM-yyyy HH:mm')
 
         } else {
             result = ""
@@ -469,9 +420,6 @@ function Message(MessageType, messagecode, col) {
     return MessageType + "_" + messagecode;
 }
 
-
-
-
 let Event = {
     clearMessage: () => {
         app.ui.clearAlert("#message-container");
@@ -498,7 +446,6 @@ let Event = {
         });
         app.ui.showAlertSuccess("#message-container", message);
     },
-
     showError: (message) => {
         $.notify({
             icon: 'fas fa-times-circle',
@@ -511,6 +458,3 @@ let Event = {
     }
 }
 
-function capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-}

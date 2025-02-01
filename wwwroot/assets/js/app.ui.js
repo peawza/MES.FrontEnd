@@ -1017,6 +1017,7 @@ var app = {
                 var dataItem = grid.dataItem(row[0]);
                 grid.dataSource.remove(dataItem);
                 grid.dataSource.sync();
+                grid.dataSource.read();
             });
         },
         confirmDialog: function (options) {

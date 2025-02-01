@@ -43,6 +43,12 @@ let _data_LocalizedMessages ={
       "MessageNameEN": "Are you sure you want to clear scrap list?"
     },
     {
+      "MessageCode": "MAS300_CM001",
+      "MessageType": "Confirm",
+      "MessageNameTH": "คุณต้องการลบดเลขคำขอ : {0} ใช่หรือไม่?",
+      "MessageNameEN": "Do you confirm to delete request no. : {0}?"
+    },
+    {
       "MessageCode": "ConfirmExportFile",
       "MessageType": "Confirm",
       "MessageNameTH": "คุณต้องการดาวน์โหลดไฟล์?",
@@ -165,12 +171,6 @@ let _data_LocalizedMessages ={
       "MessageNameEN": "Specified/selected value of {0} does not exist in master."
     },
     {
-      "MessageCode": "EM0005",
-      "MessageType": "Error",
-      "MessageNameTH": "ไม่สามารถล็อกอินได้ กรุณาลองอีกครั้งหรือติดต่อผู้ดูแลระบบ",
-      "MessageNameEN": "Login failed. because status is Inactive, Please contact your administrator. ไม่สามารถล็อกอินได้ กรุณาลองอีกครั้งหรือติดต่อผู้ดูแลระบบ"
-    },
-    {
       "MessageCode": "EM0006",
       "MessageType": "Error",
       "MessageNameTH": "ไม่สามารถล็อกอินได้. ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง.",
@@ -187,6 +187,12 @@ let _data_LocalizedMessages ={
       "MessageType": "Error",
       "MessageNameTH": "ไม่สามารถอ่านไฟล์/ข้อมูล Configuration ได้",
       "MessageNameEN": "Configuration File/Data cannot be read."
+    },
+    {
+      "MessageCode": "EM0005",
+      "MessageType": "Error",
+      "MessageNameTH": "ไม่สามารถล็อกอินได้ กรุณาลองอีกครั้งหรือติดต่อผู้ดูแลระบบ",
+      "MessageNameEN": "Login failed. because status is Inactive, Please contact your administrator. ไม่สามารถล็อกอินได้ กรุณาลองอีกครั้งหรือติดต่อผู้ดูแลระบบ"
     },
     {
       "MessageCode": "EM0009",
@@ -463,6 +469,12 @@ let _data_LocalizedMessages ={
       "MessageType": "Error",
       "MessageNameTH": "Username ไม่ใช่กลุ่มผู้ใช้งานระบบนี้",
       "MessageNameEN": "Username is not being in section to use this system."
+    },
+    {
+      "MessageCode": "UMS020_EM001",
+      "MessageType": "Error",
+      "MessageNameTH": "ไม่สามารถลบกลุ่มผู้ใช้งานนี้ กรุณาลบสมาชิกทั้งหมดออกจากกลุ่มก่อน",
+      "MessageNameEN": "Cannot delete this user group. Please clear all members from this group first."
     }
   ],
   "MessageType": [

@@ -1,63 +1,228 @@
-﻿@using WEB.APP.Helpers
+﻿@using Microsoft.Extensions.Hosting;
+@using Microsoft.AspNetCore.Hosting
+@using System.Globalization;
+@using Microsoft.Extensions.Options
+@using WEB.APP.Localization
+@inject IOptionsMonitor<CookieAuthenticationOptions> cookieOptions
+@inject IWebHostEnvironment hostEnvironment;
+@inject IMessageLocalizer MessageLocalizer
 @{
+
+
+
+
     var uiCulture = System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToLowerInvariant();
-    var appName = AppSharedData.ApplicationShortName;
+    var appName = AppSharedData.ApplicationCompanyName;
     var companyName = AppSharedData.ApplicationCompanyName;
+    var isAuthenticated = User.Identity.IsAuthenticated;
     var pageTitle = ViewBag.PageTitle ?? "";
     var pageIcon = ViewBag.PageIcon ?? "cube";
     var title = String.IsNullOrEmpty(pageTitle) ? string.Format("{0}", appName) : string.Format("{0} | {1} ", pageTitle, appName);
 
+}
+@{
+    var userData = User.GetUserData();
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@appName" />
+    <meta name="environment" content="@hostEnvironment.EnvironmentName" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
     <title>@title</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WEB.APP.styles.css" asp-append-version="true" />
+    <script>
+        let api_axios_delay = 200;
+    </script>
+
+
+    @await Html.PartialAsync("libs/_libs_css")
+    @await Html.PartialAsync("libs/_libs_js")
+
+
+
+
+    @RenderSection("Styles", required: false)
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WEB.APP</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-route="S003" title="User Manages">User Manages</a>
-                        </li>
-                    </ul>
+    @await Html.PartialAsync("_SidebarMenu")
+    <main>
+        <nav class="navbar navbar-light bg-navbar-toto ps-2 pe-2 shadow justify-content-start">
+            <a href="#" class="btn btn-link bg-toggle js-menu-toggle">
+                <span class="navbar-toggler-icon"></span>
+            </a>
+            <div class="ms-2 navbar-nav me-auto">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="app-name" style="color:#003763">  @AppSharedData.ApplicationFullName </a>
+            </div>
+            <div class="dropdown">
+                <div class="row me-3" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true">
+                    <img class="img-fluid col-auto p-0" aria-expanded="false" style="height:26px;width:26px" src="~/assets/images/usericon.png">
+                    <h3 class="name pt-1 col-auto" style=" color:#000000">@userData.UserName  </h3>
+                </div>
+                <div class="dropdown-menu dropdown-menu-right" style="left:unset;right:0" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="@Url.Action("Index", "Account",new { area = "" })" title="Manage Account"><i class="fas fa-user-circle"></i>Manage Account</a>
+
+                    <a class="dropdown-item" href="@Url.Action("Logout", "Account",new { area = "" })" title="Sign out"><i class="fas fa-sign-out-alt"></i>SignOut</a>
                 </div>
             </div>
+            @*  <div class="p-1">
+            <a href="@Url.Action("Logout", "Account",new { area = "" })" title="Sign out"> <img src="~/assets/images/nav_logout.png" class="img-fluid img-logut" title="Logout" /></a>
+            </div> *@
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        <div class="site-section" id="site-section">
+            @if (isAuthenticated)
+            {
+                <!-- Page Title -->
+                @if (!String.IsNullOrEmpty(pageTitle))
+                {
+                    <div class="page-title">
+                        <div class="page-title-body "> @pageTitle  </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2568 - WEB.APP - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                    </div>
+
+                }
+                else
+                {
+                    <div class="mb-2"></div>
+                }
+            }
+            <div class="page-content container-fluid mb-2 d-hidden" id="page-content">
+                @RenderBody()
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    </main>
+
+
+    <div id="notifications" style="display:none"></div>
+    <div id="ajax-notifications" style="display:none"></div>
+
+    <div id="axios-loading" style="display:none"></div>
+
+    <div id="loadingOverlay" class="d-none"></div>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+<script>
+    var UserName = "@User.GetUserData().UserName"
+
+
+    function onNotificationShow(e) {
+        //document.querySelector('main').classList.add('disabled-input-screen-load')
+
+        //document.getElementById('site-section').classList.add('disabled-input-screen-load');
+        document.getElementById('loadingOverlay').classList.remove('d-none');
+        document.getElementById('loadingOverlay').innerText = '';
+    }
+
+    function onNotificationHide(e) {
+        document.getElementById('loadingOverlay').classList.add('d-none');
+        document.getElementById('loadingOverlay').innerText = '';
+    }
+    var axios_loading = $("#axios-loading").kendoNotification({
+        show: onNotificationShow, hide: onNotificationHide,
+        position: {
+            pinned: true,
+            bottom: 10,
+            left: 10
+        },
+        animation: {
+            open: {
+                effects: "fadeIn"
+            },
+            close: {
+                effects: "fadeOut"
+            }
+        },
+        width: 400,
+        autoHideAfter: 0,
+        stacking: "down",
+        templates: [
+            {
+                type: "progress",
+                template: "<div class=\"\"><i class=\"fa-duotone fa-spinner-third fa-spin\"></i> #= message #</div>"
+            }
+        ]
+    }).data("kendoNotification");
+    $(document).ready(async function () {
+        if ($("#ajax-notifications").data("kendoNotification") != undefined) {
+            $("#ajax-notifications").data("kendoNotification")._events = $("#axios-loading").data("kendoNotification")._events
+        }
+    });
+
+
+    let api_axios_count = 0;
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    axios.interceptors.request.use(function (config) {
+        api_axios_count += 1;
+
+        let axios_loading_length = document.querySelectorAll("." + axios_loading._guid).length;
+
+        if (axios_loading_length == 0 && document.readyState === 'complete') {
+
+            axios_loading.show({ message: 'Please wait while data is loading..' }, "progress");
+        }
+
+
+
+        return config;
+    },async function (error) {
+        api_axios_count--;
+        setTimeout(() => {
+            if (api_axios_count == 0 && document.readyState === 'complete') {
+                axios_loading.hide();
+            }
+        }, api_axios_delay);
+
+
+        return Promise.reject(error);
+    });
+
+
+
+    // Add a response interceptor
+    axios.interceptors.response.use(async function (response) {
+        api_axios_count--;
+        setTimeout(() => {
+            if (api_axios_count == 0) {
+                axios_loading.hide();
+            }
+        }, api_axios_delay);
+
+        return response;
+    }, async function (error) {
+        api_axios_count--;
+        setTimeout(() => {
+            if (api_axios_count == 0) {
+                axios_loading.hide();
+            }
+        }, api_axios_delay);
+
+        return Promise.reject(error);
+    });
+
+
+
+
+
+    window.addEventListener('load', async (event) => {
+        if (document.readyState === 'complete') {
+
+            await delay(500);
+
+            document.getElementById('page-content').classList.remove('d-hidden');
+            //console.log('Document and all sub-resources have finished loading');
+        }
+
+
+
+
+    });
+
+</script>

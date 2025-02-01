@@ -1,3 +1,4 @@
+using WEB.APP.Localization;
 using WEB.APP.MvcWebApp.Navigation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ISiteMapProvider, DbSiteMapProvider>();
-
+builder.Services.AddHttpClient();
+builder.Services.AddSingleton<DbMessageLocalizer>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,7 +35,11 @@ app.UseAuthorization();
 //        pattern: "{controller=Home}/{action=Index}/{id?}");
 //});
 
-
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider.GetRequiredService<DbMessageLocalizer>();
+    await service.LoadResourceMessagesAsync(); // Fetch data only once
+}
 
 
 app.MapControllerRoute(

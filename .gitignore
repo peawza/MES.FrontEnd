@@ -368,7 +368,7 @@ FodyWeavers.xsd
 */**/bin/Release
 */**/obj/Debug
 */**/obj/Release
-/10-code/IOT-WEB/Master.libs.Infrastructure/obj/Debug/net6.0/Master.libs.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/10-code/IOT-WEB/Master.libs.Infrastructure/obj/Debug/net6.0/WEB.APP.GeneratedMSBuildEditorConfig.editorconfig
 /10-code/IOT-WEB/10 - Application Libraries/Master.libs.Identity/obj/Debug/net6.0/Master.libs.Identity.csproj.AssemblyReference.cache
 /10-code/IOT-WEB/10 - Application Libraries/Master.libs.Core/obj/Debug/net6.0/Master.libs.Core.csproj.AssemblyReference.cache
 /10-code/IOT-WEB/00 - Shared Libraries/CSI.EpplusCore/obj/Debug/netstandard2.1/CSI.EPPlusCore.GeneratedMSBuildEditorConfig.editorconfig
@@ -390,6 +390,6 @@ FodyWeavers.xsd
 /10-code/IOT-WEB/20 - External Services/line.notification/obj/Debug/net6.0/line.notification.GeneratedMSBuildEditorConfig.editorconfig
 /10-code/IOT-WEB/80 - Presentation/MvcWebApp/obj/Debug/net6.0/WEB.APP.csproj.AssemblyReference.cache
 /10-code/IOT-WEB/80 - Presentation/MvcWebApp/obj/Debug/net6.0/WEB.APP.GeneratedMSBuildEditorConfig.editorconfig
-/10-code/IOT-WEB/Master.libs.Infrastructure/obj/Debug/net6.0/Master.libs.Infrastructure.csproj.AssemblyReference.cache
+/10-code/IOT-WEB/Master.libs.Infrastructure/obj/Debug/net6.0/WEB.APP.csproj.AssemblyReference.cache
 bin
 obj

@@ -1172,6 +1172,18 @@ let _data_LocalizedResources ={
     },
     {
       "ScreenCode": "MAS200",
+      "ObjectID": "GD015",
+      "ResourcesTH": "วอ 8 (ใช้ได้ถึงวันที่)",
+      "ResourcesEN": "วอ 8 (ใช้ได้ถึงวันที่)"
+    },
+    {
+      "ScreenCode": "MAS200",
+      "ObjectID": "GD016",
+      "ResourcesTH": "วันที่ชำระภาษี (ภาษี พรบ.รถยนต์)",
+      "ResourcesEN": "วันที่ชำระภาษี (ภาษี พรบ.รถยนต์)"
+    },
+    {
+      "ScreenCode": "MAS200",
       "ObjectID": "SC001",
       "ResourcesTH": "เลขที่ผู้ขนส่ง",
       "ResourcesEN": "Waste Transporter ID/Name"
@@ -1209,25 +1221,25 @@ let _data_LocalizedResources ={
     {
       "ScreenCode": "MAS200",
       "ObjectID": "SC007",
-      "ResourcesTH": "วอ.8",
+      "ResourcesTH": "วอ 8 <br> (ใช้ได้ถึงวันที่) จาก",
       "ResourcesEN": "วอ.8 <br>(Valid End-Date) From"
     },
     {
       "ScreenCode": "MAS200",
       "ObjectID": "SC008",
-      "ResourcesTH": "Payment Date <br>  (Car Tax พรบ.) From",
+      "ResourcesTH": "วันที่ชำระภาษี <br>(ภาษี พรบ.รถยนต์) จาก",
       "ResourcesEN": "Payment Date <br>  (Car Tax พรบ.) From"
     },
     {
       "ScreenCode": "MAS200",
       "ObjectID": "SC009",
-      "ResourcesTH": "วอ.8",
+      "ResourcesTH": "วอ 8 <br> (ใช้ได้ถึงวันที่) ถึง",
       "ResourcesEN": "วอ.8 <br>  (Valid End-Date) To"
     },
     {
       "ScreenCode": "MAS200",
       "ObjectID": "SC010",
-      "ResourcesTH": "Payment Date <br> (Car Tax พรบ.)  To ",
+      "ResourcesTH": "วันที่ชำระภาษี <br>(ภาษี พรบ.รถยนต์) ถึง",
       "ResourcesEN": "Payment Date <br> (Car Tax พรบ.)  To "
     }
   ],
@@ -1459,7 +1471,7 @@ let _data_LocalizedResources ={
     {
       "ScreenCode": "MAS300",
       "ObjectID": "GD014",
-      "ResourcesTH": "ผู้ออกเอกสาร",
+      "ResourcesTH": "หน่วยงานผู้ออกเอกสาร",
       "ResourcesEN": "Requester"
     },
     {
@@ -1543,7 +1555,7 @@ let _data_LocalizedResources ={
     {
       "ScreenCode": "MAS300",
       "ObjectID": "SC007",
-      "ResourcesTH": "ผู้ออกเอกสาร",
+      "ResourcesTH": "หน่วยงานผู้ออกเอกสาร",
       "ResourcesEN": "Requester's Section"
     },
     {
@@ -2515,13 +2527,13 @@ let _data_LocalizedResources ={
     {
       "ScreenCode": "MAS600",
       "ObjectID": "GD007",
-      "ResourcesTH": "Unit Price<br>(SALE)",
+      "ResourcesTH": "ราคาต่อหน่วย<br>ขาย",
       "ResourcesEN": "Unit Price<br>(SALE)"
     },
     {
       "ScreenCode": "MAS600",
       "ObjectID": "GD008",
-      "ResourcesTH": "Unit<br>(SALE)",
+      "ResourcesTH": "หน่วย<br>ขาย",
       "ResourcesEN": "Unit<br>(SALE)"
     },
     {
@@ -2699,7 +2711,7 @@ let _data_LocalizedResources ={
     {
       "ScreenCode": "MAS700",
       "ObjectID": "GD006",
-      "ResourcesTH": "Updated Date-Time",
+      "ResourcesTH": "วันที่ปรับปรุง",
       "ResourcesEN": "Updated Date-Time"
     },
     {
@@ -2759,7 +2771,7 @@ let _data_LocalizedResources ={
     {
       "ScreenCode": "MAS700",
       "ObjectID": "GD016",
-      "ResourcesTH": "Created Date-Time",
+      "ResourcesTH": "วันที่สร้าง",
       "ResourcesEN": "Created Date-Time"
     },
     {
@@ -2771,7 +2783,7 @@ let _data_LocalizedResources ={
     {
       "ScreenCode": "MAS700",
       "ObjectID": "SC002",
-      "ResourcesTH": "Scrap ID / Name",
+      "ResourcesTH": "เลขที่/ชื่อ ของเสีย",
       "ResourcesEN": "Scrap ID / Name"
     }
   ],
@@ -2895,6 +2907,12 @@ let _data_LocalizedResources ={
       "ObjectID": "GD004",
       "ResourcesTH": "ปริมาณ (Kg) Stock",
       "ResourcesEN": "ปริมาณ (Kg) Stock"
+    },
+    {
+      "ScreenCode": "SWR002",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Scrap Contact",
+      "ResourcesEN": "Scrap Contact"
     },
     {
       "ScreenCode": "SWR002",
@@ -3126,6 +3144,30 @@ let _data_LocalizedResources ={
     },
     {
       "ScreenCode": "SWR005",
+      "ObjectID": "GD015",
+      "ResourcesTH": "Scrap Contact",
+      "ResourcesEN": "Scrap Contact"
+    },
+    {
+      "ScreenCode": "SWR005",
+      "ObjectID": "GD016",
+      "ResourcesTH": "Begining Balance",
+      "ResourcesEN": "Begining Balance"
+    },
+    {
+      "ScreenCode": "SWR005",
+      "ObjectID": "GD017",
+      "ResourcesTH": "อนุมัติ?",
+      "ResourcesEN": "อนุมัติ?"
+    },
+    {
+      "ScreenCode": "SWR005",
+      "ObjectID": "GD018",
+      "ResourcesTH": "ยอดชำระภาษี",
+      "ResourcesEN": "ยอดชำระภาษี"
+    },
+    {
+      "ScreenCode": "SWR005",
       "ObjectID": "SC001",
       "ResourcesTH": "ปี",
       "ResourcesEN": "ปี"
@@ -3141,6 +3183,30 @@ let _data_LocalizedResources ={
       "ObjectID": "SC003",
       "ResourcesTH": "ถึง :",
       "ResourcesEN": "ถึง :"
+    },
+    {
+      "ScreenCode": "SWR005",
+      "ObjectID": "SC004",
+      "ResourcesTH": "ยอด LOT 24 ของปีที่ผ่านมา",
+      "ResourcesEN": "ยอด LOT 24 ของปีที่ผ่านมา"
+    },
+    {
+      "ScreenCode": "SWR005",
+      "ObjectID": "SC005",
+      "ResourcesTH": "ตั้งค่า LOT1",
+      "ResourcesEN": "ตั้งค่า LOT1"
+    },
+    {
+      "ScreenCode": "SWR005",
+      "ObjectID": "SC006",
+      "ResourcesTH": "LOT 1 ปี",
+      "ResourcesEN": "LOT 1 ปี"
+    },
+    {
+      "ScreenCode": "SWR005",
+      "ObjectID": "SC007",
+      "ResourcesTH": "No Data",
+      "ResourcesEN": "No Data"
     }
   ],
   "SWR006": [
@@ -6195,6 +6261,12 @@ let _data_LocalizedResources ={
       "ObjectID": "SC006",
       "ResourcesTH": "แผนก :",
       "ResourcesEN": "แผนก :"
+    },
+    {
+      "ScreenCode": "SWS080",
+      "ObjectID": "SC007",
+      "ResourcesTH": "Year :",
+      "ResourcesEN": "Year :"
     }
   ],
   "SWS081": [
@@ -6335,6 +6407,12 @@ let _data_LocalizedResources ={
       "ObjectID": "IP010",
       "ResourcesTH": "วันที่สร้าง :",
       "ResourcesEN": "วันที่สร้าง :"
+    },
+    {
+      "ScreenCode": "SWS081",
+      "ObjectID": "IP011",
+      "ResourcesTH": "Year :",
+      "ResourcesEN": "Year :"
     }
   ],
   "SWS090": [
@@ -6621,8 +6699,8 @@ let _data_LocalizedResources ={
     {
       "ScreenCode": "SWS100",
       "ObjectID": "GD012",
-      "ResourcesTH": "ทะเบียนโรงางน",
-      "ResourcesEN": "ทะเบียนโรงางน"
+      "ResourcesTH": "ทะเบียนโรงงาน",
+      "ResourcesEN": "ทะเบียนโรงงาน"
     },
     {
       "ScreenCode": "SWS100",
@@ -6745,6 +6823,12 @@ let _data_LocalizedResources ={
       "ObjectID": "IP016",
       "ResourcesTH": "หมายเหตุ",
       "ResourcesEN": "หมายเหตุ"
+    },
+    {
+      "ScreenCode": "SWS101",
+      "ObjectID": "IP017",
+      "ResourcesTH": "ชื่อบริษัท",
+      "ResourcesEN": "ชื่อบริษัท"
     },
     {
       "ScreenCode": "SWS101",

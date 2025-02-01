@@ -142,6 +142,9 @@
 
     }, RemoveFile(idUpload, idDisplay, modeupload, imageNull) {
         //console.log("modeupload =>", modeupload, imageNull);
+        if (imageNull == null) {
+            imageNull = "/assets/images/no-photo.jpg";
+        }
         $("#" + modeupload).val("delete");
         var upload = $("#" + idUpload).data("kendoUpload");
         upload.removeAllFiles();
