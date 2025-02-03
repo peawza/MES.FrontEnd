@@ -11,6 +11,11 @@
         public string? MessageType { get; set; }
         public string? MessageNameTH { get; set; }
         public string? MessageNameEN { get; set; }
+        //public string? Remark { get; set; }
+        //public DateTime? CreateDate { get; set; }
+
+        //public string? CreateBy { get; set; }
+
 
     }
     public class LocalizedResources_model
@@ -29,6 +34,11 @@
         public string? ObjectID { get; set; }
         public string? ResourcesTH { get; set; }
         public string? ResourcesEN { get; set; }
+
+        //public string? Remark { get; set; }
+        //public DateTime? CreateDate { get; set; }
+
+        //public string? CreateBy { get; set; }
 
 
     }

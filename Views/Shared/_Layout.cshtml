@@ -1,31 +1,36 @@
 ﻿@using Microsoft.Extensions.Hosting;
 @using Microsoft.AspNetCore.Hosting
 @using System.Globalization;
-@using Microsoft.Extensions.Options
 @using WEB.APP.Localization
+
 @inject IOptionsMonitor<CookieAuthenticationOptions> cookieOptions
 @inject IWebHostEnvironment hostEnvironment;
 @inject IMessageLocalizer MessageLocalizer
 @{
 
+    if ("th" == "th")
+    {
+        CultureInfo.CurrentCulture = new CultureInfo("th-TH", false);
+        CultureInfo.CurrentUICulture = new CultureInfo("th-TH", false);
+    }
 
 
 
     var uiCulture = System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToLowerInvariant();
-    var appName = AppSharedData.ApplicationCompanyName;
-    var companyName = AppSharedData.ApplicationCompanyName;
+    var appName = "MES Framework";
+    var companyName = "MES Framework";
     var isAuthenticated = User.Identity.IsAuthenticated;
     var pageTitle = ViewBag.PageTitle ?? "";
     var pageIcon = ViewBag.PageIcon ?? "cube";
     var title = String.IsNullOrEmpty(pageTitle) ? string.Format("{0}", appName) : string.Format("{0} | {1} ", pageTitle, appName);
 
 }
+
 @{
     var userData = User.GetUserData();
 }
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@CultureInfo.CurrentCulture.TwoLetterISOLanguageName">
 <head>
     <meta charset="utf-8" />
     <meta name="description" content="@appName" />
@@ -33,53 +38,270 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 
     <title>@title</title>
-    <script>
-        let api_axios_delay = 200;
-    </script>
 
 
     @await Html.PartialAsync("libs/_libs_css")
     @await Html.PartialAsync("libs/_libs_js")
 
-
+    <link rel="stylesheet" href="~/assets/css/site_bar.css" asp-append-version="true" />
 
 
     @RenderSection("Styles", required: false)
 </head>
-
-<body>
+<script>
+    var culture = kendo.culture("en-GB");
+</script>
+<body id="site-section">
     @await Html.PartialAsync("_SidebarMenu")
     <main>
-        <nav class="navbar navbar-light bg-navbar-toto ps-2 pe-2 shadow justify-content-start">
-            <a href="#" class="btn btn-link bg-toggle js-menu-toggle">
-                <span class="navbar-toggler-icon"></span>
-            </a>
-            <div class="ms-2 navbar-nav me-auto">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="app-name" style="color:#003763">  @AppSharedData.ApplicationFullName </a>
-            </div>
-            <div class="dropdown">
-                <div class="row me-3" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true">
-                    <img class="img-fluid col-auto p-0" aria-expanded="false" style="height:26px;width:26px" src="~/assets/images/usericon.png">
-                    <h3 class="name pt-1 col-auto" style=" color:#000000">@userData.UserName  </h3>
-                </div>
-                <div class="dropdown-menu dropdown-menu-right" style="left:unset;right:0" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="@Url.Action("Index", "Account",new { area = "" })" title="Manage Account"><i class="fas fa-user-circle"></i>Manage Account</a>
-
-                    <a class="dropdown-item" href="@Url.Action("Logout", "Account",new { area = "" })" title="Sign out"><i class="fas fa-sign-out-alt"></i>SignOut</a>
-                </div>
-            </div>
-            @*  <div class="p-1">
-            <a href="@Url.Action("Logout", "Account",new { area = "" })" title="Sign out"> <img src="~/assets/images/nav_logout.png" class="img-fluid img-logut" title="Logout" /></a>
-            </div> *@
+        @*
+        <nav class="navbar navbar-light bg-navbar-toto pl-2 pr-2 shadow">
+        <a href="#" class="btn btn-link bg-toggle js-menu-toggle">
+        <span class="navbar-toggler-icon"></span>
+        </a>
+        <div class="ml-2 navbar-nav mr-auto">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="app-name"> <img src="~/assets/images/logo.png" class="img-fluid img-logo" title="@companyName" /> MES Framework </a>
+        </div>
+        <div class="dropdown">
+        <img class="img-fluid dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:36px" src="~/assets/images/usericon.png">
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="@Url.Action("Index", "Account",new { area = "" })" title="Manage Account"><i class="fas fa-user-circle"></i>Manage Account</a>
+        <div class="dropdown-divider"></div>
+        @if (User.IsInRole("Admin"))
+        {
+        <a class="dropdown-item" href="@Url.Action("Index", "Log", new { area = "Admin" })" title="Manage Application Log"><i class="fas fa-edit"></i>Manage Application Log</a>
+        <a class="dropdown-item" href="@Url.Action("Index", "Message", new { area = "Admin" })" title="Manage Application Message"><i class="fas fa-comment-alt"></i>Manage Application Message</a>
+        <div class="dropdown-divider"></div>
+        }
+        <a class="dropdown-item" href="@Url.Action("Logout", "Account",new { area = "" })" title="Sign out"><i class="fas fa-sign-out-alt"></i>@UIResource.SignOut</a>
+        </div>
+        </div>
+        <div class="p-1">
+        <a href="@Url.Action("Logout", "Account",new { area = "" })" title="Sign out"> <img src="~/assets/images/nav_logout.png" class="img-fluid img-logo" title="Logout" /></a>
+        </div>
         </nav>
-        <div class="site-section" id="site-section">
+        *@
+
+
+        <nav class="sidebar-2">
+            <div class="sidebar-2-header">
+                <img src="~/assets/images/Logo-03.png" alt="Image" class="sidebar-2-image" id="sidebar2-logoicon">
+            </div>
+            <div class="sidebar-2-user">
+                <i class="far fa-user-circle sidebar-2-icon sidebar-2-usericon"></i><span class="sidebar-2-username">Welcome , </span> <br> <span class="sidebar-2-username1">@userData.DisplayName </span>  <span class="sidebar-2-username2">@userData.PositionName </span>
+            </div>
+            <ul class="sidebar2-ul">
+                <li><a href="/" class="sidebar2-selection"><i class="fas fa-home sidebar-2-icon"></i><span class="sidebar-2-nav-item">Home</span></a></li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#ProductionPerformanceSystem" aria-expanded="false" aria-controls="ProductionPerformanceSystem" class="collapsible sidebar2-selection collapsible-main">
+                        <i class="fas fa-display sidebar-2-icon"></i> <span class="sidebar-2-nav-item">MES System</span>
+                    </a>
+                    <div id="ProductionPerformanceSystem" class="collapse ui-submenu" aria-labelledby="headingOne">
+                        <div>
+                            <ul>
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#UM1" aria-expanded="false" aria-controls="UM1" class="collapsible">
+                                        <i class="fas fa-cube"></i>User Management
+                                    </a>
+                                    <div id="UM1" class="collapse ui-submenu" aria-labelledby="headingone">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a class="sub-menu" ria-expanded="false" title="User Management List" href="/UserManages/User/Inquiry"><i class="fas fa-user"></i>User Management List</a>
+                                                </li>
+                                                <li>
+                                                    <a class="sub-menu" ria-expanded="false" title="User Groups Maintenance List" href="/UserManages/UserGroup/Inquiry"><i class="fas fa-users"></i>User Groups Maintenance List</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#Masters" aria-expanded="false" aria-controls="Masters" class="collapsible">
+                                        <i class="fa-regular fa-database"></i> Master Setting
+                                    </a>
+                                    <div id="Masters" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+
+                                                <li>
+                                                    <a href="/master/linemaster" ria-expanded="false" title="Line Master">  <i class="fa-regular fa-database"></i>  Line </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/master/processmaster" ria-expanded="false" title="Process Master">  <i class="fa-regular fa-database"></i> Process </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/master/machinemaster" ria-expanded="false" title="Machine Master">  <i class="fa-regular fa-database"></i> Machine </a>
+                                                </li>
+                                                @* <li>
+                                                <a href="/master/shiftmaster" ria-expanded="false" title="Shift Master">  <i class="fa-regular fa-database"></i> Shift </a>
+                                                </li> *@
+                                                <li class="accordion">
+                                                    <a href="#" data-toggle="collapse" data-target="#ShiftPattern" aria-expanded="false" aria-controls="ShiftPattern" class="collapsible">
+                                                        <i class="fa-regular fa-database"></i>  Shift
+                                                    </a>
+                                                    <div id="ShiftPattern" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                                        <div>
+                                                            <ul>
+                                                                <li>
+                                                                    <a asp-route="MSM010" ria-expanded="false" title="Shift / Pattern"><i class="fa-regular fa-chart-line"></i> Shift / Pattern </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a asp-route="MSM011" ria-expanded="false" title="Shift / Pattern Detail"><i class="fa-regular fa-chart-line"></i> Shift / Pattern Detail </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/master/modelmaster" ria-expanded="false" title="Part Master">  <i class="fa-regular fa-database"></i> Model / Part </a>
+                                                </li>
+                                                <li>
+
+
+                                                    <a href="/master/takttimemaster" ria-expanded="false" title="Cycle Time / TaktTime Master">  <i class="fa-regular fa-database"></i> Cycle Time / Takt Time </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/master/ngmaster" ria-expanded="false" title="NG Type Master">  <i class="fa-regular fa-database"></i> NG Type </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#Production" aria-expanded="false" aria-controls="Production" class="collapsible">
+                                        <i class="fa-regular fa-database"></i> Production
+                                    </a>
+                                    <div id="Production" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a href="/production/productionresult" ria-expanded="false" title="Production Result"> <i class="fa-solid fa-gears"></i> Production Planing / Result </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/production/productionquality" ria-expanded="false" title="Production Quality"> <i class="fa-solid fa-gears"></i> Quality </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#Monitoring" aria-expanded="false" aria-controls="Monitoring" class="collapsible">
+                                        <i class="fa-regular fa-database"></i> Monitoring
+                                    </a>
+                                    <div id="Monitoring" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a href="/monitoring/machinemonitoring" ria-expanded="false" title="Machine Monitoring"><i class="fa-regular fa-chart-line"></i> Machine Monitoring </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/monitoring/machineTV" ria-expanded="false" title="Machine (TV)"> <i class="fa-solid fa-gears"></i> Machine (TV) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/monitoring/MachineTVByOrder" ria-expanded="false" title="Machine By WorkOrder (TV)"> <i class="fa-solid fa-gears"></i> Machine By WorkOrder (TV) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/monitoring/machinedowntime" ria-expanded="false" title="Machine Downtime"> <i class="fa-solid fa-gears"></i> Machine Downtime </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#OEE" aria-expanded="false" aria-controls="Dashboard" class="collapsible">
+                                        <i class="fa-regular fa-file-chart-column"></i> OEE
+                                    </a>
+                                    <div id="OEE" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a href="/dashboard/dashboards" ria-expanded="false" title="Dashboard Line Monitoring"><i class="fa-regular fa-chart-line"></i> Line / Process Monitoring </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/dashboard/dashboardprodngreason" ria-expanded="false" title="Dashboard Production NG Reason"><i class="fa-regular fa-chart-line"></i> NG Reason </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#HistoryData" aria-expanded="false" aria-controls="HistoryData" class="collapsible">
+                                        <i class="fa-regular fa-file-chart-column"></i> History Data
+                                    </a>
+                                    <div id="HistoryData" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a href="/history/downtimehistory" ria-expanded="false" title="Machine Status History"><i class="fa-regular fa-chart-line"></i> Machine Status History </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/history/productionhistory" ria-expanded="false" title="Production Order History"><i class="fa-regular fa-chart-line"></i> Production Order History </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </li>
+                @*
+                <li class="accordion energy-monitorion-system">
+                <a href="#" data-toggle="collapse" data-target="#energymonitorionsystem" aria-expanded="false" aria-controls="energymonitorionsystem" class="collapsible sidebar2-selection collapsible-main">
+                <i class="fas fa-clipboard-list sidebar-2-icon"></i> <span class="sidebar-2-nav-item">IIOT Dashboard</span>
+                </a>
+                <div id="energymonitorionsystem" class="collapse ui-submenu" aria-labelledby="headingone">
+                <div>
+                <ul>
+                <li>
+                <a href="/dashboard/dashboadckd" ria-expanded="false" title="Dashboad CKD"><i class="fa-regular fa-chart-line"></i>  CKD Dashboad </a>
+                </li>
+                <li>
+                <a href="/dashboard/dashboardvibration" ria-expanded="false" title="Dashboard Vibration"><i class="fa-regular fa-chart-line"></i>  Vibration Dashboad </a>
+                </li>
+                <li>
+                <a href="/statisticalreport/visitor" ria-expanded="false" title="Energy Consumption"><i class="fa-regular fa-chart-line"></i> Energy Consumption </a>
+                </li>
+                <li>
+                <a href="/statisticalreport/statisticalreport" ria-expanded="false" title="Energy Monitoring Realtime"><i class="fa-regular fa-chart-line"></i> Energy Monitoring Realtime </a>
+                </li>
+                <li>
+                <a href="/statisticalreport/summarystatisticalreport" ria-expanded="false" title="Energy Monitoring History"><i class="fa-regular fa-chart-line"></i> Energy Monitoring History </a>
+                </li>
+                </ul>
+                </div>
+                </div>
+                </li>
+                *@
+                <li><a href="@Url.Action("Logout", "Account",new { area = "" })" class="sidebar2-selection"><i class="fas fa-sign-out-alt sidebar-2-icon" style="left:0.1px;"></i><span class="sidebar-2-nav-item">Logout</span></a></li>
+
+
+            </ul>
+
+            <span class="sidebar-2-info">Version 1.02 </span>
+            <br>
+            <span class="sidebar-2-info1">Last Update : @AssemblyHelper.LastWriteTime(typeof(WEB.APP.Controllers.AppControllerBase).Assembly).ToString("d MMM yyyy HH:mm") </span>
+
+        </nav>
+        <div class="site-section" style="margin-left:80px">
             @if (isAuthenticated)
             {
                 <!-- Page Title -->
                 @if (!String.IsNullOrEmpty(pageTitle))
                 {
+                    @*<div class="page-title"><i class="fas fa-@pageIcon"></i> @pageTitle</div>*@
+
                     <div class="page-title">
-                        <div class="page-title-body "> @pageTitle  </div>
+                        <div class="page-title-body "><i class="fas fa-@pageIcon" style="padding-right:10px;"></i> @pageTitle  </div>
 
 
                     </div>
@@ -90,7 +312,7 @@
                     <div class="mb-2"></div>
                 }
             }
-            <div class="page-content container-fluid mb-2 d-hidden" id="page-content">
+            <div class="page-content container-fluid mb-2">
                 @RenderBody()
             </div>
         </div>
@@ -99,130 +321,48 @@
 
     <div id="notifications" style="display:none"></div>
     <div id="ajax-notifications" style="display:none"></div>
+    @*@MessageLocalizer["EM0010"]*@
+    @*<script>
+    var connection = new signalR.HubConnectionBuilder().withUrl("/DashboadHub").build();
+    //$( document ).ready(function() {
+    //    console.log( "ready!" ,connection);
+    //});
+    connection.start().then(function () {
+    connection.invoke("SendNotification", "@User.GetUserData().UserName").catch(function (err) {
+    return console.error(err.toString());
+    });
 
-    <div id="axios-loading" style="display:none"></div>
+    }).catch(function (err) {
+    return console.error(err.toString());
+    });
+    connection.on("SendNotification", function (data) {
+    //$("#number-notification").html("111");
 
-    <div id="loadingOverlay" class="d-none"></div>
+    console.log("data",data);
+    });
+    </script>*@
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
 
 <script>
-    var UserName = "@User.GetUserData().UserName"
 
+    @*console.log("lang => @(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)");
 
-    function onNotificationShow(e) {
-        //document.querySelector('main').classList.add('disabled-input-screen-load')
-
-        //document.getElementById('site-section').classList.add('disabled-input-screen-load');
-        document.getElementById('loadingOverlay').classList.remove('d-none');
-        document.getElementById('loadingOverlay').innerText = '';
-    }
-
-    function onNotificationHide(e) {
-        document.getElementById('loadingOverlay').classList.add('d-none');
-        document.getElementById('loadingOverlay').innerText = '';
-    }
-    var axios_loading = $("#axios-loading").kendoNotification({
-        show: onNotificationShow, hide: onNotificationHide,
-        position: {
-            pinned: true,
-            bottom: 10,
-            left: 10
-        },
-        animation: {
-            open: {
-                effects: "fadeIn"
-            },
-            close: {
-                effects: "fadeOut"
-            }
-        },
-        width: 400,
-        autoHideAfter: 0,
-        stacking: "down",
-        templates: [
-            {
-                type: "progress",
-                template: "<div class=\"\"><i class=\"fa-duotone fa-spinner-third fa-spin\"></i> #= message #</div>"
-            }
-        ]
-    }).data("kendoNotification");
-    $(document).ready(async function () {
-        if ($("#ajax-notifications").data("kendoNotification") != undefined) {
-            $("#ajax-notifications").data("kendoNotification")._events = $("#axios-loading").data("kendoNotification")._events
-        }
-    });
-
-
-    let api_axios_count = 0;
-    function delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    axios.interceptors.request.use(function (config) {
-        api_axios_count += 1;
-
-        let axios_loading_length = document.querySelectorAll("." + axios_loading._guid).length;
-
-        if (axios_loading_length == 0 && document.readyState === 'complete') {
-
-            axios_loading.show({ message: 'Please wait while data is loading..' }, "progress");
-        }
-
-
-
-        return config;
-    },async function (error) {
-        api_axios_count--;
-        setTimeout(() => {
-            if (api_axios_count == 0 && document.readyState === 'complete') {
-                axios_loading.hide();
-            }
-        }, api_axios_delay);
-
-
-        return Promise.reject(error);
-    });
-
-
-
-    // Add a response interceptor
-    axios.interceptors.response.use(async function (response) {
-        api_axios_count--;
-        setTimeout(() => {
-            if (api_axios_count == 0) {
-                axios_loading.hide();
-            }
-        }, api_axios_delay);
-
-        return response;
-    }, async function (error) {
-        api_axios_count--;
-        setTimeout(() => {
-            if (api_axios_count == 0) {
-                axios_loading.hide();
-            }
-        }, api_axios_delay);
-
-        return Promise.reject(error);
-    });
+        const result = "@MessageLocalizer["EM0011"]".replace(/&#x([0-9A-F]{1,4});/g, function (match, p1) {
+        return String.fromCharCode(parseInt(p1, 16));
+        });
+        console.log(result);
 
 
 
 
 
-    window.addEventListener('load', async (event) => {
-        if (document.readyState === 'complete') {
 
-            await delay(500);
-
-            document.getElementById('page-content').classList.remove('d-hidden');
-            //console.log('Document and all sub-resources have finished loading');
-        }
-
-
-
-
-    });
-
+        console.log(messageLocalizer.binaryToString("@MessageLocalizer["EM0011"]"));
+        let MessageLocalizerDataNotFound = "@MessageLocalizer["DataNotFound"]";
+        app.ui.confirmDialog({ content: format(result, " aas ") });
+        app.ui.confirmDialog({ content: MessageLocalizerDataNotFound });
+        // app.ui.confirmDialog({ content: "@MessageLocalizer["ConfirmSave"]" });*@
 </script>

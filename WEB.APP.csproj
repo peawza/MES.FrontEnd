@@ -21,12 +21,22 @@
     <Folder Include="Areas\UserManages\Models\" />
     <Folder Include="Extensions\Models\" />
     <Folder Include="Areas\ProductionUser\Models\" />
+    <Folder Include="Extensions\Navigation\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\Shared\screenShared\" />
+    <Folder Include="wwwroot\assets\css\" />
+    <Folder Include="wwwroot\assets\css\dashboard\" />
+    <Folder Include="wwwroot\assets\css\screenfuntion\" />
     <Folder Include="wwwroot\assets\js\demo_ui\Dashboard\" />
     <Folder Include="wwwroot\assets\js\screenfuntion\Master\" />
     <Folder Include="wwwroot\assets\js\screenfuntion\Report\" />
     <Folder Include="wwwroot\assets\js\screenfuntion\SmartWasteSystem\" />
     <Folder Include="wwwroot\assets\js\screenShared\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\libs\_libs_css.cshtml" />
+    <None Include="Views\Shared\libs\_libs_js.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,7 +10,7 @@ namespace WEB.APP.Localization
         private readonly TimeSpan _timeToLive = TimeSpan.FromSeconds(30);
         private readonly IMemoryCache _memoryCache;
         private readonly IHttpClientFactory _httpClientFactory;
-        private static bool _isLoaded = true;
+        private static bool _isLoaded = false;
         private static List<ResourceMessage> _resourceMessages = new();
         public DbMessageLocalizer(IHttpClientFactory httpClientFactory, IMemoryCache memoryCache)
             : this(memoryCache, TimeSpan.FromSeconds(300), httpClientFactory)
@@ -39,16 +39,16 @@ namespace WEB.APP.Localization
             if (_isLoaded) return;
 
             using var client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://your-api-url.com/ResourceMessages");
+            HttpResponseMessage response = await client.GetAsync("http://localhost:5001/api/v1/auth/Resources/getmessages");
 
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
-                var apiResult = JsonSerializer.Deserialize<ApiResult<List<ResourceMessage>>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                if (apiResult?.Data != null)
+                //var apiResult = JsonSerializer.Deserialize<ApiResult<List<ResourceMessage>>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                var apiResult = JsonSerializer.Deserialize<List<ResourceMessage>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                if (apiResult != null)
                 {
-                    _resourceMessages = apiResult.Data;
+                    _resourceMessages = apiResult;
                     _isLoaded = true;
                 }
             }

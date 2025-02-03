@@ -46,22 +46,26 @@ $(function () {
         e.preventDefault();
     });
 
-    // click outisde offcanvas
-    $(document).mouseup(function (e) {
-        var container = $(".sidebar");
-        if (!container.is(e.target) && container.has(e.target).length === 0) {
-            if ($('body').hasClass('show-sidebar')) {
-                $('body').removeClass('show-sidebar');
-                $('body').find('.js-menu-toggle').removeClass('active');
-            }
-        }
+    document.querySelector('.sidebar-2').addEventListener('mouseleave', function () {
+        setTimeout(function () {
+
+            const openDropdowns = document.querySelectorAll('.sidebar-2 .collapse.show');
+            openDropdowns.forEach(function (dropdown) {
+                dropdown.classList.remove('show');
+                dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
+            });
+
+
+            this.scrollTop = 0;
+        }, 300);
     });
+
 
     if (typeof ($.scrollUp) !== "undefined") {
         $.scrollUp({
             scrollName: 'scroll-up',
             animationSpeed: '600',
-            scrollText: '<i class="fas fa-3x fa-chevron-circle-up"></i>',
+            scrollText: '<i class="fas fa-4x fa-chevron-circle-up"></i>',
             scrollTitle: "Scroll to top."
         });
     }

@@ -46,11 +46,7 @@ namespace WEB.APP.Extensions
                 group => group.ToList()
             );
 
-            // Convert to JSON
-            // string jsonResult = JsonConvert.SerializeObject(groupedByScreenCode, Formatting.Indented);
 
-            // Print the JSON result
-            //Console.WriteLine(jsonResult);
 
             var file_Resources = _hostingEnvironment.GetContentPath($"~/wwwroot/assets/resources/resources.js");
 

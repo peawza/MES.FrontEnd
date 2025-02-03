@@ -30,7 +30,8 @@ legend.scheduler-border {
 }
 
 .set-text-table {
-    margin: 0;
+
+    margin:0;
     /*padding:0;*/
 }
 
@@ -49,7 +50,6 @@ legend.scheduler-border {
 .k-select .k-link.k-link-decrease {
     display: none;
 }
-
 .k-numeric-wrap.k-state-default .k-select {
     display: none;
 }
@@ -59,12 +59,6 @@ legend.scheduler-border {
     padding: 1em;
     line-height: 3em;
     content: "No Data" !important;
-}
-
-.empty-grid {
-    text-align: center;
-    width: 100%;
-    font-size: 18px;
 }
 
 
@@ -84,9 +78,9 @@ legend.scheduler-border {
 .k-widget.k-dropdown.set-text-table {
     width: 100% !important;
 }
-
 .k-widget.k-textbox.set-text-table {
     width: 100% !important;
+
 }
 
 .delete-padding-right {
@@ -106,22 +100,23 @@ label.col-form-label.col-1.label-dete {
 
 
 .hide-btn-delete-tab {
+
     /*display:none;*/
 }
 
 table.table-bordered thead tr {
     background-color: #9BC2E6;
     text-align: center;
+
+}
+table.table-bordered thead tr th {
+    vertical-align: middle !important;
 }
 
-    table.table-bordered thead tr th {
-        vertical-align: middle !important;
-    }
 
-
-        table.table-bordered thead tr th .formular-input {
-            vertical-align: middle !important;
-        }
+table.table-bordered thead tr th .formular-input{
+    vertical-align: middle !important;
+}
 
 
 table.table-bordered tbody tr {
@@ -131,11 +126,11 @@ table.table-bordered tbody tr {
 
 
 
-    table.table-bordered tbody tr td.formular-input {
-        background-color: #DBDBDB !important;
-        text-align: center;
-        width: 220px
-    }
+table.table-bordered tbody tr td.formular-input {
+    background-color: #DBDBDB !important;
+    text-align: center;
+    width:220px
+}
 
 
 .table-bordered td, .table-bordered th {
@@ -154,6 +149,7 @@ table.table-bordered tbody tr {
 
 .card-result-formular {
     background-color: #9BC2E6;
+  
 }
 
 
@@ -161,7 +157,6 @@ table.table-bordered tbody tr {
 .img-search-data {
     width: 13rem;
 }
-
 .row-by-peaw {
     display: flex !important;
 }
@@ -175,7 +170,6 @@ tr.k-footer-template td span.k-widget.k-dropdown {
 .status-pass {
     color: green;
 }
-
 .status-ncr {
     color: red;
 }
@@ -186,8 +180,8 @@ tr.k-footer-template td span.k-widget.k-dropdown {
 
 .k-grid-footer td {
     background-color: #bbb5b500 !important;
-}
 
+}
 .grid-sample {
     height: 40px !important;
 }
@@ -196,7 +190,7 @@ tr.k-footer-template td span.k-widget.k-dropdown {
 
 .k-checkbox {
     border-radius: .25rem;
-    /*  margin: 0;
+  /*  margin: 0;
     padding: 0;*/
     width: 1rem;
     height: 1rem;
@@ -212,7 +206,8 @@ tr.k-footer-template td span.k-widget.k-dropdown {
 }
 
 .ui-submenu {
-    margin-left: 40px;
+
+    margin-left:40px;
 }
 
 aside .side-inner .nav-menu .ui-submenu ul li a:before {
@@ -220,7 +215,7 @@ aside .side-inner .nav-menu .ui-submenu ul li a:before {
 }
 
 
-.k-grid .k-grid-edit, .k-grid .k-grid-info, .k-grid .k-grid-add {
+.k-grid .k-grid-edit, .k-grid .k-grid-info {
     color: white;
     background-color: #11439E !important;
 }
@@ -383,181 +378,15 @@ aside .side-inner .nav-menu .ui-submenu ul li a:before {
 ----------------------------------------------------- */
 
 
-.k-filter-row th, .k-grid-header th.k-header {
-    background-color: #404040 !important;
+.empty-grid::before {
+    padding: 1em;
+    line-height: 3em;
+    content: "No Data" !important;
 }
 
-fieldset.scheduler-border {
-    padding: 0 1.4em 1.4em 1.4em !important;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: 0.25rem;
-}
-
-legend.scheduler-border {
-    font-size: 1.2em !important;
-    font-weight: bold !important;
-    text-align: left !important;
-    width: auto;
-    padding: 0 10px;
-    border-bottom: none;
-}
-
-.k-tabstrip-content.k-focus, .k-tabstrip-content.k-state-focused, .k-tabstrip-content:focus, .k-tabstrip > .k-content.k-focus, .k-tabstrip > .k-content.k-state-focused, .k-tabstrip > .k-content:focus {
-    outline-width: 1px;
-    outline-style: none;
-    outline-offset: -1px;
-}
-
-
-.focus-sub-menu-nav {
-    /*margin-left:5px;*/
-    background: #f1f1f1;
-    color: #000;
-}
-
-/**/
-
-
-.k-upload .k-upload-button-remove {
-    min-width: 7em;
-}
-
-
-.k-disabled {
-    outline: 0;
-    cursor: default;
-    opacity: 1;
-    -webkit-filter: grayscale(.1);
-    filter: grayscale(.1);
-    pointer-events: none;
-    box-shadow: none;
-    background-color: #EBEDF0 !important;
-    border-color: #ced4da !important;
-    color: #495057 !important;
-}
-
-.k-window-titlebar {
-    border-color: #c9c9c9;
-    background: #353535;
-    color: #fff;
-}
-
-.k-dialog.k-confirm {
-    min-width: 400px !important;
-}
-
-.k-command-cell .k-button-icontext {
-    min-height: 33px !important;
-}
-
-
-
-.disabled-input-screen-load {
-    opacity: 0.98;
-    pointer-events: none;
-    z-index: 9999999;
-}
-
-
-
-.k-picker-solid {
-    border-color: #e4e7eb;
-    color: #212529;
-    background-color: #ffffff;
-}
-
-    .k-picker-solid.k-focus, .k-picker-solid:focus {
-        border-color: #e4e7eb;
-        color: #212529;
-        background-color: #ffffff;
-    }
-
-    .k-picker-solid.k-hover, .k-picker-solid:hover {
-        border-color: #c7cdd5;
-        background-color: #ffffff;
-    }
-
-
-#text-status {
-    display:none !important;
-}
-
-
-input[type=file], /* FF, IE7+, chrome (except button) */
-input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
-    cursor: pointer;
-}
-
-
-.icon-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.icon-card {
-    background-color: #1b2a3d;
-    color: white;
+.empty-grid {
     text-align: center;
-    padding: 3rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
+    width: 100%;
+    font-size: 18px;
 }
 
-    .icon-card:hover {
-        transform: scale(1.05);
-    }
-
-    .icon-card i {
-        font-size: 40px;
-        margin-bottom: 10px;
-        color: #00d7c1;
-    }
-
-    .icon-card.red i {
-        color: #ff4d4d;
-    }
-
-    .icon-card.green i {
-        color: #00ff00;
-    }
-
-    .icon-card h3 {
-        font-size: 18px;
-        margin: 0;
-    }
-
-.menu-button-ev {
-    background-color: #4CAF50; /* สีเขียว */
-    color: white; /* สีตัวอักษร */
-    border: none;
-    border-radius: 8px; /* ขอบมน */
-    padding: 10px 20px;
-    font-size: 16px;
-    /* cursor: pointer; */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.menu-button-user {
-    background-color: red; /* สีเขียว */
-    color: white; /* สีตัวอักษร */
-    border: none;
-    border-radius: 8px; /* ขอบมน */
-    padding: 10px 20px;
-    font-size: 16px;
-    /* cursor: pointer; */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}

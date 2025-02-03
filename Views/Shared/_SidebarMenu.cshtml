@@ -1,1 +1,213 @@
-﻿
+﻿@{
+    var userData = User.GetUserData();
+}
+<aside class="sidebar">
+    <div class="side-inner">
+        <div class="profile">
+            <img src="~/assets/images/avatar.png" alt="Image" class="img-fluid">
+            <h3 class="name">@userData.DisplayName</h3>
+            <span class="text-muted">@userData.PositionName , @userData.DepartmentName</span>
+        </div>
+        <div class="nav-menu">
+            <ul>
+
+                <li class="accordion production-performance-system">
+                    <a href="#" data-toggle="collapse" data-target="#ProductionPerformanceSystem" aria-expanded="false" aria-controls="ProductionPerformanceSystem" class="collapsible">
+                        <i class="fa-regular fa-conveyor-belt-arm"></i> Manufacturing Execution System (MES)
+                    </a>
+                    <div id="ProductionPerformanceSystem" class="collapse ui-submenu" aria-labelledby="headingOne">
+                        <div>
+                            <ul>
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#UM1" aria-expanded="false" aria-controls="UM1" class="collapsible">
+                                        <i class="fas fa-cube"></i>User Management
+                                    </a>
+                                    <div id="UM1" class="collapse ui-submenu" aria-labelledby="headingone">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a class="sub-menu" ria-expanded="false" title="User Management List" href="/UserManages/User/Inquiry"><i class="fas fa-user"></i>User Management List</a>
+                                                </li>
+                                                <li>
+                                                    <a class="sub-menu" ria-expanded="false" title="User Groups Maintenance List" href="/UserManages/UserGroup/Inquiry"><i class="fas fa-users"></i>User Groups Maintenance List</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#Masters" aria-expanded="false" aria-controls="Masters" class="collapsible">
+                                        <i class="fa-regular fa-database"></i> Master Setting
+                                    </a>
+                                    <div id="Masters" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+
+                                                <li>
+                                                    <a href="/master/linemaster" ria-expanded="false" title="Line Master">  <i class="fa-regular fa-database"></i>  Line </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/master/processmaster" ria-expanded="false" title="Process Master">  <i class="fa-regular fa-database"></i> Process </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/master/machinemaster" ria-expanded="false" title="Machine Master">  <i class="fa-regular fa-database"></i> Machine </a>
+                                                </li>
+                                                @* <li>
+                                                <a href="/master/shiftmaster" ria-expanded="false" title="Shift Master">  <i class="fa-regular fa-database"></i> Shift </a>
+                                                </li> *@
+                                                <li class="accordion">
+                                                    <a href="#" data-toggle="collapse" data-target="#ShiftPattern" aria-expanded="false" aria-controls="ShiftPattern" class="collapsible">
+                                                        <i class="fa-regular fa-database"></i>  Shift
+                                                    </a>
+                                                    <div id="ShiftPattern" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                                        <div>
+                                                            <ul>
+                                                                <li>
+                                                                    <a asp-route="MSM010" ria-expanded="false" title="Shift / Pattern"><i class="fa-regular fa-chart-line"></i> Shift / Pattern </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a asp-route="MSM011" ria-expanded="false" title="Shift / Pattern Detail"><i class="fa-regular fa-chart-line"></i> Shift / Pattern Detail </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/master/modelmaster" ria-expanded="false" title="Part Master">  <i class="fa-regular fa-database"></i> Model / Part </a>
+                                                </li>
+                                                <li>
+
+
+                                                    <a href="/master/takttimemaster" ria-expanded="false" title="Cycle Time / TaktTime Master">  <i class="fa-regular fa-database"></i> Cycle Time / Takt Time </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/master/ngmaster" ria-expanded="false" title="NG Type Master">  <i class="fa-regular fa-database"></i> NG Type </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#Production" aria-expanded="false" aria-controls="Production" class="collapsible">
+                                        <i class="fa-regular fa-database"></i> Production
+                                    </a>
+                                    <div id="Production" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a href="/production/productionresult" ria-expanded="false" title="Production Result"> <i class="fa-solid fa-gears"></i> Production Planing / Result </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/production/productionquality" ria-expanded="false" title="Production Quality"> <i class="fa-solid fa-gears"></i> Quality </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#Monitoring" aria-expanded="false" aria-controls="Monitoring" class="collapsible">
+                                        <i class="fa-regular fa-database"></i> Monitoring
+                                    </a>
+                                    <div id="Monitoring" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a href="/monitoring/machinemonitoring" ria-expanded="false" title="Machine Monitoring"><i class="fa-regular fa-chart-line"></i> Machine Monitoring </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/monitoring/machineTV" ria-expanded="false" title="Machine (TV)"> <i class="fa-solid fa-gears"></i> Machine (TV) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/monitoring/MachineTVByOrder" ria-expanded="false" title="Machine By WorkOrder (TV)"> <i class="fa-solid fa-gears"></i> Machine By WorkOrder (TV) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/monitoring/machinedowntime" ria-expanded="false" title="Machine Downtime"> <i class="fa-solid fa-gears"></i> Machine Downtime </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#OEE" aria-expanded="false" aria-controls="Dashboard" class="collapsible">
+                                        <i class="fa-regular fa-file-chart-column"></i> OEE
+                                    </a>
+                                    <div id="OEE" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a href="/dashboard/dashboards" ria-expanded="false" title="Dashboard Line Monitoring"><i class="fa-regular fa-chart-line"></i> Line / Process Monitoring </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/dashboard/dashboardprodngreason" ria-expanded="false" title="Dashboard Production NG Reason"><i class="fa-regular fa-chart-line"></i> NG Reason </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="accordion">
+                                    <a href="#" data-toggle="collapse" data-target="#HistoryData" aria-expanded="false" aria-controls="HistoryData" class="collapsible">
+                                        <i class="fa-regular fa-file-chart-column"></i> History Data
+                                    </a>
+                                    <div id="HistoryData" class="collapse ui-submenu" aria-labelledby="headingOne">
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <a href="/history/downtimehistory" ria-expanded="false" title="Machine Status History"><i class="fa-regular fa-chart-line"></i> Machine Status History </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/history/productionhistory" ria-expanded="false" title="Production Order History"><i class="fa-regular fa-chart-line"></i> Production Order History </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li class="accordion energy-monitorion-system">
+                    <a href="#" data-toggle="collapse" data-target="#energymonitorionsystem" aria-expanded="false" aria-controls="energymonitorionsystem" class="collapsible">
+                        <i class="fa-regular fa-lightbulb-dollar"></i> IIoT Dashboard
+                    </a>
+                    <div id="energymonitorionsystem" class="collapse ui-submenu" aria-labelledby="headingone">
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="/dashboard/dashboadckd" ria-expanded="false" title="Dashboad CKD"><i class="fa-regular fa-chart-line"></i>  CKD Dashboad </a>
+                                </li>
+                                <li>
+                                    <a href="/dashboard/dashboardvibration" ria-expanded="false" title="Dashboard Vibration"><i class="fa-regular fa-chart-line"></i>  Vibration Dashboad </a>
+                                </li>
+                            
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <environment include="Developments,Missitron,ServerTest">
+                    @await Html.PartialAsync("_Sample_UI")
+
+                </environment>
+                <li>
+                    <a href="@Url.Action("Logout", "Account",new { area = "" })" title="Sign out"><i class="fas fa-sign-out-alt"></i>SignOut</a>
+                </li>
+                <li>
+                    <div class="m-2 alert alert-primary">
+                        <span class="d-block"><i class="fas fa-rocket"></i> Latest Build: @AssemblyHelper.LastWriteTime(typeof(WEB.APP.Controllers.AppControllerBase).Assembly).ToString("d MMM yyyy HH:mm")</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</aside>

@@ -1,8 +1,24 @@
-﻿@{
+﻿@using WEB.APP.Localization
+@{
     ViewData["Title"] = "Home Page";
 }
-
+@inject IMessageLocalizer Message;
+@inject IMessageResources Resources;
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+
+    @Message["Confirm", "ConfirmFullLock"]
+    <br>
+    @Resources["COMMON", "Submit"]
+    <br>
+    @Resources["COMMON", "DropDownSelect"]
+    <br>
+    @Resources["COMMON", "DropDownSelect"]
+
+    <br>
+    @Message["ConfirmDeleteInspec","xxx"]
+    <br>
+
+  
 </div>

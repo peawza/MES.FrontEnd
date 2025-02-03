@@ -1,0 +1,317 @@
+﻿
+.sidebar-2 {
+    position: absolute;
+    width: 80px;
+    min-height: 100vh;
+    height: 105%;
+    z-index: 100;
+    background: linear-gradient(45deg, #190482, #8576FF);
+    overflow: hidden;
+    transition: width .3s ease;
+    box-shadow: 4px 7px 10px rgba(0,0,0,.4);
+    top: -6px;
+    scrollbar-width: none; /* ซ่อน scrollbar บน Firefox */
+}
+
+    .sidebar-2:hover {
+        width: 350px;
+        transition: all 0.5s ease;
+        border-top-right-radius: 40px;
+        overflow-y: auto;
+    }
+
+.sidebar-2-image {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+/*
+
+*/
+
+.sidebar-2-info {
+    color: white;
+    position: relative;
+    left: 125px;
+    bottom: -35.8vh;
+    margin-left: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    width: 280px;
+    display: none;
+}
+
+.sidebar-2-info1 {
+    color: white;
+    position: relative;
+    left: 75px;
+    bottom: -36vh;
+    margin-left: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    width: 280px;
+    display: none;
+    margin-bottom: 10px;
+}
+
+#sidebar2-logoicon {
+    width: 70px;
+    height: 50px;
+}
+
+.sidebar-2:hover #sidebar2-logoicon {
+    content: url('../images/Logo-07.png');
+    width: 80%;
+    height: 120%;
+}
+
+.sidebar-2:hover .sidebar-2-info {
+    display: flex;
+}
+
+.sidebar-2:hover .sidebar-2-info1 {
+    display: flex;
+}
+
+.sidebar-2-header {
+    display: flex;
+    justify-content: center;
+    height:60px;
+    margin-top:20px;
+    margin-bottom:15px;
+}
+
+.sidebar2-ul {
+    padding-left:0;
+}
+
+.sidebar2-selection {
+    position: relative;
+    color: white;
+    font-size: 14px;
+    display: table;
+    width: 330px;
+    padding: 5px;
+    padding-left: 0px;
+    padding-bottom: 15px;
+    margin:5px;
+    margin-left:10px;
+    border-radius: 1rem !important;
+}
+
+.sidebar-2-icon{
+    position:relative;
+    width:70px;
+    height:40px;
+    top:14px;
+    font-size:25px;
+    text-align:center;
+    right:5px;
+}
+
+.sidebar-2-nav-item {
+    position: relative;
+    top: 12px;
+    margin-left: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+}
+
+.sidebar2-selection:hover {
+    background: #C2D9FF;
+    color:black;
+    
+}
+
+.sidebar-2-user {
+    position: relative;
+    color: white;
+    font-size: 14px;
+    display: table;
+    width: 280px;
+    padding: 5px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    margin: 5px;
+    margin-left: 10px;
+    height:76.5px;
+}
+
+.sidebar-2-usericon {
+    font-size: 35px;
+    right: 7px;
+}
+
+.sidebar-2-username {
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    margin-left: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.sidebar-2-username1 {
+    position: absolute;
+    top: 38px;
+    left: 100px;
+    margin-left: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+}
+
+.sidebar-2-username2 {
+    position: absolute;
+    top: 65px;
+    left: 180px;
+    margin-left: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+}
+
+.sidebar-2:hover .sidebar-2-usericon {
+    font-size: 60px;
+    transition: all 0.5s ease;
+    margin-left : 20px;
+}
+
+
+.sidebar-2:hover .sidebar-2-info1 {
+    display: flex;
+    transition: all 0.5s ease;
+}
+
+.sidebar-2:hover .sidebar-2-info {
+    display: flex;
+    transition: all 0.5s ease;
+}
+
+aside .side-inner .nav-menu ul li .collapsible:after {
+    content: "\e315";
+    font-size: 18px;
+    font-family: 'icomoon';
+    position: absolute;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    -webkit-transition: .3s transform ease;
+    -o-transition: .3s transform ease;
+    transition: .3s transform ease;
+}
+
+
+.sidebar-2 ul li .collapsible:after {
+    content: "\e315";
+    font-size: 18px;
+    font-family: 'icomoon';
+    position: absolute;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    -webkit-transition: .3s transform ease;
+    -o-transition: .3s transform ease;
+    transition: .3s transform ease;
+}
+
+.sidebar-2 ul li .collapsible-main:after {
+    margin-top:15px;
+}
+
+.sidebar-2 ul li .collapsible[aria-expanded="true"]:after {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.sidebar-2 ul li .collapsible-main[aria-expanded="true"] {
+    background: #C2D9FF;
+    color:black;
+}
+
+aside .side-inner .nav-menu ul li a {
+    display: block;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #242c35;
+    font-weight: 500;
+    position: relative;
+    -webkit-transition: .3s padding-left ease;
+    -o-transition: .3s padding-left ease;
+    transition: .3s padding-left ease;
+}
+
+.sidebar-2 ul li {
+    padding: 0;
+    margin: 0px;
+    list-style: none;
+    width: 340px;
+
+}
+
+.ui-submenu ul li .collapsible, .ui-submenu ul li ul li a, .ui-submenu ul li a {
+    color: white;
+    position: relative;
+    width: 280px;
+    overflow: hidden;
+    display: block;
+    font-size: 1.3rem;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*
+    .ProductionPerformanceSystem ul a {
+    position: relative;
+    width: 250px;
+    overflow: hidden;
+    display:block;
+
+}
+*/
+
+
+/*
+    ul.sidebarw-ul li div div ul li.accordion {
+    position: relative;
+    width: 302px;
+    overflow: hidden;
+    display: block;
+}
+*/
+
+.ui-submenu {
+    margin-left:20px;
+}
+
+div ul li.accordion div div ul {
+    padding-inline-start: 0px;
+}
+
+.ui-submenu a:hover {
+    color: #C2D9FF !important;
+}
+
+.ui-submenu .collapsible[aria-expanded="true"] {
+    color: #C2D9FF !important;
+}
+
+.sidebar-2 div ul li.accordion .collapsible:after {
+    margin-top: 5px;
+}
+
+.ui-submenu li.accordion a.collapsible i:before, a.sub-menu i:before, .ui-submenu div ul li a i:before {
+    padding-right: 10px;
+}
+
+main{
+    height:100%;
+}
+
+ul {
+    padding-inline-start: 20px;
+}

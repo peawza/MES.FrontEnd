@@ -9,7 +9,7 @@ namespace WEB.APP.Localization
         IEnumerable<LocalizedResources_model> GetAllStrings(bool includeAncestorCultures);
         IEnumerable<LocalizedResources> GetAllStrings_All_Languages(bool includeAncestorCultures);
 
-        void set_culture(string set_culture);
+
 
 
     }

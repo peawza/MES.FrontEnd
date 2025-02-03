@@ -30,8 +30,9 @@ builder.Services.AddScoped<ISiteMapProvider, DbSiteMapProvider>();
 
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<DbMessageLocalizer>();
+builder.Services.AddSingleton<DbMessageResources>();
 builder.Services.AddSingleton<IMessageLocalizer, DbMessageLocalizer>();
-
+builder.Services.AddSingleton<IMessageResources, DbMessageResources>();
 
 
 
@@ -81,9 +82,20 @@ app.UseAuthorization();
 
 using (var scope = app.Services.CreateScope())
 {
-    var service = scope.ServiceProvider.GetRequiredService<DbMessageLocalizer>();
-    await service.LoadResourceMessagesAsync(); // Fetch data only once
+    var serviceMessage = scope.ServiceProvider.GetRequiredService<DbMessageLocalizer>();
+    await serviceMessage.LoadResourceMessagesAsync(); // Fetch data only once
+
+
+    var serviceResources = scope.ServiceProvider.GetRequiredService<DbMessageResources>();
+
+    await serviceResources.LoadResourceMessagesAsync(); // Fetch data only once
+
+
+
 }
+IServiceProvider services = builder.Services.BuildServiceProvider();
+Resources resources = new Resources(environment, configuration, services);
+resources.update_Resources_JS();
 
 
 app.MapControllerRoute(
