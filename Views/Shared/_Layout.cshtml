@@ -50,34 +50,52 @@
 </head>
 <script>
     var culture = kendo.culture("en-GB");
+    let CurrentCulture_now ="en"
 </script>
 <body id="site-section">
-   
+    
     <main>
 
 
         @await Html.PartialAsync("_SidebarMenu")
         <div class="site-section" style="margin-left:80px">
+           
             @if (isAuthenticated)
             {
                 <!-- Page Title -->
                 @if (!String.IsNullOrEmpty(pageTitle))
                 {
-                    @*<div class="page-title"><i class="fas fa-@pageIcon"></i> @pageTitle</div>*@
+                    <div class="page-title"><i class="fas fa-@pageIcon"></i> @pageTitle</div>
 
-                    <div class="page-title">
-                        <div class="page-title-body "><i class="fas fa-@pageIcon" style="padding-right:10px;"></i> @pageTitle  </div>
+                   @*  <div b-mvqnf7yo12="" class="page-title">
+                        <div b-mvqnf7yo12="" class="page-title-body "><i b-mvqnf7yo12="" class="fas fa-database" style="padding-right:10px;"></i> Line Master  </div>
 
 
-                    </div>
+                    </div> *@
 
                 }
                 else
                 {
+                  
                     <div class="mb-2"></div>
                 }
             }
-            <div class="page-content container-fluid mb-2">
+            else if (pageTitle=="")
+            {
+                
+            
+            }
+            else
+            {
+                <div b-mvqnf7yo12="" class="page-title">
+                    <div b-mvqnf7yo12="" class="page-title-body "><i b-mvqnf7yo12="" class="fas fa-database" style="padding-right:10px;"></i>@pageTitle  </div>
+
+
+                </div>
+            
+            
+            }
+            <div class="page-content container-fluid mb-2 d-hidden" id="page-content">
                 @RenderBody()
             </div>
         </div>
@@ -86,26 +104,9 @@
 
     <div id="notifications" style="display:none"></div>
     <div id="ajax-notifications" style="display:none"></div>
-    @*@MessageLocalizer["EM0010"]*@
-    @*<script>
-    var connection = new signalR.HubConnectionBuilder().withUrl("/DashboadHub").build();
-    //$( document ).ready(function() {
-    //    console.log( "ready!" ,connection);
-    //});
-    connection.start().then(function () {
-    connection.invoke("SendNotification", "@User.GetUserData().UserName").catch(function (err) {
-    return console.error(err.toString());
-    });
-
-    }).catch(function (err) {
-    return console.error(err.toString());
-    });
-    connection.on("SendNotification", function (data) {
-    //$("#number-notification").html("111");
-
-    console.log("data",data);
-    });
-    </script>*@
+    <div id="axios-loading"></div>
+    <div id="loadingOverlay" ></div>
+   
 
     @RenderSection("Scripts", required: false)
 </body>
@@ -113,21 +114,5 @@
 
 <script>
 
-    @*console.log("lang => @(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)");
-
-        const result = "@MessageLocalizer["EM0011"]".replace(/&#x([0-9A-F]{1,4});/g, function (match, p1) {
-        return String.fromCharCode(parseInt(p1, 16));
-        });
-        console.log(result);
-
-
-
-
-
-
-        console.log(messageLocalizer.binaryToString("@MessageLocalizer["EM0011"]"));
-        let MessageLocalizerDataNotFound = "@MessageLocalizer["DataNotFound"]";
-        app.ui.confirmDialog({ content: format(result, " aas ") });
-        app.ui.confirmDialog({ content: MessageLocalizerDataNotFound });
-        // app.ui.confirmDialog({ content: "@MessageLocalizer["ConfirmSave"]" });*@
+   
 </script>

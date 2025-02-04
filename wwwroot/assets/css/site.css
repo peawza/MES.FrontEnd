@@ -523,3 +523,13 @@ div[data-role='confirm'] {
     min-width: 1.5rem;
     min-height: 1.5rem;
 }
+
+
+
+.k-switch-on .k-switch-track {
+    border-color: #3BB44B !important;
+    background-color: #3BB44B !important;
+}
+.k-window {
+    border-radius: 1rem;
+}

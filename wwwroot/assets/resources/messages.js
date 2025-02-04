@@ -1,4 +1,30 @@
 let _data_LocalizedMessages ={
+  "Information": [
+    {
+      "MessageCode": "FieldRequired",
+      "MessageType": "Information",
+      "MessageNameTH": "กรุณาใส่ข้อมูล {0}",
+      "MessageNameEN": "กรุณาใส่ข้อมูล {0}"
+    },
+    {
+      "MessageCode": "FieldRequiredSWS",
+      "MessageType": "Information",
+      "MessageNameTH": "กรุณาใส่ข้อมูล {0}",
+      "MessageNameEN": "กรุณาใส่ข้อมูล {0}"
+    },
+    {
+      "MessageCode": "MAS_CannotDelete",
+      "MessageType": "Information",
+      "MessageNameTH": "ไม่สามารถลบข้อมูล {0} ได้ เนื่องจากข้อมูลถูกเชื่อมโยงกับข้อมูลอื่น",
+      "MessageNameEN": "The record {0} cannot be deleted because it is associated with another record."
+    },
+    {
+      "MessageCode": "GridRequiredSWS",
+      "MessageType": "Information",
+      "MessageNameTH": "กรุณาใส่ข้อมูลในตารางลำดับที่ {0} ({1})",
+      "MessageNameEN": "กรุณาใส่ข้อมูลในตารางลำดับที่ {0} ({1})"
+    }
+  ],
   "Confirm": [
     {
       "MessageCode": "ConfirmUnFullLock",
@@ -277,26 +303,6 @@ let _data_LocalizedMessages ={
       "MessageType": "Warning",
       "MessageNameTH": "ผู้รับซื้อ และ/หรือ วันที่ขาย ไม่เหมือนกัน, กรุณาตรวจสอบและเลือกใหม่อีกครั้ง",
       "MessageNameEN": "Waste Processor and/or Sale Date is different, Please verify and select again."
-    }
-  ],
-  "Information": [
-    {
-      "MessageCode": "FieldRequiredSWS",
-      "MessageType": "Information",
-      "MessageNameTH": "กรุณาใส่ข้อมูล {0}",
-      "MessageNameEN": "กรุณาใส่ข้อมูล {0}"
-    },
-    {
-      "MessageCode": "MAS_CannotDelete",
-      "MessageType": "Information",
-      "MessageNameTH": "ไม่สามารถลบข้อมูล {0} ได้ เนื่องจากข้อมูลถูกเชื่อมโยงกับข้อมูลอื่น",
-      "MessageNameEN": "The record {0} cannot be deleted because it is associated with another record."
-    },
-    {
-      "MessageCode": "GridRequiredSWS",
-      "MessageType": "Information",
-      "MessageNameTH": "กรุณาใส่ข้อมูลในตารางลำดับที่ {0} ({1})",
-      "MessageNameEN": "กรุณาใส่ข้อมูลในตารางลำดับที่ {0} ({1})"
     }
   ],
   "MessageType": [

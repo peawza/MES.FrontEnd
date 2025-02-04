@@ -222,5 +222,105 @@ let _data_LocalizedResources ={
       "ResourcesTH": "โหมด",
       "ResourcesEN": "Mode"
     }
+  ],
+  "PMS020": [
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "SC001",
+      "ResourcesTH": "Process Code",
+      "ResourcesEN": "Process Code"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "SC002",
+      "ResourcesTH": "Process Name",
+      "ResourcesEN": "Process Name"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "SC003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No.",
+      "ResourcesEN": "No."
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD002",
+      "ResourcesTH": "Process Code",
+      "ResourcesEN": "Process Code"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD003",
+      "ResourcesTH": "Process Name TH",
+      "ResourcesEN": "Process Name TH"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Process Name EN",
+      "ResourcesEN": "Process Name EN"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Created By",
+      "ResourcesEN": "Created By"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD007",
+      "ResourcesTH": "Created Date-Time",
+      "ResourcesEN": "Created Date-Time"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD008",
+      "ResourcesTH": "UpdateBy",
+      "ResourcesEN": "UpdateBy"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD009",
+      "ResourcesTH": "Updated Date-Time",
+      "ResourcesEN": "Updated Date-Time"
+    }
+  ],
+  "PMS021": [
+    {
+      "ScreenCode": "PMS021",
+      "ObjectID": "IP001",
+      "ResourcesTH": "Process Code",
+      "ResourcesEN": "Process Code"
+    },
+    {
+      "ScreenCode": "PMS021",
+      "ObjectID": "IP002",
+      "ResourcesTH": "Process Name EN",
+      "ResourcesEN": "Process Name EN"
+    },
+    {
+      "ScreenCode": "PMS021",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Process Name TH",
+      "ResourcesEN": "Process Name TH"
+    },
+    {
+      "ScreenCode": "PMS021",
+      "ObjectID": "IP004",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    }
   ]
 }

@@ -16,12 +16,15 @@
             $(ID).data("kendoDatePicker").open();
         });
     }, Input: {
-        Readonly: async function (Selector, enable) {
-           
+        Readonly: async function (Selector, enable, condition) {
+
             const from = await document.getElementById(Selector);
             var TagInput = await from.getElementsByTagName('input');
             TagInput.forEach(input => {
-                if (input.getAttribute("data-role") === "dropdownlist") {
+                if (condition.includes(input.getAttribute("id")) == true) {
+                    //console.log(input.getAttribute("data-role"));
+                    //console.log(condition.includes(input.getAttribute("id")) == true);
+                } else if (input.getAttribute("data-role") === "dropdownlist") {
                     $("#" + input.getAttribute("id")).data("kendoDropDownList").readonly(enable);
                 }
                 else if (input.getAttribute("data-role") === "textbox") {
@@ -54,75 +57,20 @@
                 }
             });
         },
-
-        Disable: async function (Selector, enable) {
-            const from = await document.getElementById(Selector);
-            var TagInput = await from.getElementsByTagName('input');
-            $(document).ready(async function () { 
-                TagInput.forEach(input => {
-                    //console.log("datepicker datepicker datepicker", input);
-                    if (input.getAttribute("data-role") === "dropdownlist") {
-                        $("#" + input.getAttribute("id")).data("kendoDropDownList").enable(enable);
-                    }
-                    else if (input.getAttribute("data-role") === "textbox") {
-                        $("#" + input.getAttribute("id")).data("kendoTextBox").enable(enable);
-                    }
-                    else if (input.getAttribute("data-role") === "numerictextbox") {
-                        $("#" + input.getAttribute("id")).data("kendoNumericTextBox").enable(enable);
-
-                    }
-                    else if (input.getAttribute("data-role") === "upload") {
-                        $("#" + input.getAttribute("id")).data("kendoUpload").enable(enable);
-                    }
-                    else if (input.getAttribute("data-role") === "datepicker") {
-                        //console.log("datepicker datepicker datepicker");
-                        $("#" + input.getAttribute("id")).data("kendoDatePicker").enable(enable);
-                    }
-                    else if (input.getAttribute("data-role") === "datetimepicker") {
-                        //console.log("datepicker datepicker datepicker");
-                        $("#" + input.getAttribute("id")).data("kendoDateTimePicker").enable(enable);
-                    }
-                    else if (input.getAttribute("data-role") === "timepicker") {
-                        $("#" + input.getAttribute("id")).data("kendoTimePicker").enable(enable);
-                    } else if (input.getAttribute("type") === "checkbox") {
-                        if (!enable) {
-                            document.getElementById(input.getAttribute("id")).setAttribute("disabled", "true");
-                        } else {
-                            document.getElementById(input.getAttribute("id")).removeAttribute("disabled", "false");
-                        }
-
-                    } else if (input.getAttribute("type") === "radio") {
-                        if (!enable) {
-                            document.getElementById(input.getAttribute("id")).setAttribute("disabled", "true");
-                        } else {
-                            document.getElementById(input.getAttribute("id")).removeAttribute("disabled", "false");
-                        }
-
-                    }
-                });
-                var TagInputTextarea = await from.getElementsByTagName('textarea');
-                TagInputTextarea.forEach(input => {
-                        $("#" + input.id).data('kendoTextArea').enable(enable);
-                })
-            });
-        },
-        DisableCondition: async function (Selector, enable, condition) {
+        Disable: async function (Selector, enable, condition) {
             const from = await document.getElementById(Selector);
             var TagInput = await from.getElementsByTagName('input');
             TagInput.forEach(input => {
-                
-               
-                
                 if (condition.includes(input.getAttribute("id")) == true) {
                     //console.log(input.getAttribute("data-role"));
                     //console.log(condition.includes(input.getAttribute("id")) == true);
                 }
-                else if(input.getAttribute("data-role") === "dropdownlist") {
+                else if (input.getAttribute("data-role") === "dropdownlist") {
                     $("#" + input.getAttribute("id")).data("kendoDropDownList").enable(enable);
                 }
                 else if (input.getAttribute("data-role") === "textbox") {
                     $("#" + input.getAttribute("id")).data("kendoTextBox").enable(enable);
-                   
+
                 }
                 else if (input.getAttribute("data-role") === "numerictextbox") {
                     $("#" + input.getAttribute("id")).data("kendoNumericTextBox").enable(enable);
@@ -144,14 +92,14 @@
                     } else {
                         document.getElementById(input.getAttribute("id")).removeAttribute("disabled", "false");
                     }
-                   
+
                 } else if (input.getAttribute("type") === "radio") {
                     if (!enable) {
                         document.getElementById(input.getAttribute("id")).setAttribute("disabled", "true");
                     } else {
                         document.getElementById(input.getAttribute("id")).removeAttribute("disabled", "false");
                     }
-                   
+
                 }
             });
 
@@ -221,7 +169,7 @@
                     }
                 })
 
-           
+
 
                 $(document).ready(async function () {
                     $(".k-grid-add-data").each(function (e) {
@@ -245,9 +193,9 @@
                         if (permissions.AllowNew == false) {
                             $(this).addClass('k-state-disabled')
                         }
-                       
+
                     });
-                   
+
                     $(".grid-view-mode").each(function (e) {
                         $(this).addClass('grid-state-disabled')
                     });
@@ -278,18 +226,18 @@
             } catch (e) {
 
             }
-               
-               
 
 
-           // });
+
+
+            // });
         },
     }, click: function (id) {
         document.getElementById(id).click();
-    }, display :  function (id) {
+    }, display: function (id) {
         document.getElementById(id).style.display = "inline-flex";
     },
-    hiden : function hiden(id) {
+    hiden: function hiden(id) {
         document.getElementById(id).style.display = "none";
     }, displayText: {
         date: (date) => {
@@ -346,7 +294,7 @@ var common = {
                     //if (xhr.status == 204) {
                     //    console.log("status call Data 204", xhr.status);
                     //} else {
-                        
+
                     //}
                     if (response != null) {
                         result = response
@@ -396,11 +344,11 @@ var common = {
         return result;
     },
     UpdateGrid: function (gridId, Data) {
-            var dataSource = new kendo.data.DataSource({
-                data: Data
-            });
-            var grid = $("#" + gridId).data("kendoGrid");
-            grid.setDataSource(dataSource);
+        var dataSource = new kendo.data.DataSource({
+            data: Data
+        });
+        var grid = $("#" + gridId).data("kendoGrid");
+        grid.setDataSource(dataSource);
     },
     DisplayElement: function (id) {
         document.getElementById(id).style.display = "block";
@@ -408,7 +356,7 @@ var common = {
     HidenElement: function (id) {
         document.getElementById(id).style.display = "none";
     },
-    Encode: function(data) {
+    Encode: function (data) {
         try {
             if (data == null) return null;
             return btoa(data);
@@ -431,14 +379,14 @@ var common = {
 
         try {
 
-        
-        col = typeof col === 'object' ? col : Array.prototype.slice.call(arguments, 1);
 
-        return str.replace(/\{\{|\}\}|\{(\w+)\}/g, function (m, n) {
-            if (m == "{{") { return "{"; }
-            if (m == "}}") { return "}"; }
-            return col[n];
-        });
+            col = typeof col === 'object' ? col : Array.prototype.slice.call(arguments, 1);
+
+            return str.replace(/\{\{|\}\}|\{(\w+)\}/g, function (m, n) {
+                if (m == "{{") { return "{"; }
+                if (m == "}}") { return "}"; }
+                return col[n];
+            });
 
 
         } catch (e) {
@@ -469,10 +417,10 @@ var common = {
         return (string.toLowerCase() === 'true')
     }, TimeRemoveSeconds: (date) => {
         //console.log(date);
-        if (date == null || date =="") { return null }
+        if (date == null || date == "") { return null }
         var Time = new Date(date);
         Time.setSeconds(0, 0)
-        
+
         return Time;
     },
     NumberHtml: (data, digi) => {
@@ -495,7 +443,7 @@ var common = {
                 result = kendo.toString(kendo.parseDate(date, 'yyyy-MM-ddTHH:mm:ss'), formatDateTimePicker)
 
                 if (result == null) {
-                    result = kendo.toString(date,formatDateTimePicker)
+                    result = kendo.toString(date, formatDateTimePicker)
                 }
                 // return kendo.toString(kendo.parseDate(Date.parse(date), 'yyyy-MM-ddTHH:mm:ss'), 'dd-MMM-yyyy HH:mm')
 
@@ -516,10 +464,10 @@ var common = {
         try {
             if (date != null) {
                 //console.log("Grid DateTime ", date);
-                result = kendo.toString(kendo.parseDate(date, 'yyyy-MM-ddTHH:mm:ss'), 'dd-MMM-yy HH:mm')
+                result = kendo.toString(kendo.parseDate(date, 'yyyy-MM-ddTHH:mm:ss'), 'dd-MMM-yy HH:mm:ss')
 
                 if (result == null) {
-                    result = kendo.toString(date, 'dd-MMM-HH:mm')
+                    result = kendo.toString(date, 'dd-MMM-HH:mm:ss')
                 }
                 // return kendo.toString(kendo.parseDate(Date.parse(date), 'yyyy-MM-ddTHH:mm:ss'), 'dd-MMM-yyyy HH:mm')
 
@@ -560,7 +508,7 @@ var common = {
         return result
 
     },
-   
+
 }
 
 
@@ -568,161 +516,16 @@ var Service = {
 
     closeLockScreen: function (ID) {
         data = common.APIGet("/api/common/apicommonclearopenby", { InspectID: ID });
-    }, 
-
-
-
-
-}
-
-
-
-var ddl = {
-    InspectionResult: {
-        template: '<div style="color: #: data.Remark #;">#: data.MiscValue #</div>',
-        valueTemplate: '<div >#: data.MiscValue #</div>'
-        , change: function (e) {
-            id = e.sender.element[0].id;
-            condition.dropdow("."+id, "kendoDropDownList", {
-                "pass": (this.value() == "OK"),
-                "ncr": (this.value() == "NG")
-            })
-            
-            //console.log(e.sender.element[0].id.split('-').slice(-1)[0]);
-            //var ResultValue = condition.input("#"+id, "kendoNumericTextBox", conditionInput)
-            setUiTab.ResultUpdate(e.sender.element[0].id.split('-').slice(-1)[0]);
-        }
-       
-        
-            
     },
-    GetMiscCombo: {
-        template: '<div style="color: #: data.Remark #;">#: data.MiscValue #</div>',
-        valueTemplate: '<div style="color: #: data.Remark #;">#: data.MiscValue #</div>'
-    }
+
+
+
 
 }
 
 
 
-class condition {
-    static dropdow(id, type, condition) {
-        //console.log(id);
-        $(id).find("span").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-        if (condition['ocl'] === true) {
-            $(id).find("span").addClass('input-fomula-ocl');
-            return 3;
-        } else if (condition['pass'] === true) {
-            $(id).find("span").addClass('input-fomula-pass');
-            return 2;
-        } else if (condition['ncr'] === true) {
-            $(id).find("span").addClass('input-fomula-ncr');
-            return 1;
-        }
-    }
-    static LoadUiInput(id, type, condition) {
-        var Elements = $(id);
-        var getValue = $(id).val().trim();
 
-        
-        if (condition['ocl'] === true ) {
-            //$(id).data(type).wrapper.find("input").addClass('input-fomula-ocl');
-            Elements.addClass("input-fomula-ocl")
-            return 3;
-        } else if (condition['pass'] === true ) {
-            //$(id).data(type).wrapper.find("input").addClass('input-fomula-pass');
-            Elements.addClass("input-fomula-pass")
-            return 2;
-        } else if (condition['ncr'] === true ) {
-            //$(id).data(type).wrapper.find("input").addClass('input-fomula-ncr');
-            Elements.addClass("input-fomula-ncr")
-            return 1;
-        } else {
-           
-        }
-
-    }
-
-    static inputDate(id, type, condition) {
-
-        if (condition['ocl'] === true && $(id).val() != null) {
-            $(id).data(type).wrapper.find("input").addClass('input-fomula-ocl');
-            //$(id).data(type).wrapper.find("span").addClass('input-fomula-ocl');
-            //$(id).data(type).wrapper.find("span").prevObject.addClass('input-fomula-ocl');
-            return 3;
-        } else if (condition['pass'] === true && $(id).val() != null) {
-            $(id).data(type).wrapper.find("input").addClass('input-fomula-pass');
-            //$(id).data(type).wrapper.find("span").addClass('input-fomula-pass');
-            $(id).data(type).wrapper.find("span").prevObject.addClass('input-fomula-pass');
-            return 2;
-        } else if ($(id).val() != null && condition['ncr'] != false) {
-            $(id).data(type).wrapper.find("input").addClass('input-fomula-ncr');
-            //$(id).data(type).wrapper.find("span").addClass('input-fomula-ncr');
-            //$(id).data(type).wrapper.find("span").prevObject.addClass('input-fomula-ncr');
-            return 1;
-        } else {
-               $(id).data(type).wrapper.find("span").prevObject.removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-               //$(id).data(type).wrapper.find("span").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-               //$(id).data(type).wrapper.find("input").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-        }
-        //$(id).data(type).wrapper.find("span").prevObject.removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-    }
-    static input(id, type, condition) {
-
-        if (condition['ocl'] === true && $(id).val() != null) {
-            $(id).data(type).wrapper.find("input").addClass('input-fomula-ocl');
-            $(id).data(type).wrapper.find("span").addClass('input-fomula-ocl');
-            $(id).data(type).wrapper.find("span").prevObject.addClass('input-fomula-ocl');
-            return 3;
-        } else if (condition['pass'] === true && $(id).val() != null) {
-            $(id).data(type).wrapper.find("input").addClass('input-fomula-pass');
-            $(id).data(type).wrapper.find("span").addClass('input-fomula-pass');
-            $(id).data(type).wrapper.find("span").prevObject.addClass('input-fomula-pass');
-            return 2;
-        } else if ($(id).val() != null && condition['ncr'] != false) {
-            $(id).data(type).wrapper.find("input").addClass('input-fomula-ncr');
-            $(id).data(type).wrapper.find("span").addClass('input-fomula-ncr');
-            $(id).data(type).wrapper.find("span").prevObject.addClass('input-fomula-ncr');
-            return 1;
-        } else {
-            $(id).data(type).wrapper.find("span").prevObject.removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-            $(id).data(type).wrapper.find("span").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-            $(id).data(type).wrapper.find("input").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-        }
-        //$(id).data(type).wrapper.find("span").prevObject.removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-    }
-    static inputnull(id, type) {
-        $(id).data(type).wrapper.find("span").prevObject.removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-        $(id).data(type).wrapper.find("input").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-        $(id).data(type).wrapper.find("span").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-        //$(id).find("span").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-    }
-
-    static inputnullData(id, type) {
-        try {
-            $(id).data(type).wrapper.find("span").prevObject.removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-            $(id).data(type).wrapper.find("input").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-            $(id).data(type).wrapper.find("span").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-        } catch (e) {
-
-        }
-        
-        $(id).data(type).value("");
-        //$(id).find("span").removeClass('input-fomula-pass input-fomula-ncr input-fomula-ocl')
-    }
-
-    static removeSpan(id, type) {
-        $(document).ready(function () {
-            var remove = $(id).data(type).wrapper.find("span").prevObject[0].className
-            var replace = remove.replace('input-fomula-ncr', '')
-            replace = replace.replace('input-fomula-pass', '')
-            replace = replace.replace('input-fomula-ocl', '')
-            $(id).data(type).wrapper.find("span").prevObject[0].className = replace
-            
-        });
-    }
-
-}
 
 
 var pdf = {
@@ -731,7 +534,7 @@ var pdf = {
             if (text == undefined || null) {
                 return "-";
             } else {
-                if (String(text) == " " || String(text) == "" || String(text).includes("&nbsp;") == true ) {
+                if (String(text) == " " || String(text) == "" || String(text).includes("&nbsp;") == true) {
                     return "-";
                 } else {
                     return text;
@@ -740,14 +543,14 @@ var pdf = {
         } catch (e) {
             return "";
         }
-        
-        
+
+
     },
     Number: (data, digi) => {
         try {
-           
+
             if (data == null || String(data).trim() == "" || String(data).trim() == "null") {
-                
+
                 return "&nbsp;"
             }
             if (digi != null && digi != 0) {
@@ -755,7 +558,7 @@ var pdf = {
             } else {
                 return (Number(data)).toFixed(digi);
             }
-        
+
         } catch (e) {
             console.log("Error Data E =>", e, "data", data, "digi", digi);
             return "&nbsp;"
@@ -764,12 +567,12 @@ var pdf = {
     },
     NumberFormula: (data, digi) => {
         try {
-            
+
             if (data == null || data == "") {
                 return "-"
             }
             if (digi != null && digi != 0) {
-                
+
                 return kendo.toString(Number(data), "n" + digi)
             } else {
                 return (Number(data)).toFixed(digi);
@@ -807,7 +610,7 @@ var pdf = {
             return ""
         }
     },
-    radioButton(value,index) {
+    radioButton(value, index) {
 
         if ((value == "2" && index == "2") || (value == "1" && index == "1")) {
             return "checked"
@@ -833,8 +636,8 @@ var pdf = {
             return ""
         }
     },
-   
-    
+
+
     options_A3_Portrait: {
         margin: [0, -0.1, 0, 0],
         //filename: 'filename.pdf',
@@ -850,7 +653,7 @@ var pdf = {
             unit: 'in',
             format: 'a3',
             orientation: 'p',
-            precision :1
+            precision: 1
         }
     },
     options_A3_Landscape: {
@@ -908,5 +711,5 @@ var pdf = {
             precision: 1
         }
     }
-    
+
 }

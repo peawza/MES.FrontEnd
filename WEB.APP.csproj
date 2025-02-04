@@ -10,6 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\assets\js\screenfuntion\Master\**" />
+    <Compile Remove="wwwroot\assets\js\screenfuntion\Report\**" />
+    <Compile Remove="wwwroot\assets\js\screenfuntion\SmartWasteSystem\**" />
+    <Content Remove="wwwroot\assets\js\screenfuntion\Master\**" />
+    <Content Remove="wwwroot\assets\js\screenfuntion\Report\**" />
+    <Content Remove="wwwroot\assets\js\screenfuntion\SmartWasteSystem\**" />
+    <EmbeddedResource Remove="wwwroot\assets\js\screenfuntion\Master\**" />
+    <EmbeddedResource Remove="wwwroot\assets\js\screenfuntion\Report\**" />
+    <EmbeddedResource Remove="wwwroot\assets\js\screenfuntion\SmartWasteSystem\**" />
+    <None Remove="wwwroot\assets\js\screenfuntion\Master\**" />
+    <None Remove="wwwroot\assets\js\screenfuntion\Report\**" />
+    <None Remove="wwwroot\assets\js\screenfuntion\SmartWasteSystem\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.3.0" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.12" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.12" />
@@ -20,17 +35,14 @@
   <ItemGroup>
     <Folder Include="Areas\UserManages\Models\" />
     <Folder Include="Extensions\Models\" />
-    <Folder Include="Areas\ProductionUser\Models\" />
+    <Folder Include="Areas\ProductionMaster\Models\" />
     <Folder Include="Extensions\Navigation\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Shared\screenShared\" />
-    <Folder Include="wwwroot\assets\css\" />
     <Folder Include="wwwroot\assets\css\dashboard\" />
     <Folder Include="wwwroot\assets\css\screenfuntion\" />
     <Folder Include="wwwroot\assets\js\demo_ui\Dashboard\" />
-    <Folder Include="wwwroot\assets\js\screenfuntion\Master\" />
-    <Folder Include="wwwroot\assets\js\screenfuntion\Report\" />
-    <Folder Include="wwwroot\assets\js\screenfuntion\SmartWasteSystem\" />
+    <Folder Include="wwwroot\assets\js\screenfuntion\production\master\startupScreennnn\" />
     <Folder Include="wwwroot\assets\js\screenShared\" />
   </ItemGroup>
 
@@ -40,15 +52,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Areas\ProductionUser\Views\ProductionUser\Inquiry.cshtml">
+    <Content Update="Areas\ProductionMaster\Views\ProductionMaster\pms020_Inquiry.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\ProductionUser\Views\_ViewImports.cshtml">
+    <Content Update="Areas\ProductionMaster\Views\_ViewImports.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\ProductionUser\Views\_ViewStart.cshtml">
+    <Content Update="Areas\ProductionMaster\Views\_ViewStart.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

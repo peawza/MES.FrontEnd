@@ -201,6 +201,25 @@ var app = {
                     return;
                 }
 
+                t = w.data("kendoSwitch");
+                if (t) {
+                    //console.log(t,w);
+                    var d = $(t.element).data("default");
+                    if (typeof d !== "undefined") {
+                        if (t.value() !== d) {
+                            t.value(d);
+                            t.trigger("change");
+                        }
+                    } else {
+                        //t.checked(false);
+
+                        //("#"+w.id).data("kendoSwitch").value(false);
+                        t.value(false);
+                    }
+                    //$("#ip-status").data("kendoSwitch").value(false);
+                    return;
+                }
+
                 t = w.data("kendoNumericTextBox");
                 if (t) {
                     var d = $(t.element).data("default");

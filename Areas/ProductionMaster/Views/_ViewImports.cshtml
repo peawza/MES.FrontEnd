@@ -4,6 +4,12 @@
 @using WEB.APP.Helpers
 @using Microsoft.AspNetCore.Mvc
 
+@using WEB.APP.Extensions.Permission
+@using WEB.APP.Localization
+
+@inject IMessageResources Resources
+@inject IMessageLocalizer Message
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, Kendo.Mvc
 @addTagHelper *, CSI.AspNetCore.Razor.TagHelpers

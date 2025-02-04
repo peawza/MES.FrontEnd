@@ -2,6 +2,7 @@
 var formatDatePicker = "dd/MM/yyyy";
 var formatDateWithTime = "dd/MM/yyyy HH:mm:ss";
 var formatDateWithTime_export = "yyyy/MM/dd HH:mm:ss";
+
 /** Call Api Start **/
 
 //function APIPost(url, data) {
@@ -360,8 +361,7 @@ function onNotificationHide(e) {
 //site-section
 
 
-function MessageResources(screenCode, objectId, col) {
-    //console.time()
+function Resources(screenCode, objectId, col) {
     const screenData = _data_LocalizedResources[screenCode];
     col = typeof col === 'object' ? col : Array.prototype.slice.call(arguments, 2);
     if (screenData) {
@@ -382,12 +382,8 @@ function MessageResources(screenCode, objectId, col) {
             console.log("Error", e);
             return screenCode + "_" + objectId;
         }
-
-        //console.timeEnd()
         return result || screenCode + "_" + objectId;
     }
-
-    //console.timeEnd()
     return screenCode + "_" + objectId;
 }
 
@@ -457,4 +453,112 @@ let Event = {
         //app.ui.showAlertError("#message-container", message);
     }
 }
+
+
+async function isNullOrEmpty(value) {
+    return value == null || value == "";
+}
+
+
+function filterAll(e, control, field1, field2) {
+    var filterValue = e.filter != undefined ? e.filter.value : "";
+    e.preventDefault();
+    //console.log(control)
+    control.dataSource.filter({
+        logic: "or",
+        filters: [
+            {
+                field: field1,
+                operator: "contains",
+                value: filterValue
+            },
+            {
+                field: field2,
+                operator: "contains",
+                value: filterValue
+            }
+        ]
+    });
+}
+
+function formatNumber(num) {
+    // Create a number formatter
+    var formatter = new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
+    // Format the number
+    return formatter.format(num);
+}
+function convertToDDMMYYYY(dateStr) {
+    const date = new Date(dateStr);
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+}
+
+
+function createInput(input) {
+    //console.log(
+    //`$("#${input}").kendoTextBox({
+    //    //enable: false
+    //});
+    //${input.replace(/-/g, "_")} = $("#${input}").data("kendoTextBox")`
+    //);
+    return `$("#${input}").kendoTextBox({
+        
+    });
+    ${input.replace(/-/g, "_")} = $("#${input}").data("kendoTextBox");`
+}
+
+function CreateInputIds(divId) {
+    // Select the div by its ID
+    const container = document.getElementById(divId);
+
+    // Find all input elements within the selected div
+    const inputs = container.querySelectorAll('input');
+
+
+    let idsArray = ``;
+
+    for (let i = 0; i < inputs.length; i++) {
+        //idsArray.push(inputs[i].id);
+        if (i != 0) {
+            idsArray += `\n`;
+        }
+        idsArray += createInput(inputs[i].id);
+    }
+
+    console.log(idsArray);
+    // Extract IDs into an array
+    // return Array.from(inputs, input => input.id);
+}
+function CreateParameterIds(divId) {
+    const container = document.getElementById(divId);
+
+    // Find all input elements within the selected div
+    const inputs = container.querySelectorAll('input');
+
+
+    let idsArray = `let `;
+    for (let i = 0; i < inputs.length; i++) {
+        if (i % 6 === 0 && i != 0) {
+            idsArray += `;`;
+            idsArray += `\nlet `;
+        }
+        if (i % 6 != 0 && i != 0) {
+            idsArray += `,`;
+        }
+        idsArray += (inputs[i].id).replace(/-/g, "_");
+
+    }
+    idsArray += `;`;
+    console.log(idsArray);
+}
+
+
 

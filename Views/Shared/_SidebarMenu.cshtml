@@ -10,12 +10,11 @@
     </div>
     <ul class="sidebar2-ul">
         <li><a href="/" class="sidebar2-selection"><i class="fas fa-home sidebar-2-icon"></i><span class="sidebar-2-nav-item">Home</span></a></li>
-
         <li>
-            <a href="#" data-toggle="collapse" data-target="#ProductionPerformanceSystem" aria-expanded="false" aria-controls="ProductionPerformanceSystem" class="collapsible sidebar2-selection collapsible-main">
+            <a href="#" data-toggle="collapse" data-target="#InventorySystem" aria-expanded="false" aria-controls="InventorySystem" class="collapsible sidebar2-selection collapsible-main">
                 <i class="fas fa-display sidebar-2-icon"></i> <span class="sidebar-2-nav-item">Inventory System</span>
             </a>
-            <div id="ProductionPerformanceSystem" class="collapse ui-submenu" aria-labelledby="headingOne">
+            <div id="InventorySystem" class="collapse ui-submenu" aria-labelledby="headingOne">
                 <div>
                     <ul>
                         <li class="accordion">
@@ -38,8 +37,37 @@
             </div>
         </li>
 
+    
+        <li>
+            <a href="#" data-toggle="collapse" data-target="#ProductionSystem" aria-expanded="false" aria-controls="ProductionSystem" class="collapsible sidebar2-selection collapsible-main">
+                <i class="fas fa-display sidebar-2-icon"></i> <span class="sidebar-2-nav-item">Production System</span>
+            </a>
+            <div id="ProductionSystem" class="collapse ui-submenu" aria-labelledby="headingOne">
+                <div>
+                    <ul>
+                        <li class="accordion">
+                            <a href="#" data-toggle="collapse" data-target="#UM1" aria-expanded="false" aria-controls="UM1" class="collapsible">
+                                <i class="fas fa-cube"></i>Master
+                            </a>
+                            <div id="UM1" class="collapse ui-submenu" aria-labelledby="headingone">
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <a class="sub-menu" ria-expanded="false" title="Master" href="/production/master/pms020">
+                                                <i class="fas fa-user"></i> Machine Stop Reason Master
+                                            </a>
+                                        </li>
 
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
 
+        @* /production/master/pms020 *@
 
 
         <li>

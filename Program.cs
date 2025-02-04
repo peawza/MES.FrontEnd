@@ -21,6 +21,7 @@ builder.Services.AddControllersWithViews(options =>
 .AddRazorRuntimeCompilation();
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddMemoryCache();
+builder.Services.AddKendo();
 
 
 
@@ -96,6 +97,8 @@ using (var scope = app.Services.CreateScope())
 IServiceProvider services = builder.Services.BuildServiceProvider();
 Resources resources = new Resources(environment, configuration, services);
 resources.update_Resources_JS();
+
+
 
 
 app.MapControllerRoute(
