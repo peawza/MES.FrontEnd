@@ -13,14 +13,24 @@
 }
 
 .k-toolbar {
+    /*display: none;*/
+}
+.k-toolbar .k-input, .k-toolbar .k-picker {
+    width:20rem;
+}
+.k-grid .k-pager-info.k-label {
     display: none;
 }
-
+.k-pager-wrap.k-grid-pager.k-widget.k-floatwrap {
+    text-align: center;
+    justify-content: center !important;
+}
 .k-grid {
     border-radius: 8px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 }
+
 
     .k-grid .k-grid-header .k-header,
     .k-grid table tbody tr td {

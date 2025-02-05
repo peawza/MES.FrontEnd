@@ -168,6 +168,7 @@ let grid_inquire = {
             }, excelExport: function (e) {
                 GridExcelExport(e, "Miscellaneous")
             },
+            toolbar: ["search"],
             columns: [
                 {
 
@@ -262,12 +263,12 @@ let grid_inquire = {
                     attributes: { class: "k-text-right" },
                     width: "250px"
                 },
-                {
-                    field: "ProcessNameTH",
-                    title: Resources("PMS020", "GD003"),
-                    attributes: { class: "k-text-left" },
-                    width: "200px"
-                },
+                //{
+                //    field: "ProcessNameTH",
+                //    title: Resources("PMS020", "GD003"),
+                //    attributes: { class: "k-text-left" },
+                //    width: "200px"
+                //},
                 {
                     field: "ProcessNameEN",
                     title: Resources("PMS020", "GD004"),

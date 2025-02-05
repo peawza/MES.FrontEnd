@@ -106,4 +106,56 @@
 <script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms020/pms021_dialog.js" asp-append-version="true" ></script>
 @* <script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms020/pms021_eventbutton.js" asp-append-version="true" async></script> *@
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
+<div id="grid" ></div>
+
+<script>
+    $(document).ready(function () {
+        $("#grid").kendoGrid({
+            dataSource: {
+                data: generateDummyData(100),
+                pageSize: 10
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: true,
+                numeric: true
+            },
+            // toolbar: ["search"],
+            toolbar: [
+                setPagerInfoToToolbar("grid"),
+                { name: "search", text: "Search..." } // Kendo Grid built-in search tool
+            ],
+            columns: [
+                { field: "ID", title: "ID" },
+                { field: "Name", title: "Name" }
+            ],
+            dataBound: function () {
+                movePagerInfoToToolbar("grid");
+            }
+        });
+        function setPagerInfoToToolbar(gridID) {
+            return { template: `<span id="${gridID}customPagerInfo" class="k-label"></span>` }
+        }
+
+        function movePagerInfoToToolbar(gridID) {
+            setTimeout(function () {
+                let pagerInfo = $(`#${gridID} .k-pager-info`).text();
+                $(`#${gridID}customPagerInfo`).text(pagerInfo);
+            }, 100);
+        }
+
+        function generateDummyData(count) {
+            let data = [];
+            for (let i = 1; i <= count; i++) {
+                data.push({ ID: i, Name: "Item " + i });
+            }
+            return data;
+        }
+    });
+</script>

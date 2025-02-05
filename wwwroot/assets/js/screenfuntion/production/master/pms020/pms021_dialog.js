@@ -13,7 +13,7 @@ let hidden_update_date = $("#hidden-update-date-time");
 
 //Input
 
-let ip_item_group_code, ip_item_group_name, ip_status
+let ip_process_code, ip_Process_name_en, ip_status
 let arryDisableInputNoWorking = ["ip-item-group-name", "ip-status"]
 window.addEventListener("load", async (event) => {
     //console.log("load !");
@@ -25,10 +25,10 @@ window.addEventListener("load", async (event) => {
 
     });
     ip_Process_name_en = $("#ip-Process-name-en").data("kendoTextBox");
-    $("#ip-process-name-th").kendoTextBox({
+    //$("#ip-process-name-th").kendoTextBox({
 
-    });
-    ip_process_name_th = $("#ip-process-name-th").data("kendoTextBox");
+    //});
+    //ip_process_name_th = $("#ip-process-name-th").data("kendoTextBox");
     $("#ip-status").kendoSwitch({
         //checked: true,
         //label: "Active",

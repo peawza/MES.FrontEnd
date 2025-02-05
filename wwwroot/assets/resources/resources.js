@@ -262,12 +262,6 @@ let _data_LocalizedResources ={
     },
     {
       "ScreenCode": "PMS020",
-      "ObjectID": "GD004",
-      "ResourcesTH": "Process Name EN",
-      "ResourcesEN": "Process Name EN"
-    },
-    {
-      "ScreenCode": "PMS020",
       "ObjectID": "GD005",
       "ResourcesTH": "Status",
       "ResourcesEN": "Status"
@@ -295,6 +289,12 @@ let _data_LocalizedResources ={
       "ObjectID": "GD009",
       "ResourcesTH": "Updated Date-Time",
       "ResourcesEN": "Updated Date-Time"
+    },
+    {
+      "ScreenCode": "PMS020",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Process Name",
+      "ResourcesEN": "Process Name"
     }
   ],
   "PMS021": [
@@ -303,12 +303,6 @@ let _data_LocalizedResources ={
       "ObjectID": "IP001",
       "ResourcesTH": "Process Code",
       "ResourcesEN": "Process Code"
-    },
-    {
-      "ScreenCode": "PMS021",
-      "ObjectID": "IP002",
-      "ResourcesTH": "Process Name EN",
-      "ResourcesEN": "Process Name EN"
     },
     {
       "ScreenCode": "PMS021",
@@ -321,6 +315,12 @@ let _data_LocalizedResources ={
       "ObjectID": "IP004",
       "ResourcesTH": "Status",
       "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS021",
+      "ObjectID": "IP002",
+      "ResourcesTH": "Process Name",
+      "ResourcesEN": "Process Name"
     }
   ]
 }
