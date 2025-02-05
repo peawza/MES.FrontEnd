@@ -198,7 +198,7 @@ function onCancelDialog(e) {
             $("#window-dialog").data("kendoWindow").close();
 
         }
-    }, Message("Confirmation", "ConfirmExit"), "Confirmation");
+    }, Message("Confirmation", "ConfirmExitDialog"), "Confirmation");
 
 
 }

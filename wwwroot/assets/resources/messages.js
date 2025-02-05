@@ -39,6 +39,12 @@ let _data_LocalizedMessages ={
       "MessageNameEN": "คุณต้องการกระทบยอดสำหรับปี : {0}. เดือน : {1} ?"
     },
     {
+      "MessageCode": "ConfirmExitDialog",
+      "MessageType": "Confirm",
+      "MessageNameTH": "Are you sure you want to exit this window ?",
+      "MessageNameEN": "Are you sure you want to exit this window ?"
+    },
+    {
       "MessageCode": "ConfirmCreateNew",
       "MessageType": "Confirm",
       "MessageNameTH": "คุณต้องการสร้างรายการตรวจสอบใหม่? ปล.ถ้าคุณไม่ได้บันทึกข้อมูลๆของคุณจะหายไป",
