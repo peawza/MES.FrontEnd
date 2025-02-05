@@ -8,14 +8,14 @@ for details on configuring this project to bundle and minify static web assets. 
 .k-input.k-textbox,
 .k-textarea,
 .k-textbox {
-    border-radius: 0rem !important;
+    border-radius: 8px !important;
 }
 
 .k-button,
 .k-textbox,
 .k-textarea {
     font-size: 1rem;
-    border-radius: .05rem;
+    border-radius: 8px;
 }
 
     .k-textbox.k-no-click {

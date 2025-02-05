@@ -249,3 +249,17 @@ let kendo_grid = {
     }
 }
 
+
+function setPagerInfoToToolbar(gridID) {
+    //let gridID = "#aaa";
+    gridID = gridID.replace("#", "");  // Removes the #
+    let templateGrid = `<span id="${gridID}customPagerInfo" class="k-label"></span>` 
+    return { template: templateGrid }
+}
+function movePagerInfoToToolbar(gridID) {
+    gridID = gridID.replace("#", "");
+    setTimeout(function () {
+        let pagerInfo = $(`#${gridID} .k-pager-info`).text();
+        $(`#${gridID}customPagerInfo`).text(pagerInfo);
+    }, 100);
+}

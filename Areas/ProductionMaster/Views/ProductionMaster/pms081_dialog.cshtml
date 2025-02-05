@@ -1,0 +1,53 @@
+﻿@inject IMessageLocalizer localizer
+<style>
+    #window-dialog.k-window-content {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+</style>
+<div id="window-dialog" style="align-items: center; ">
+    <div class=" col-12">
+        <div class="control-group ">
+            <form id="ng-type-information">
+                <div class="row pt-2">
+                    <input id="status-mode" type="hidden" value="" />
+                    <input id="return-screap-id" type="hidden" value="" />
+
+                    <label for="search" class="col-form-label  col-4"> NG Type Code : <span class="text-color-red"> *</span> </label>
+                    <div class="col-4">
+                        <input name="ip-ng-code" id="ip-ng-code" style="width:100%;" required validationMessage="NG Type Code is required" />
+                    </div>
+
+                </div>
+
+                <div class="row pt-2">
+                    <label class="col-4 col-form-label block-label">
+                        NG Type Name
+                        <span style="color: red">*</span>
+                    </label>
+                    <span class="col-4">
+                        <input name="ip-ng-name" id="ip-ng-name" style="width:100%;" required validationMessage="NG Type Name is required">
+                    </span>
+
+                </div>
+
+                <div class="row pt-2">
+                    <div class="col-4 ml-2"></div>
+                    <span class=" col-4">
+                        <input type="checkbox" id="ip-active" />
+
+                    </span>
+
+                </div>
+
+            </form>
+        </div>
+
+   
+    </div>
+
+
+</div>
+
+
+

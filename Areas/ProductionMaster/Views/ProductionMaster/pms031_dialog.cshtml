@@ -1,0 +1,89 @@
+﻿@inject IMessageLocalizer localizer
+
+
+
+
+<div id="window-dialog" style="align-items: center; ">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row form-group justify-content-start">
+                <input type="hidden" id="status-mode" value="" />
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-line-code" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS031", "IP001"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-line-code" name="ip-line-code"  required validationMessage="@localizer["FieldRequired",@Resources["PMS031", "IP001"]]" maxlength="50" />
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-line-name" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS031", "IP002"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-line-name" name="ip-line-name"  required validationMessage="@localizer["FieldRequired",@Resources["PMS031", "IP002"]]" maxlength="250" />
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-status" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS031", "IP004"]
+                    </label>
+                    <input id="ip-status" name="ip-status"  />
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
+                    
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="image" class="co6 col-form-label">Image<span style="color: red"> *</span></label>
+                    <div class="col-sm-9">
+                        <div class="image-container" style="display: flex; justify-content: center; align-items: center; height: auto; width: 450px;">
+                            <img id="imageView" src="" alt="Image" style="object-fit: cover; width: 100%; height: auto; max-width: 100%; " onerror="setImageDefault('imageView')" />
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"></label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setImageDefault(id) {
+        var image = document.getElementById(id);
+        image.style.width = "auto";
+        $("#" + id).attr("src", "/assets/images/no-photo2.jpg");
+    }
+
+    document.getElementById('Newfiles').addEventListener('change', function () {
+        var file = this.files[0];
+
+        if (file) {
+            var allowedExtensions = ["jpg", "jpeg", "png"];
+            var fileExtension = file.name.split('.').pop().toLowerCase();
+
+            if (allowedExtensions.includes(fileExtension)) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var dataURL = e.target.result;
+                    var image = document.getElementById('imageNew');
+                    image.src = dataURL;
+                };
+                $("#imageNew").css("width", "100%");
+                $("#Newfiles_validationMessage").css("display", "none");
+                reader.readAsDataURL(file);
+            } else {
+                alert("กรุณาเลือกเฉพาะไฟล์รูปภาพเท่านั้น (jpg, jpeg, png)");
+                setImageDefault('imageNew');
+                this.value = "";
+            }
+        }
+        if (this.value == "") {
+            setImageDefault('imageNew');
+        }
+    });
+</script>

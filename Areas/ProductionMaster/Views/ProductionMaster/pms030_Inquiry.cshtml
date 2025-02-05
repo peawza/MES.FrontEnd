@@ -48,21 +48,21 @@
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <label for="sc-process-code" class="form-label">
-                    @Resources["PMS020", "SC001"]
+                    @Resources["PMS030", "SC001"]
                 </label>
-                <input id="sc-process-code" class="form-control" type="text" />
+                <input id="sc-process-code" class="form-control" type="text" placeholder="@Resources["PMS030", "SC001"]" />
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <label for="sc-process-name" class="form-label">
-                    @Resources["PMS020", "SC002"]
+                    @Resources["PMS030", "SC002"]
                 </label>
-                <input id="sc-process-name" class="form-control" type="text" />
+                <input id="sc-process-name" class="form-control" type="text" placeholder="@Resources["PMS030", "SC002"]" />
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <label for="sc-status" class="form-label">
-                    @Resources["PMS020", "SC003"]
+                    @Resources["PMS030", "SC003"]
                 </label>
                 <input id="sc-status" class="form-control" type="text" />
             </div>
@@ -81,7 +81,7 @@
 
     <div class="col-md-6 col-12 text-md-end text-right">
         @Html.SearchButton().Events(ev => ev.Click("searchButtonClicked"))
-        @Html.ImportButton().Events(ev => ev.Click("exportButtonClicked"))
+        @* @Html.ImportButton().Events(ev => ev.Click("exportButtonClicked")) *@
 
         @if (permissions.AllowExport)
         {
@@ -99,8 +99,11 @@
 <div id="grid-inquiry"></div>
 
 
-@await Html.PartialAsync("pms021_dialog")
+@await Html.PartialAsync("pms031_dialog")
 @* defer *@
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms020/pms020_funtion.js" asp-append-version="true" ></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms020/pms020_eventbutton.js" asp-append-version="true" ></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms020/pms021_dialog.js" asp-append-version="true" ></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms030/pms030_funtion.js" asp-append-version="true" ></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms030/pms030_eventbutton.js" asp-append-version="true" ></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms030/pms031_dialog.js" asp-append-version="true" ></script>
+
+
+

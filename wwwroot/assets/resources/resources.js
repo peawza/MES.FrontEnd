@@ -221,6 +221,12 @@ let _data_LocalizedResources ={
       "ObjectID": "Mode",
       "ResourcesTH": "โหมด",
       "ResourcesEN": "Mode"
+    },
+    {
+      "ScreenCode": "COMMON",
+      "ObjectID": "ToolbarSearch",
+      "ResourcesTH": "ค้นหา...",
+      "ResourcesEN": "Search..."
     }
   ],
   "PMS020": [
@@ -321,6 +327,100 @@ let _data_LocalizedResources ={
       "ObjectID": "IP002",
       "ResourcesTH": "Process Name",
       "ResourcesEN": "Process Name"
+    }
+  ],
+  "PMS030": [
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "SC001",
+      "ResourcesTH": "Line Code",
+      "ResourcesEN": "Line Code"
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "SC002",
+      "ResourcesTH": "Line Name",
+      "ResourcesEN": "Line Name"
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "SC003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No.",
+      "ResourcesEN": "No."
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "GD003",
+      "ResourcesTH": "Line Name",
+      "ResourcesEN": "Line Name"
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Created By",
+      "ResourcesEN": "Created By"
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Created DateTime",
+      "ResourcesEN": "Created DateTime"
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "GD007",
+      "ResourcesTH": "UpdateBy",
+      "ResourcesEN": "UpdateBy"
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "GD008",
+      "ResourcesTH": "Updated Date-Time",
+      "ResourcesEN": "Updated Date-Time"
+    },
+    {
+      "ScreenCode": "PMS030",
+      "ObjectID": "GD002",
+      "ResourcesTH": "Line Code",
+      "ResourcesEN": "Line Code"
+    }
+  ],
+  "PMS031": [
+    {
+      "ScreenCode": "PMS031",
+      "ObjectID": "IP001",
+      "ResourcesTH": "Line Code",
+      "ResourcesEN": "Line Code"
+    },
+    {
+      "ScreenCode": "PMS031",
+      "ObjectID": "IP002",
+      "ResourcesTH": "Line Name",
+      "ResourcesEN": "Line Name"
+    },
+    {
+      "ScreenCode": "PMS031",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Image",
+      "ResourcesEN": "Image"
+    },
+    {
+      "ScreenCode": "PMS031",
+      "ObjectID": "IP004",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
     }
   ]
 }
