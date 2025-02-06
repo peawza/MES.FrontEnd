@@ -1,5 +1,6 @@
 ﻿
-
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc
 
 
 <style>
@@ -60,7 +61,6 @@
     };
 
 }
-
 <script type="text/javascript">
     let permissions = {
         AllowView: common.Boolean("@permissions.AllowView"), AllowNew: common.Boolean("@permissions.AllowNew"), AllowEdit: common.Boolean("@permissions.AllowEdit"), AllowDelete: common.Boolean("@permissions.AllowDelete"), AllowExport: common.Boolean("@permissions.AllowNew"), AllowPrint: common.Boolean("@permissions.AllowPrint"),
@@ -70,33 +70,27 @@
 </script>
 
 
-
 <div id="search-container" class="card bg-light">
-    <div class="card-body m-2">
-        <div class="row g-3 d-flex justify-content-lg-center">
+    <div class="card-body">
+        <div class="row form-group justify-content-center">
 
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <label for="sc-shift" class="form-label">
-                    @Resources["PMS050", "SC001"]
-                </label>
-                <input id="sc-shift" name="sc-shift" class="form-control" type="text" placeholder="@Resources["PMS030", "SC001"]" />
+            @* <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-1  text-left text-md-right mt-2 mb-2">@MessageResources["SWS120", "SC001"]  </label>
+            <div class="col-lg-2 col-sm-4 mt-2 mb-2">
+            <input id="sc-list" style="width:100%;" />
+            </div> *@
+
+            <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-1  text-left text-md-right mt-2 mb-2">Shift / Pattern Name :</label>
+            <div class="col-lg-2 col-sm-4 mt-2 mb-2">
+                <input id="sc-shift-pattern" style="width:100%;" />
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <label for="sc-status" class="form-label">
-                    @Resources["PMS050", "SC002"]
-                </label>
-                <input id="sc-status" name="sc-status" class="form-control" type="text" placeholder="@Resources["PMS030", "SC002"]" />
-            </div>
 
-          
 
 
         </div>
+
     </div>
 </div>
-
-
 
 
 
@@ -133,15 +127,18 @@
 
 <div id="grid-inquiry" class="mt-3"></div>
 
-@await Html.PartialAsync("pms051_dialog")
+@await Html.PartialAsync("pms053_dialog")
+
+
+
+
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms050/pms052_funtion.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms050/pms052_eventbutton.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms050/pms053_dialog.js" asp-append-version="true"></script>
+
 
 @* 
-<script type="text/javascript" src="~/assets/js/screenfuntion/Master/Shift_Pattern/Shift_Pattern_Header/Shift_Pattern_Header_funtion.js" asp-append-version="true"></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/Master/Shift_Pattern/Shift_Pattern_Header/Shift_Pattern_Header_eventButton.js" asp-append-version="true"></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/Master/Shift_Pattern/Shift_Pattern_Header/Shift_Pattern_Header_funtion_dialog.js" asp-append-version="true"></script>
- *@
-
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms050/pms050_funtion.js" asp-append-version="true"></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms050/pms050_eventbutton.js" asp-append-version="true"></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms050/pms051_dialog.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/Master/Shift_Pattern/Shift_Pattern_Details/Shift_Pattern_Details_funtion.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/Master/Shift_Pattern/Shift_Pattern_Details/Shift_Pattern_Details_eventButton.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/Master/Shift_Pattern/Shift_Pattern_Details/Shift_Pattern_Details_funtion_dialog.js" asp-append-version="true"></script> *@
 

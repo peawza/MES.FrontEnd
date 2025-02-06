@@ -5,7 +5,7 @@ var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
 
 // Input  Search
-let sc_process_code, sc_process_name, sc_status;
+let sc_ng_code, sc_ng_name, sc_status;
 
 
 // DataAPI
@@ -18,31 +18,17 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
     await CreateUI();
     await grid_inquire.using([]);
-    //[
-    //    dataStatus,
-    //    dataGetBUItemCombo,
-    //    dataGetBusinessUnitCombo,
-    //    dataGetAdjustmentType
-    //] = await Promise.all([
-    //    APIPost("/api/common/getmisc", { MiscTypeCode: "AdjustmentStatus", Status: "0,1" }),
-    //    APIPost("/api/common/getbuitemcombo", { Item: null }),
-    //    APIPost("/api/common/getbusinessunitcombo", { Origi_Dest: "O" }),
-    //    APIPost("/api/common/getmisc", { MiscTypeCode: "AdjustmentType", Status: "0,1" }),
-    //]);
-    //sc_adjustment_status.setDataSource(dataAdjustmentStatus);
-    //sc_bu_item_code.setDataSource(dataGetBUItemCombo);
-    //sc_business_unit.setDataSource(dataGetBusinessUnitCombo);
-    //ip_details_select_adjustment_type.setDataSource(dataGetAdjustmentType);
+   
 });
 async function CreateUI() {
-    $("#sc-process-code").kendoTextBox({
+    $("#sc-ng-code").kendoTextBox({
 
     });
-    sc_process_code = $("#sc-process-code").data("kendoTextBox");
-    $("#sc-process-name").kendoTextBox({
+    sc_ng_code = $("#sc-ng-code").data("kendoTextBox");
+    $("#sc-ng-name").kendoTextBox({
 
     });
-    sc_process_name = $("#sc-process-name").data("kendoTextBox");
+    sc_ng_name = $("#sc-ng-name").data("kendoTextBox");
   
 
     $("#sc-status").kendoDropDownList({
@@ -168,11 +154,14 @@ let grid_inquire = {
             }, excelExport: function (e) {
                 GridExcelExport(e, "Miscellaneous")
             },
-            toolbar: ["search"],
+            toolbar: [
+                setPagerInfoToToolbar(grid_inquire.grid_ID),
+                { name: "search", text: Resources("COMMON", "ToolbarSearch") }
+            ],
             columns: [
                 {
 
-                    title: Resources("PMS020","GD001"),
+                    title: Resources("PMS080","GD001"),
                     width: "60px", attributes: { class: "k-text-center " },
                     headerAttributes: { "data-no-reorder": "true" }
                 },
@@ -259,32 +248,32 @@ let grid_inquire = {
                 {
 
                     field: "ProcessCode",
-                    title: Resources("PMS020", "GD002"),
+                    title: Resources("PMS080", "GD002"),
                     attributes: { class: "k-text-right" },
                     width: "250px"
                 },
                 //{
                 //    field: "ProcessNameTH",
-                //    title: Resources("PMS020", "GD003"),
+                //    title: Resources("PMS080", "GD003"),
                 //    attributes: { class: "k-text-left" },
                 //    width: "200px"
                 //},
                 {
                     field: "ProcessNameEN",
-                    title: Resources("PMS020", "GD004"),
+                    title: Resources("PMS080", "GD003"),
                     attributes: { class: "k-text-left" },
                     width: "200px"
                 },
                 {
                     field: "Status",
-                    title: Resources("PMS020", "GD005"),
+                    title: Resources("PMS080", "GD004"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
                     filterable: kendo_grid.filter.filter_true_false
                 },
                 {
                     field: "CreateBy",
-                    title: Resources("PMS020", "GD006"),
+                    title: Resources("PMS080", "GD005"),
                     attributes: { class: "text-left " },
                     width: "200px"
                     //template: dataItem => grid.dataSource.indexOf(dataItem) + 1
@@ -292,7 +281,7 @@ let grid_inquire = {
 
                 {
                     field: "CreateDateTime",
-                    title: Resources("PMS020", "GD007"),
+                    title: Resources("PMS080", "GD006"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
@@ -307,13 +296,13 @@ let grid_inquire = {
                 {
                     
                     field: "UpdateBy",
-                    title: Resources("PMS020", "GD008"),
+                    title: Resources("PMS080", "GD007"),
                     attributes: { class: "text-left " },
                     width: "200px"
                 },
                 {
                     field: "UpdateDateTime",
-                    title: Resources("PMS020", "GD009"),
+                    title: Resources("PMS080", "GD008"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
@@ -334,6 +323,7 @@ let grid_inquire = {
                     preferedHeight = 540;
                 }
                 app.ui.toggleVScrollable(grid, { height: preferedHeight });
+                movePagerInfoToToolbar(grid_inquire.grid_ID)
             },
             noRecords: kendo_grid.noRecords
 
@@ -345,5 +335,7 @@ let grid_inquire = {
             pageSize: GridPageSizeDefault()
         });
         $(grid_inquire.grid_ID).data("kendoGrid").setDataSource(dataSource);
+
+
     },
 }

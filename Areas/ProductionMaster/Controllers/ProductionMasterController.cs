@@ -19,7 +19,7 @@ namespace WEB.APP.Areas.Production.Controllers
 
         [SiteMapTitle(ObjectId = "PMS010")]
         //[ApplicationAuthorize("S003")]
-        [Route("~/production/master/pms020", Name = "PMS010")]
+        [Route("~/production/master/pms010", Name = "PMS010")]
         public IActionResult pms010_Inquiry()
         {
             return View();
@@ -59,6 +59,15 @@ namespace WEB.APP.Areas.Production.Controllers
             return View();
         }
 
+        [SiteMapTitle(ObjectId = "PMS052")]
+        //[ApplicationAuthorize("S003")]
+        [Route("~/production/master/pms052", Name = "PMS052")]
+        public IActionResult pms052_Inquiry()
+        {
+            return View();
+        }
+
+
         [SiteMapTitle(ObjectId = "PMS060")]
         //[ApplicationAuthorize("S003")]
         [Route("~/production/master/pms060", Name = "PMS060")]
@@ -88,7 +97,7 @@ namespace WEB.APP.Areas.Production.Controllers
 
         [SiteMapTitle(ObjectId = "PMS100")]
         //[ApplicationAuthorize("S003")]
-        [Route("~/production/master/pms080", Name = "PMS100")]
+        [Route("~/production/master/pms100", Name = "PMS100")]
         public IActionResult pms100_Inquiry()
         {
             return View();

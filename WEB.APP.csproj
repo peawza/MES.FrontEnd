@@ -26,12 +26,10 @@
 
   <ItemGroup>
     <Content Remove="Areas\ProductionMaster\Views\ProductionMaster\pms060_Inquiry.cshtml" />
-    <Content Remove="Areas\ProductionMaster\Views\ProductionMaster\pms080_Inquiry.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="Areas\ProductionMaster\Views\ProductionMaster\pms060_Inquiry.cshtml" />
-    <Compile Include="Areas\ProductionMaster\Views\ProductionMaster\pms080_Inquiry.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\ProductionMaster\Views\ProductionMaster\pms080\" />
     <Folder Include="Areas\UserManages\Models\" />
     <Folder Include="Extensions\Models\" />
     <Folder Include="Areas\ProductionMaster\Models\" />
@@ -56,7 +55,6 @@
     <Folder Include="wwwroot\assets\js\screenfuntion\production\master\pms070\" />
     <Folder Include="wwwroot\assets\js\screenfuntion\production\master\pms040\" />
     <Folder Include="wwwroot\assets\js\screenfuntion\production\master\pms010\" />
-    <Folder Include="wwwroot\assets\js\screenfuntion\production\master\pms050\" />
     <Folder Include="wwwroot\assets\js\screenfuntion\production\master\startupScreennnn\" />
     <Folder Include="wwwroot\assets\js\screenShared\" />
   </ItemGroup>

@@ -33,9 +33,14 @@ var axios_loading = $("#axios-loading").kendoNotification({
     ]
 }).data("kendoNotification");
 $(document).ready(async function () {
-    if ($("#ajax-notifications").data("kendoNotification") != undefined) {
-        $("#ajax-notifications").data("kendoNotification")._events = $("#axios-loading").data("kendoNotification")._events
+    try {
+        if ($("#ajax-notifications").data("kendoNotification") != undefined) {
+            $("#ajax-notifications").data("kendoNotification")._events = $("#axios-loading").data("kendoNotification")._events
+        }
+    } catch (e) {
+        console.error("", e);
     }
+    
 });
 
 

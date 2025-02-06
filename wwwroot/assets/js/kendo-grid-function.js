@@ -120,13 +120,13 @@ function GridExcelExport(e, filename, displayColumeNo) {
             } else if (cell.value && typeof cell.value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?$/.test(cell.value)) {
                 var date = kendo.parseDate(cell.value, "yyyy-MM-ddTHH:mm:ss");
                 if (date) {
-                    cell.value = kendo.toString(date, "dd/MM/yyyy HH:mm:ss");
+                    cell.value = date;
                     cell.format = "dd/MM/yyyy HH:mm:ss";
                 }
             } else if (cell.value && typeof cell.value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(cell.value)) {
                 var date = kendo.parseDate(cell.value, "yyyy-MM-ddTHH:mm:ss");
                 if (date) {
-                    cell.value = kendo.toString(date, "dd/MM/yyyy");
+                    cell.value = date;
                     cell.format = "dd/MM/yyyy";
                 }
             }

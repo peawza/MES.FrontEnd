@@ -15,7 +15,13 @@
         $(ID).click(function () {
             $(ID).data("kendoDatePicker").open();
         });
-    }, Input: {
+    }, TimePickerClick: function (ID) {
+        $(ID).click(function () {
+            $(ID).data("kendoTimePicker").open();
+        });
+    },
+
+    Input: {
         Readonly: async function (Selector, enable, condition) {
 
             const from = await document.getElementById(Selector);
@@ -84,6 +90,68 @@
                 else if (input.getAttribute("data-role") === "timepicker") {
                     $("#" + input.getAttribute("id")).data("kendoTimePicker").enable(enable);
                 }
+                else if (input.getAttribute("data-role") === "datetimepicker") {
+                    $("#" + input.getAttribute("id")).data("kendoDateTimePicker").enable(enable);
+                } else if (input.getAttribute("type") === "checkbox") {
+                    if (!enable) {
+                        document.getElementById(input.getAttribute("id")).setAttribute("disabled", "true");
+                    } else {
+                        document.getElementById(input.getAttribute("id")).removeAttribute("disabled", "false");
+                    }
+
+                } else if (input.getAttribute("type") === "radio") {
+                    if (!enable) {
+                        document.getElementById(input.getAttribute("id")).setAttribute("disabled", "true");
+                    } else {
+                        document.getElementById(input.getAttribute("id")).removeAttribute("disabled", "false");
+                    }
+
+                }
+            });
+
+            var TagInputTextarea = await from.getElementsByTagName('textarea');
+            Textarea = ["remark-approve", "remark-reject", "remark-submit"];
+            TagInputTextarea.forEach(input => {
+                if (Textarea.includes(input.id)) {
+
+                } else {
+                    $("#" + input.id).data('kendoTextArea').enable(enable);
+                }
+
+            })
+        },
+        DisableCondition: async function (Selector, enable, condition) {
+            const from = await document.getElementById(Selector);
+            var TagInput = await from.getElementsByTagName('input');
+            TagInput.forEach(input => {
+
+
+
+                if (condition.includes(input.getAttribute("id")) == true) {
+                    //console.log(input.getAttribute("data-role"));
+                    //console.log(condition.includes(input.getAttribute("id")) == true);
+                }
+                else if (input.getAttribute("data-role") === "dropdownlist") {
+                    $("#" + input.getAttribute("id")).data("kendoDropDownList").enable(enable);
+                }
+                else if (input.getAttribute("data-role") === "textbox") {
+                    $("#" + input.getAttribute("id")).data("kendoTextBox").enable(enable);
+
+                }
+                else if (input.getAttribute("data-role") === "numerictextbox") {
+                    $("#" + input.getAttribute("id")).data("kendoNumericTextBox").enable(enable);
+
+                } else if (input.getAttribute("data-role") === "upload") {
+                    $("#" + input.getAttribute("id")).data("kendoUpload").enable(enable);
+                }
+                else if (input.getAttribute("data-role") === "datepicker") {
+                    $("#" + input.getAttribute("id")).data("kendoDatePicker").enable(enable);
+                }
+                else if (input.getAttribute("data-role") === "timepicker") {
+                    //console.log("timepicker => ", input.getAttribute("id"));
+                    $("#" + input.getAttribute("id")).data("kendoTimePicker").enable(enable);
+                }
+
                 else if (input.getAttribute("data-role") === "datetimepicker") {
                     $("#" + input.getAttribute("id")).data("kendoDateTimePicker").enable(enable);
                 } else if (input.getAttribute("type") === "checkbox") {

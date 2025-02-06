@@ -10,27 +10,50 @@
         @*     <fieldset class="scheduler-border col-12 ">
         <legend class="scheduler-border"> NG Type Maintenance</legend> *@
         <div class="control-group ">
-            <form id="ng-type-information">
-                <div class="row pt-2">
-                    <input id="status-mode" type="hidden" value="" />
-                    <input id="return-screap-id" type="hidden" value="" />
+            <form id="input-information">
+                <input id="status-mode" type="hidden" value="" />
+                @* <input id="ip-shiftcode" type="hidden" value="" /> *@
+                <input id="ip-pattern" type="hidden" value="" />
 
-                    <label for="search" class="col-form-label  col-4"> Shift / Pattern Code  <span class="text-color-red"> *</span> </label>
-                    <div class="col-4">
-                        <input name="ip-shift-code" id="ip-shift-code" style="width:100%;" required validationMessage="Shift / Pattern Code is required" />
-                    </div>
 
+
+
+
+
+
+                @* <div class="row pt-2">
+                <input id="status-mode" type="hidden" value="" />
+                <input id="return-screap-id" type="hidden" value="" />
+
+                <label for="search" class="col-form-label  col-4"> Shift / Pattern Code  <span class="text-color-red"> *</span> </label>
+                <div class="col-4">
+                <input name="ip-shift-code" id="ip-shift-code" style="width:100%;" required validationMessage="Shift / Pattern Code is required" />
                 </div>
+
+                </div> *@
                 <div class="row pt-2">
                     <label class="col-4 col-form-label block-label">
                         Shift / Pattern Name
                         <span style="color: red">*</span>
                     </label>
                     <span class="col-4">
-                        <input name="ip-shift-name" id="ip-shift-name" style="width:100%;" required validationMessage="Shift / Pattern Name is required">
+                        <input name="ip-shift-code" id="ip-shift-code" style="width:100%;" required validationMessage="Shift / Pattern Name is required">
                     </span>
 
                 </div>
+
+
+                <div class="row pt-2">
+                    <label class="col-4 col-form-label block-label">
+                        Shift Type :
+                        <span style="color: red">*</span>
+                    </label>
+                    <span class="col-4">
+                        <input id="ip-shift-type" style="width:100%;" name="ip-scrap-id" required validationMessage="Shift Type required" />
+                    </span>
+
+                </div>
+
                 <div class="row pt-2">
                     <label class="col-4 col-form-label block-label">
                         Start Time
@@ -53,24 +76,17 @@
                 </div>
 
 
-                @* <div class="row pt-2">
-                <label class="col-4 col-form-label block-label">
-                Description
-                </label>
-                <span class="col-4">
-                <textarea id="ip-description"></textarea>
-                </span>
-
-                </div> *@
-
                 <div class="row pt-2">
-                    <div class="col-4 ml-2"></div>
-                    <span class=" col-4">
-                        <input type="checkbox" id="ip-active" />
-
+                    <label class="col-4 col-form-label block-label">
+                        Description
+                    </label>
+                    <span class="col-6">
+                        <textarea id="ip-description"></textarea>
                     </span>
 
                 </div>
+
+
 
             </form>
         </div>

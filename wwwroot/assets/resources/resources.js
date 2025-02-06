@@ -422,5 +422,99 @@ let _data_LocalizedResources ={
       "ResourcesTH": "Status",
       "ResourcesEN": "Status"
     }
+  ],
+  "PMS080": [
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "SC001",
+      "ResourcesTH": "NG Code",
+      "ResourcesEN": "NG Code"
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "SC002",
+      "ResourcesTH": "NG Name",
+      "ResourcesEN": "NG Name"
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "SC003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No.",
+      "ResourcesEN": "No."
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "GD002",
+      "ResourcesTH": "NG Code",
+      "ResourcesEN": "NG Code"
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "GD003",
+      "ResourcesTH": "NG Name",
+      "ResourcesEN": "NG Name"
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Created By",
+      "ResourcesEN": "Created By"
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Created DateTime",
+      "ResourcesEN": "Created DateTime"
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "GD007",
+      "ResourcesTH": "UpdateBy",
+      "ResourcesEN": "UpdateBy"
+    },
+    {
+      "ScreenCode": "PMS080",
+      "ObjectID": "GD008",
+      "ResourcesTH": "Updated Date-Time",
+      "ResourcesEN": "Updated Date-Time"
+    }
+  ],
+  "PMS081": [
+    {
+      "ScreenCode": "PMS081",
+      "ObjectID": "IP001",
+      "ResourcesTH": "NG Code",
+      "ResourcesEN": "NG Code"
+    },
+    {
+      "ScreenCode": "PMS081",
+      "ObjectID": "IP002",
+      "ResourcesTH": "NG Name",
+      "ResourcesEN": "NG Name"
+    },
+    {
+      "ScreenCode": "PMS081",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS081",
+      "ObjectID": "H001",
+      "ResourcesTH": "NG Master Detail",
+      "ResourcesEN": "NG Master Detail"
+    }
   ]
 }

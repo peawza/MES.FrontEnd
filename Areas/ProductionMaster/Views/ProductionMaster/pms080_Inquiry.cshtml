@@ -1,47 +1,42 @@
-﻿@using Master.Libs.Core
-@using Master.Libs.Infrastructure.Localization
+﻿
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.AspNetCore.Mvc
 
 
-<style>
-    /* .k-grid td {
-            border-bottom: 1px solid white;
-            border-right: 1px solid white;
-        } */
 
-    .k-grid button.k-button-icontext {
-        color: white;
-        /*  */
-    }
-
-    .btn-icon-grid {
-        background-color: #11439E !important;
-    }
-
-    /* .k-grid {
-            border: 0.1mm solid white;
-        } */
-
-    /* .k-window-titlebar {
-            background-color: #11439E;
-            color: white;
-        } */
-
-</style>
 
 @{
+
     var objectId = (string)ViewBag.ObjectId;
+    /*
     var permissions = new
-    {
+        {
         AllowView = User.HasPermission(objectId, PermissionNames.View.FunctionCode),
         AllowNew = User.HasPermission(objectId, PermissionNames.New.FunctionCode),
+
         AllowEdit = User.HasPermission(objectId, PermissionNames.Edit.FunctionCode),
+
+        AllowDelete = User.HasPermission(objectId, PermissionNames.Delete.FunctionCode),
+
         AllowExport = User.HasPermission(objectId, PermissionNames.Export.FunctionCode),
-        AllowPrint = User.HasPermission(objectId, PermissionNames.Print.FunctionCode),
-        AllowDelete = User.HasPermission(objectId, PermissionNames.Delete.FunctionCode)
+
+        AllowPrint = User.HasPermission(objectId, PermissionNames.Print.FunctionCode)
+
     };
+    */
+
+    var permissions = new
+    {
+        AllowView = true,
+        AllowNew = true,
+        AllowEdit = true,
+        AllowDelete = true,
+        AllowExport = true,
+        AllowPrint = true
+    };
+
 }
+
 
 <script type="text/javascript">
     let permissions = {
@@ -51,24 +46,23 @@
     var messageDialog = new MessageDialog();
 </script>
 
-<link rel="stylesheet" href="~/assets/css/New_Grid.css" asp-append-version="true" />
 
-<div id="search-container" class="card bg-light">
+@* <div id="search-container" class="card bg-light">
     <div class="card-body">
         <div class="row form-group justify-content-center">
 
-            @* <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-1  text-left text-md-right mt-2 mb-2">@MessageResources["SWS120", "SC001"]  </label>
+            <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-1  text-left text-md-right mt-2 mb-2">NG Code  </label>
             <div class="col-lg-2 col-sm-4 mt-2 mb-2">
-            <input id="sc-list" style="width:100%;" />
-            </div> *@
+                <input id="sc-ngtype-code" style="width:100%;" />
+            </div>
 
-            <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-2  text-left text-md-right mt-2 mb-2"> NG Type Name :</label>
+            <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-1  text-left text-md-right mt-2 mb-2"> NG Name :</label>
             <div class="col-lg-2 col-sm-4 mt-2 mb-2">
                 <input id="sc-ngtype-name" style="width:100%;" />
             </div>
 
 
-            <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-2 text-left text-md-right mt-2 mb-2">Status :</label>
+            <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-1 text-left text-md-right mt-2 mb-2">Status :</label>
             <div class="col-lg-2 col-sm-4 mt-2 mb-2">
                 <input id="sc-status" style="width:100%;" />
             </div>
@@ -77,13 +71,43 @@
         </div>
 
     </div>
+</div> *@
+
+
+
+<div id="search-container" class="card bg-light">
+    <div class="card-body m-2">
+        <div class="row g-3 d-flex justify-content-lg-center">
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <label for="sc-process-code" class="form-label">
+                    @Resources["PMS080", "SC001"]
+                </label>
+                <input id="sc-ngtype-code" class="form-control" type="text" placeholder="@Resources["PMS080", "SC001"]" />
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <label for="sc-process-name" class="form-label">
+                    @Resources["PMS080", "SC002"]
+                </label>
+                <input id="sc-ngtype-name" class="form-control" type="text" placeholder="@Resources["PMS080", "SC002"]" />
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <label for="sc-status" class="form-label">
+                    @Resources["PMS080", "SC003"]
+                </label>
+                <input id="sc-status" class="form-control" type="text" />
+            </div>
+
+
+        </div>
+    </div>
 </div>
-
-
 
 <div id="message-container" class="alert alert-danger animated fadeIn mt-1" style="display:none"></div>
 
-@* <div class="w-100  mt-2 justify-content-right">
+<div class="w-100  mt-2 justify-content-right">
 
     <div class="row pl-1 pr-1">
         <div class="mr-auto" style="margin-left:10px">
@@ -109,31 +133,14 @@
         </div>
 
     </div>
-</div> *@
-
-<div class="row w-100 mt-1">
-    <div class="col-auto text-left">
-        @if (permissions.AllowNew)
-        {
-            @Html.NewButton().Events(ev => ev.Click("newdocumentButtonClicked"))
-        }
-    </div>
-
-    <div class="col text-right" style="margin-right: -15px; padding-right: 0px;">
-        @Html.SearchButton().Events(ev => ev.Click("searchButtonClicked"))
-        @if (permissions.AllowExport)
-        {
-            @Html.ExportButton().Events(ev => ev.Click("exportButtonClicked"))
-        }
-        @Html.ClearButton().Events(ev => ev.Click("clearButtonClicked"))
-    </div>
 </div>
-<div class="animated fadeIn mt-1">
-    <div id="grid-inquiry" class="mt-3"></div>
-</div>
-@await Html.PartialAsync("NGMaster_dialog")
 
 
-<script type="text/javascript" src="~/assets/js/screenfuntion/Master/NGType/NGType_funtion.js" asp-append-version="true"></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/Master/NGType/NGType_eventButton.js" asp-append-version="true"></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/Master/NGType/NGType_funtion_dialog.js" asp-append-version="true"></script>
+<div id="grid-inquiry" class="mt-3"></div>
+
+@await Html.PartialAsync("pms081_dialog")
+
+
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms080/pms080_funtion.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms080/pms080_eventButton.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms080/pms081_dialog.js" asp-append-version="true"></script>

@@ -13,25 +13,20 @@ let hidden_update_date = $("#hidden-update-date-time");
 
 //Input
 
-let ip_process_code, ip_Process_name_en, ip_status
+let ip_ng_code, ip_ng_name, ip_status
 let arryDisableInputNoWorking = ["ip-item-group-name", "ip-status"]
 window.addEventListener("load", async (event) => {
     //console.log("load !");
-    $("#ip-process-code").kendoTextBox({
+    $("#ip-ng-code").kendoTextBox({
 
     });
-    ip_process_code = $("#ip-process-code").data("kendoTextBox");
-    $("#ip-Process-name-en").kendoTextBox({
+    ip_ng_code = $("#ip-ng-code").data("kendoTextBox");
+    $("#ip-ng-name").kendoTextBox({
 
     });
-    ip_Process_name_en = $("#ip-Process-name-en").data("kendoTextBox");
-    //$("#ip-process-name-th").kendoTextBox({
-
-    //});
-    //ip_process_name_th = $("#ip-process-name-th").data("kendoTextBox");
+    ip_ng_name = $("#ip-ng-name").data("kendoTextBox");
+    
     $("#ip-status").kendoSwitch({
-        //checked: true,
-        //label: "Active",
     });
 
     ip_status = $("#ip-status").data("kendoSwitch");
@@ -165,11 +160,7 @@ let dialog_windows = {
 
 
         } else {
-            hidden_create_by.val("");
-            hidden_create_date.val("");
-            hidden_update_by.val("");
-            hidden_update_date.val("");
-            ip_status.value(1);
+            
             //ip_status.value("");
         }
 
@@ -223,7 +214,7 @@ function onSaveDialog(e) {
 var kendoWindow = $("#window-dialog").kendoWindow({
     width: "50%",
     /*height: '60%',*/
-    title: `Process Master Detail`,
+    title: Resources("PMS081","H001"),
     visible: false,
     modal: true,
     draggable: false,
@@ -234,7 +225,7 @@ var kendoWindow = $("#window-dialog").kendoWindow({
 
     }
 });
-//kendoWindow.title(`<i class="fas fa-database" style="padding-right:10px;"></i> Process Master Detail`);
+//kendoWindow.title(`<i class="fas fa-database" style="padding-right:10px;"></i> ng Master Detail`);
 // Wait for the window to initialize and then modify the title
 setTimeout(function () {
     var titleElement = $("#window-dialog_wnd_title"); // Select the title element
