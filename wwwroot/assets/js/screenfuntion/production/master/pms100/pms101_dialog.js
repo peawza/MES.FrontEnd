@@ -13,18 +13,18 @@ let hidden_update_date = $("#hidden-update-date-time");
 
 //Input
 
-let ip_ng_code, ip_ng_name, ip_status
+let ip_fg_code, ip_fg_name, ip_status
 let arryDisableInputNoWorking = ["ip-item-group-name", "ip-status"]
 window.addEventListener("load", async (event) => {
     //console.log("load !");
-    $("#ip-ng-code").kendoTextBox({
+    $("#ip-fg-code").kendoTextBox({
 
     });
-    ip_ng_code = $("#ip-ng-code").data("kendoTextBox");
-    $("#ip-ng-name").kendoTextBox({
+    ip_fg_code = $("#ip-fg-code").data("kendoTextBox");
+    $("#ip-fg-name").kendoTextBox({
 
     });
-    ip_ng_name = $("#ip-ng-name").data("kendoTextBox");
+    ip_fg_name = $("#ip-fg-name").data("kendoTextBox");
     
     $("#ip-status").kendoSwitch({
     });
@@ -148,31 +148,28 @@ let dialog_windows = {
 
         //console.log("Mode =>", ip_hiden_Mode.val(), data);
         if (ip_hiden_Mode.val() == "edit") {
-            hidden_create_by.val(data.CreateBy);
-            hidden_create_date.val(common.DateTime(data.CreateDateTime));
-            hidden_update_by.val(data.UpdateBy);
-            hidden_update_date.val(common.DateTime(data.UpdateDateTime));
 
 
-            ip_item_group_code.value(data.ItemGroupCode);
-            ip_item_group_name.value(data.ItemGroupName);
-            ip_status.value(data.Status);
-
+            
 
         } else {
-            ip_status.value(true);
+            ip_status.value(true)
             //ip_status.value("");
         }
 
 
     },
     getValue: () => {
+
+
         return {
-            NGCode: ip_ng_code.value(),
-            NGName: ip_ng_name.value(),
+            FGCode: ip_fg_code.value(),
+            FGName: ip_fg_name.value(),
             Status: Number(ip_status.value()),
 
         }
+
+
     }
 
 }

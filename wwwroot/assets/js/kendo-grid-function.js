@@ -129,7 +129,14 @@ function GridExcelExport(e, filename, displayColumeNo) {
                     cell.value = date;
                     cell.format = "dd/MM/yyyy";
                 }
+            } else if (cell.value && typeof cell.value === "object") {
+                var date = kendo.parseDate(cell.value, "yyyy-MM-ddTHH:mm:ss");
+                if (date) {
+                    cell.value = date;
+                    cell.format = "dd/MM/yyyy HH:mm:ss";
+                }
             }
+            console.log("typeof cell.value =>", typeof cell.value);
         }
     }
 }
@@ -243,6 +250,19 @@ let kendo_grid = {
         },
 
     },
+    template: {
+        Active_Inactive: (data) => {
+            textDisplat =``
+            if (data == true) {
+                textDisplat = `<i class="fa-solid fa-circle" style="color: green;"></i>  ${Resources("COMMON", "Active")}`
+
+            } else {
+                textDisplat = `<i class="fa-solid fa-circle" style="color: red;"></i>  ${Resources("COMMON","Inactive")}`
+            }
+            return textDisplat
+        }
+    },
+
     noRecords:
     {
         template: "<div class='empty-grid'></div>"

@@ -8,7 +8,6 @@ async function exportButtonClicked(e) {
     var gridexport = $(grid_inquire.grid_ID).data("kendoGrid");
     gridexport.saveAsExcel();
 
-
 }
 
 

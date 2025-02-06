@@ -13,18 +13,18 @@ let hidden_update_date = $("#hidden-update-date-time");
 
 //Input
 
-let ip_ng_code, ip_ng_name, ip_status
+let ip_stop_reason_code, ip_stop_reason_name, ip_status
 let arryDisableInputNoWorking = ["ip-item-group-name", "ip-status"]
 window.addEventListener("load", async (event) => {
     //console.log("load !");
-    $("#ip-ng-code").kendoTextBox({
+    $("#ip-stop-reason-code").kendoTextBox({
 
     });
-    ip_ng_code = $("#ip-ng-code").data("kendoTextBox");
-    $("#ip-ng-name").kendoTextBox({
+    ip_stop_reason_code = $("#ip-stop-reason-code").data("kendoTextBox");
+    $("#ip-stop-reason-name").kendoTextBox({
 
     });
-    ip_ng_name = $("#ip-ng-name").data("kendoTextBox");
+    ip_stop_reason_name = $("#ip-stop-reason-name").data("kendoTextBox");
     
     $("#ip-status").kendoSwitch({
     });
@@ -148,17 +148,9 @@ let dialog_windows = {
 
         //console.log("Mode =>", ip_hiden_Mode.val(), data);
         if (ip_hiden_Mode.val() == "edit") {
-            hidden_create_by.val(data.CreateBy);
-            hidden_create_date.val(common.DateTime(data.CreateDateTime));
-            hidden_update_by.val(data.UpdateBy);
-            hidden_update_date.val(common.DateTime(data.UpdateDateTime));
-
-
-            ip_item_group_code.value(data.ItemGroupCode);
-            ip_item_group_name.value(data.ItemGroupName);
+            ip_stop_reason_code.value(data.StopReasonCode);
+            ip_stop_reason_name.value(data.StopReasonName);
             ip_status.value(data.Status);
-
-
         } else {
             ip_status.value(true);
             //ip_status.value("");
@@ -168,8 +160,8 @@ let dialog_windows = {
     },
     getValue: () => {
         return {
-            NGCode: ip_ng_code.value(),
-            NGName: ip_ng_name.value(),
+            StopReasonCode: ip_stop_reason_code.value(),
+            StopReasonName: ip_stop_reason_name.value(),
             Status: Number(ip_status.value()),
 
         }
@@ -210,7 +202,7 @@ function onSaveDialog(e) {
 var kendoWindow = $("#window-dialog").kendoWindow({
     width: "50%",
     /*height: '60%',*/
-    title: Resources("PMS081","H001"),
+    title: Resources("PMS071","H001"),
     visible: false,
     modal: true,
     draggable: false,

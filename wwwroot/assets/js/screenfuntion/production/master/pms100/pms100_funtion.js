@@ -4,6 +4,45 @@ var firstDay = new Date(y, m , 1);
 var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
 
+
+//Data Search JSON
+function getRandomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString();
+}
+
+function getRandomBoolean() {
+    return Math.random() < 0.5;
+}
+
+function getRandomString(prefix, length = 3) {
+    return prefix + Math.random().toString(36).substring(2, 2 + length).toUpperCase();
+}
+
+function generateRandomData(count = 10) {
+    const users = ["User1", "User2", "User3", "User4", "User5", "User6", "User7", "User8"];
+    const data = [];
+
+    for (let i = 0; i < count; i++) {
+        //const createDate = getRandomDate(new Date(2023, 0, 1), new Date());
+        //const updateDate = getRandomDate(new Date(createDate), new Date());
+
+        data.push({
+            FGCode: getRandomString("FG"),
+            FGName: `Product ${i+1}`,
+            Status: getRandomBoolean(),
+            CreateBy: users[Math.floor(Math.random() * users.length)],
+            CreateDateTime: new Date(),
+            UpdateBy: users[Math.floor(Math.random() * users.length)],
+            UpdateDateTime: new Date()
+        });
+    }
+
+    return data;
+}
+
+
+let DataSearch = generateRandomData(100)
+
 // Input  Search
 let sc_ng_code, sc_ng_name, sc_status;
 
@@ -61,7 +100,8 @@ async function LoadDefault() {
 
     $("#message-container").css("display", "none");
     await ui.Input.Clear("search-container", () => {
-       
+
+
     });
     await app.ui.clearAlert("#message-container");
     app.ui.uiEnable(["#export-button"], false);
@@ -78,10 +118,10 @@ async function serachData() {
 
     try {
         //let DataCallApi = await APIPost("/api/transaction/sts050/searchtransfer", SendData);
-        let DataCallApi = [];
+        let DataCallApi = DataSearch;
         await app.ui.clearAlert("#message-container");
 
-        if (DataCallApi.ResultHeader.length == 0) {
+        if (DataCallApi.length == 0) {
             Event.showWarning(Message("Warning", "DataNotFound"));
             grid_inquire.using([]);
             app.ui.uiEnable(["#export-button"], false);
@@ -158,10 +198,11 @@ let grid_inquire = {
             columns: [
                 {
 
-                    title: Resources("PMS080","GD001"),
+                    title: Resources("PMS100","GD001"),
                     width: "60px", attributes: { class: "k-text-center " },
                     headerAttributes: { "data-no-reorder": "true" },
                     template: dataItem => grid.dataSource.indexOf(dataItem) + 1
+
                 },
                 {
                     width: "160px", attributes: { class: "k-text-center " },
@@ -245,33 +286,33 @@ let grid_inquire = {
 
                 {
 
-                    field: "ProcessCode",
-                    title: Resources("PMS080", "GD002"),
+                    field: "FGCode",
+                    title: Resources("PMS100", "GD002"),
                     attributes: { class: "k-text-right" },
                     width: "250px"
                 },
-                //{
-                //    field: "ProcessNameTH",
-                //    title: Resources("PMS080", "GD003"),
-                //    attributes: { class: "k-text-left" },
-                //    width: "200px"
-                //},
                 {
-                    field: "ProcessNameEN",
-                    title: Resources("PMS080", "GD003"),
+                    field: "FGName",
+                    title: Resources("PMS100", "GD003"),
                     attributes: { class: "k-text-left" },
                     width: "200px"
                 },
                 {
                     field: "Status",
-                    title: Resources("PMS080", "GD004"),
+                    title: Resources("PMS100", "GD004"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
-                    filterable: kendo_grid.filter.filter_true_false
+                    filterable: kendo_grid.filter.filter_true_false,
+                    template: (data) => {
+
+                        return kendo_grid.template.Active_Inactive(data.Status)
+
+                    }
+                    
                 },
                 {
                     field: "CreateBy",
-                    title: Resources("PMS080", "GD005"),
+                    title: Resources("PMS100", "GD005"),
                     attributes: { class: "text-left " },
                     width: "200px"
                     //template: dataItem => grid.dataSource.indexOf(dataItem) + 1
@@ -279,7 +320,7 @@ let grid_inquire = {
 
                 {
                     field: "CreateDateTime",
-                    title: Resources("PMS080", "GD006"),
+                    title: Resources("PMS100", "GD006"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
@@ -294,13 +335,13 @@ let grid_inquire = {
                 {
                     
                     field: "UpdateBy",
-                    title: Resources("PMS080", "GD007"),
+                    title: Resources("PMS100", "GD007"),
                     attributes: { class: "text-left " },
                     width: "200px"
                 },
                 {
                     field: "UpdateDateTime",
-                    title: Resources("PMS080", "GD008"),
+                    title: Resources("PMS100", "GD008"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {

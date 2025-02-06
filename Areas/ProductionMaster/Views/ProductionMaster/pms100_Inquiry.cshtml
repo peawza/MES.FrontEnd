@@ -54,21 +54,21 @@
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <label for="sc-process-code" class="form-label">
-                    @Resources["PMS070", "SC001"]
+                    @Resources["PMS100", "SC001"] 
                 </label>
-                <input id="sc-stop-reason-code" class="form-control" type="text" placeholder="@Resources["PMS070", "SC001"]" />
+                <input id="sc-ngtype-code" class="form-control" type="text" placeholder="@Resources["PMS100", "SC001"]" />
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <label for="sc-process-name" class="form-label">
-                    @Resources["PMS070", "SC002"]
+                    @Resources["PMS100", "SC002"]
                 </label>
-                <input id="sc-stop-reason-name" class="form-control" type="text" placeholder="@Resources["PMS070", "SC002"]" />
+                <input id="sc-ngtype-name" class="form-control" type="text" placeholder="@Resources["PMS100", "SC002"]" />
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <label for="sc-status" class="form-label">
-                    @Resources["PMS070", "SC003"]
+                    @Resources["PMS100", "SC003"]
                 </label>
                 <input id="sc-status" class="form-control" type="text" />
             </div>
@@ -111,9 +111,9 @@
 
 <div id="grid-inquiry" class="mt-3"></div>
 
-@await Html.PartialAsync("pms071_dialog")
+@await Html.PartialAsync("pms101_dialog")
 
 
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms070/pms070_funtion.js" asp-append-version="true"></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms070/pms070_eventButton.js" asp-append-version="true"></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms070/pms071_dialog.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms100/pms100_funtion.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms100/pms100_eventButton.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms100/pms101_dialog.js" asp-append-version="true"></script>

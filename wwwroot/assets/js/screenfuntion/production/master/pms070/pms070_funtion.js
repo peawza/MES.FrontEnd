@@ -5,7 +5,7 @@ var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
 
 // Input  Search
-let sc_ng_code, sc_ng_name, sc_status;
+let sc_stop_reason_code, sc_stop_reason_name, sc_status;
 
 
 // DataAPI
@@ -21,14 +21,14 @@ document.addEventListener("DOMContentLoaded", async (event) => {
    
 });
 async function CreateUI() {
-    $("#sc-ng-code").kendoTextBox({
+    $("#sc-stop-reason-code").kendoTextBox({
 
     });
-    sc_ng_code = $("#sc-ng-code").data("kendoTextBox");
-    $("#sc-ng-name").kendoTextBox({
+    sc_stop_reason_code = $("#sc-stop-reason-code").data("kendoTextBox");
+    $("#sc-stop-reason-name").kendoTextBox({
 
     });
-    sc_ng_name = $("#sc-ng-name").data("kendoTextBox");
+    sc_stop_reason_name = $("#sc-stop-reason-name").data("kendoTextBox");
   
 
     $("#sc-status").kendoDropDownList({
@@ -39,7 +39,7 @@ async function CreateUI() {
         dataValueField: "MiscCode"
         , optionLabel: Resources("COMMON","DropDownAll"),
     });
-    sc_adjustment_status = $("#sc-status").data("kendoDropDownList");
+    sc_status = $("#sc-status").data("kendoDropDownList");
 }
 
 // 2
@@ -61,7 +61,9 @@ async function LoadDefault() {
 
     $("#message-container").css("display", "none");
     await ui.Input.Clear("search-container", () => {
-       
+
+
+        
     });
     await app.ui.clearAlert("#message-container");
     app.ui.uiEnable(["#export-button"], false);
@@ -158,7 +160,7 @@ let grid_inquire = {
             columns: [
                 {
 
-                    title: Resources("PMS080","GD001"),
+                    title: Resources("PMS070","GD001"),
                     width: "60px", attributes: { class: "k-text-center " },
                     headerAttributes: { "data-no-reorder": "true" },
                     template: dataItem => grid.dataSource.indexOf(dataItem) + 1
@@ -246,32 +248,32 @@ let grid_inquire = {
                 {
 
                     field: "ProcessCode",
-                    title: Resources("PMS080", "GD002"),
+                    title: Resources("PMS070", "GD002"),
                     attributes: { class: "k-text-right" },
                     width: "250px"
                 },
                 //{
                 //    field: "ProcessNameTH",
-                //    title: Resources("PMS080", "GD003"),
+                //    title: Resources("PMS070", "GD003"),
                 //    attributes: { class: "k-text-left" },
                 //    width: "200px"
                 //},
                 {
                     field: "ProcessNameEN",
-                    title: Resources("PMS080", "GD003"),
+                    title: Resources("PMS070", "GD003"),
                     attributes: { class: "k-text-left" },
                     width: "200px"
                 },
                 {
                     field: "Status",
-                    title: Resources("PMS080", "GD004"),
+                    title: Resources("PMS070", "GD004"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
                     filterable: kendo_grid.filter.filter_true_false
                 },
                 {
                     field: "CreateBy",
-                    title: Resources("PMS080", "GD005"),
+                    title: Resources("PMS070", "GD005"),
                     attributes: { class: "text-left " },
                     width: "200px"
                     //template: dataItem => grid.dataSource.indexOf(dataItem) + 1
@@ -279,7 +281,7 @@ let grid_inquire = {
 
                 {
                     field: "CreateDateTime",
-                    title: Resources("PMS080", "GD006"),
+                    title: Resources("PMS070", "GD006"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
@@ -294,13 +296,13 @@ let grid_inquire = {
                 {
                     
                     field: "UpdateBy",
-                    title: Resources("PMS080", "GD007"),
+                    title: Resources("PMS070", "GD007"),
                     attributes: { class: "text-left " },
                     width: "200px"
                 },
                 {
                     field: "UpdateDateTime",
-                    title: Resources("PMS080", "GD008"),
+                    title: Resources("PMS070", "GD008"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {

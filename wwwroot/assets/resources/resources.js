@@ -227,6 +227,12 @@ let _data_LocalizedResources ={
       "ObjectID": "ToolbarSearch",
       "ResourcesTH": "ค้นหา...",
       "ResourcesEN": "Search..."
+    },
+    {
+      "ScreenCode": "COMMON",
+      "ObjectID": "Inactive",
+      "ResourcesTH": "Inactive",
+      "ResourcesEN": "Inactive"
     }
   ],
   "PMS020": [
@@ -515,6 +521,194 @@ let _data_LocalizedResources ={
       "ObjectID": "H001",
       "ResourcesTH": "NG Master Detail",
       "ResourcesEN": "NG Master Detail"
+    }
+  ],
+  "PMS100": [
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "SC001",
+      "ResourcesTH": "FG Code",
+      "ResourcesEN": "FG Code"
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "SC002",
+      "ResourcesTH": "FG Name",
+      "ResourcesEN": "FG Name"
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "SC003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No.",
+      "ResourcesEN": "No."
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "GD002",
+      "ResourcesTH": "FG Code",
+      "ResourcesEN": "FG Code"
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "GD003",
+      "ResourcesTH": "FG Name",
+      "ResourcesEN": "FG Name"
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Created By",
+      "ResourcesEN": "Created By"
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Created DateTime",
+      "ResourcesEN": "Created DateTime"
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "GD007",
+      "ResourcesTH": "UpdateBy",
+      "ResourcesEN": "UpdateBy"
+    },
+    {
+      "ScreenCode": "PMS100",
+      "ObjectID": "GD008",
+      "ResourcesTH": "Updated Date-Time",
+      "ResourcesEN": "Updated Date-Time"
+    }
+  ],
+  "PMS101": [
+    {
+      "ScreenCode": "PMS101",
+      "ObjectID": "IP001",
+      "ResourcesTH": "FG Code",
+      "ResourcesEN": "FG Code"
+    },
+    {
+      "ScreenCode": "PMS101",
+      "ObjectID": "IP002",
+      "ResourcesTH": "FG Name",
+      "ResourcesEN": "FG Name"
+    },
+    {
+      "ScreenCode": "PMS101",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS101",
+      "ObjectID": "H001",
+      "ResourcesTH": "FG Master Detail",
+      "ResourcesEN": "FG Master Detail"
+    }
+  ],
+  "PMS070": [
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "SC001",
+      "ResourcesTH": "Stop Reason Code",
+      "ResourcesEN": "Stop Reason Code"
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "SC002",
+      "ResourcesTH": "Stop Reason Name",
+      "ResourcesEN": "Stop Reason Name"
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "SC003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No.",
+      "ResourcesEN": "No."
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "GD002",
+      "ResourcesTH": "Stop Reason Code",
+      "ResourcesEN": "Stop Reason Code"
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "GD003",
+      "ResourcesTH": "Stop Reason Name",
+      "ResourcesEN": "Stop Reason Name"
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Created By",
+      "ResourcesEN": "Created By"
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Created DateTime",
+      "ResourcesEN": "Created DateTime"
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "GD007",
+      "ResourcesTH": "UpdateBy",
+      "ResourcesEN": "UpdateBy"
+    },
+    {
+      "ScreenCode": "PMS070",
+      "ObjectID": "GD008",
+      "ResourcesTH": "Updated Date-Time",
+      "ResourcesEN": "Updated Date-Time"
+    }
+  ],
+  "PMS071": [
+    {
+      "ScreenCode": "PMS071",
+      "ObjectID": "IP001",
+      "ResourcesTH": "Stop Reason Code",
+      "ResourcesEN": "Stop Reason Code"
+    },
+    {
+      "ScreenCode": "PMS071",
+      "ObjectID": "IP002",
+      "ResourcesTH": "Stop Reason Name",
+      "ResourcesEN": "Stop Reason Name"
+    },
+    {
+      "ScreenCode": "PMS071",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS071",
+      "ObjectID": "H001",
+      "ResourcesTH": "Machine Stop Reason Master Detail",
+      "ResourcesEN": "Machine Stop Reason Master Detail"
     }
   ]
 }
