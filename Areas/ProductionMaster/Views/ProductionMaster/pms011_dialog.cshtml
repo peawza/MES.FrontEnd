@@ -1,6 +1,10 @@
 ﻿@inject IMessageLocalizer localizer
-
-
+<style>
+    #window-dialog.k-window-content {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+</style>
 
 
 <div id="window-dialog" style="align-items: center; ">
@@ -12,35 +16,32 @@
                 <input type="hidden" id="status-mode" value="" />
 
                 <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
-                    <label for="ip-process-code" class="col-form-label text-left text-md-start w-100">
-                        @Resources["PMS021", "IP001"] <span class="text-color-red"> *</span>
+                    <label for="ip-plant-code" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS011", "IP001"] <span class="text-color-red"> *</span>
                     </label>
-                    <input id="ip-process-code" name="ip-process-code"  required validationMessage="@localizer["FieldRequired",@Resources["PMS021", "IP001"]]" maxlength="50" />
+                    <input id="ip-plant-code" name="ip-plant-code" required validationMessage="@localizer["FieldRequired",@Resources["PMS011", "IP001"]]" maxlength="50" />
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
-                    <label for="ip-Process-name-en" class="col-form-label text-left text-md-start w-100">
-                        @Resources["PMS021", "IP002"] <span class="text-color-red"> *</span>
+                    <label for="ip-plant-name" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS011", "IP002"] <span class="text-color-red"> *</span>
                     </label>
-                    <input id="ip-Process-name-en" name="ip-Process-name-en"  required validationMessage="@localizer["FieldRequired",@Resources["PMS021", "IP002"]]" maxlength="250" />
+                    <input id="ip-plant-name" name="ip-plant-name" required validationMessage="@localizer["FieldRequired",@Resources["PMS011", "IP002"]]" maxlength="250" />
                 </div>
 
-               @*  <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
-                    <label for="ip-process-name-th" class="col-form-label text-left text-md-start w-100">
-                        @Resources["PMS021", "IP003"] <span class="text-color-red"> *</span>
-                    </label>
-                    <input id="ip-process-name-th" name="ip-process-name-th"  required validationMessage="@localizer["FieldRequired", @Resources["PMS021", "IP003"]]" maxlength="250" />
-                </div>
- *@
+
                 <div class="col-lg-2 col-md-6 col-sm-12 mt-2 mb-2">
                     <label for="ip-status" class="col-form-label text-left text-md-start w-100">
-                        @Resources["PMS021", "IP004"]
+                        @Resources["PMS011", "IP003"]
                     </label>
-                    <input id="ip-status" name="ip-status"  />
+                    <input id="ip-status" name="ip-status" />
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
 
 

@@ -1,23 +1,108 @@
-﻿
+﻿@{
+
+    var objectId = (string)ViewBag.ObjectId;
+    /*
+    var permissions = new
+        {
+        AllowView = User.HasPermission(objectId, PermissionNames.View.FunctionCode),
+        AllowNew = User.HasPermission(objectId, PermissionNames.New.FunctionCode),
+
+        AllowEdit = User.HasPermission(objectId, PermissionNames.Edit.FunctionCode),
+
+        AllowDelete = User.HasPermission(objectId, PermissionNames.Delete.FunctionCode),
+
+        AllowExport = User.HasPermission(objectId, PermissionNames.Export.FunctionCode),
+
+        AllowPrint = User.HasPermission(objectId, PermissionNames.Print.FunctionCode)
+
+    };
+    */
+
+    var permissions = new
+    {
+        AllowView = true,
+        AllowNew = true,
+        AllowEdit = true,
+        AllowDelete = true,
+        AllowExport = true,
+        AllowPrint = true
+    };
+
+}
+@inject IMessageLocalizer localizer
 
 
-<div id="daterangepicker" title="daterangepicker"></div>
 
+<script type="text/javascript">
+    let permissions = {
+        AllowView: common.Boolean("@permissions.AllowView"), AllowNew: common.Boolean("@permissions.AllowNew"), AllowEdit: common.Boolean("@permissions.AllowEdit"), AllowDelete: common.Boolean("@permissions.AllowDelete"), AllowExport: common.Boolean("@permissions.AllowNew"), AllowPrint: common.Boolean("@permissions.AllowPrint"),
+    }
 
-<script>
-    $(document).ready(function() {
-        // create DateRangePicker from input HTML element
-        $("#daterangepicker").kendoDateRangePicker({
-            //format: "HH:mm",  // Display only time
-            //timeFormat: "HH:mm",
-            // start: "time",
-            // end: "time",
-            // min: new Date(2024, 1, 1, 0, 0),  // Minimum time 00:00
-            // max: new Date(2024, 1, 1, 23, 59), // Maximum time 23:59
-            //disableDates: function () { return true; }, // Disable calendar selection
-            change: function (e) {
-                console.log("Selected time range:", this.value());
-            }
-        });
-    });
+    var messageDialog = new MessageDialog();
 </script>
+
+<div id="search-container" class="card bg-light">
+    <div class="card-body m-2">
+        <div class="row g-3 d-flex justify-content-lg-center">
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <label for="sc-process-code" class="form-label">
+                    @Resources["PMS040", "SC001"]
+                </label>
+                <input id="sc-process-code" class="form-control" type="text" placeholder="@Resources["PMS040", "SC001"]" />
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <label for="sc-process-name" class="form-label">
+                    @Resources["PMS040", "SC002"]
+                </label>
+                <input id="sc-process-name" class="form-control" type="text" placeholder="@Resources["PMS040", "SC002"]" />
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <label for="sc-status" class="form-label">
+                    @Resources["PMS040", "SC004"]
+                </label>
+                <input id="sc-status" class="form-control" type="text" />
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row form-group justify-content-between mt-3">
+
+    <div class="col-md-6 col-12 text-md-start text-left mb-2 mb-md-0">
+        @Html.NewButton().Events(ev => ev.Click("newdocumentButtonClicked"))
+    </div>
+
+    <div class="col-md-6 col-12 text-md-end text-right">
+        @Html.SearchButton().Events(ev => ev.Click("searchButtonClicked"))
+        @* @Html.ImportButton().Events(ev => ev.Click("exportButtonClicked")) *@
+
+        @if (permissions.AllowExport)
+        {
+            @Html.ExportButton().Events(ev => ev.Click("exportButtonClicked"))
+        }
+
+        @Html.ClearButton().Events(ev => ev.Click("clearButtonClicked"))
+    </div>
+</div>
+
+
+<div id="message-container" class="alert alert-danger animated fadeIn mt-1" style="display:none"></div>
+
+
+<div id="grid-inquiry"></div>
+
+
+@await Html.PartialAsync("pms041_dialog")
+@* defer *@
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms040/pms040_funtion.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms040/pms040_eventbutton.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms040/pms041_dialog.js" asp-append-version="true"></script>
+
+
+

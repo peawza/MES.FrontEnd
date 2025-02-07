@@ -25,14 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\ProductionMaster\Views\ProductionMaster\pms060_Inquiry.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Areas\ProductionMaster\Views\ProductionMaster\pms060_Inquiry.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.3.0" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.12" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.12" />
@@ -50,9 +42,6 @@
     <Folder Include="wwwroot\assets\css\dashboard\" />
     <Folder Include="wwwroot\assets\css\screenfuntion\" />
     <Folder Include="wwwroot\assets\js\demo_ui\Dashboard\" />
-    <Folder Include="wwwroot\assets\js\screenfuntion\production\master\pms060\" />
-    <Folder Include="wwwroot\assets\js\screenfuntion\production\master\pms040\" />
-    <Folder Include="wwwroot\assets\js\screenfuntion\production\master\pms010\" />
     <Folder Include="wwwroot\assets\js\screenfuntion\production\master\startupScreennnn\" />
     <Folder Include="wwwroot\assets\js\screenShared\" />
   </ItemGroup>

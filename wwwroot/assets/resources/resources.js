@@ -940,5 +940,395 @@ let _data_LocalizedResources ={
       "ResourcesTH": "Shift Master Detail",
       "ResourcesEN": "Shift Master Detail"
     }
+  ],
+  "PMS010": [
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "SC001",
+      "ResourcesTH": "Plant Code",
+      "ResourcesEN": "Plant Code"
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "SC002",
+      "ResourcesTH": "Plant Name",
+      "ResourcesEN": "Plant Name"
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "SC003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No.",
+      "ResourcesEN": "No."
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "GD002",
+      "ResourcesTH": "Plant Code",
+      "ResourcesEN": "Plant Code"
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "GD003",
+      "ResourcesTH": "Plant Name",
+      "ResourcesEN": "Plant Name"
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Created By",
+      "ResourcesEN": "Created By"
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Created DateTime",
+      "ResourcesEN": "Created DateTime"
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "GD007",
+      "ResourcesTH": "UpdateBy",
+      "ResourcesEN": "UpdateBy"
+    },
+    {
+      "ScreenCode": "PMS010",
+      "ObjectID": "GD008",
+      "ResourcesTH": "Updated Date-Time",
+      "ResourcesEN": "Updated Date-Time"
+    }
+  ],
+  "PMS011": [
+    {
+      "ScreenCode": "PMS011",
+      "ObjectID": "IP001",
+      "ResourcesTH": "Plant Code",
+      "ResourcesEN": "Plant Code"
+    },
+    {
+      "ScreenCode": "PMS011",
+      "ObjectID": "IP002",
+      "ResourcesTH": "Plant Name",
+      "ResourcesEN": "Plant Name"
+    },
+    {
+      "ScreenCode": "PMS011",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS011",
+      "ObjectID": "H001",
+      "ResourcesTH": "Plant Master Detail",
+      "ResourcesEN": "Plant Master Detail"
+    }
+  ],
+  "PMS040": [
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "SC001",
+      "ResourcesTH": "Machine Code / Name",
+      "ResourcesEN": "Machine Code / Name"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "SC002",
+      "ResourcesTH": "Line Name",
+      "ResourcesEN": "Line Name"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "SC003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No.",
+      "ResourcesEN": "No."
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD002",
+      "ResourcesTH": "Machine Code",
+      "ResourcesEN": "Machine Code"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD003",
+      "ResourcesTH": "Machine Name",
+      "ResourcesEN": "Machine Name"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Line Name",
+      "ResourcesEN": "Line Name"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Process Name",
+      "ResourcesEN": "Process Name"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD007",
+      "ResourcesTH": "Runtime Hours",
+      "ResourcesEN": "Runtime Hours"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD008",
+      "ResourcesTH": "Warning Hours",
+      "ResourcesEN": "Warning Hours"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD009",
+      "ResourcesTH": "Danger Hours",
+      "ResourcesEN": "Danger Hours"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD010",
+      "ResourcesTH": "Notify Status",
+      "ResourcesEN": "Notify Status"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD011",
+      "ResourcesTH": "Takt Time (Sec.)",
+      "ResourcesEN": "Takt Time (Sec.)"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD012",
+      "ResourcesTH": "Create By",
+      "ResourcesEN": "Create By"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD013",
+      "ResourcesTH": "Create Date",
+      "ResourcesEN": "Create Date"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD014",
+      "ResourcesTH": "Update By",
+      "ResourcesEN": "Update By"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD015",
+      "ResourcesTH": "Update Date",
+      "ResourcesEN": "Update Date"
+    }
+  ],
+  "PMS041": [
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP001",
+      "ResourcesTH": "Machine Code",
+      "ResourcesEN": "Machine Code"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP002",
+      "ResourcesTH": "Machine Name",
+      "ResourcesEN": "Machine Name"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Line Name",
+      "ResourcesEN": "Line Name"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP004",
+      "ResourcesTH": "Process Name",
+      "ResourcesEN": "Process Name"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP005",
+      "ResourcesTH": "Warning Time (Hr.)",
+      "ResourcesEN": "Warning Time (Hr.)"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP006",
+      "ResourcesTH": "Danger Time (Hr.)",
+      "ResourcesEN": "Danger Time (Hr.)"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP007",
+      "ResourcesTH": "Takt Time (Sec.)",
+      "ResourcesEN": "Takt Time (Sec.)"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP008",
+      "ResourcesTH": "Image",
+      "ResourcesEN": "Image"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP009",
+      "ResourcesTH": "Location Image Left",
+      "ResourcesEN": "Location Image Left"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP010",
+      "ResourcesTH": "Location Image Top",
+      "ResourcesEN": "Location Image Top"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP011",
+      "ResourcesTH": "Active",
+      "ResourcesEN": "Active"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP012",
+      "ResourcesTH": "Calculate Quantity Flag",
+      "ResourcesEN": "Calculate Quantity Flag"
+    }
+  ],
+  "PMS060": [
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "SC001",
+      "ResourcesTH": "Model Name",
+      "ResourcesEN": "Model Name"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "SC002",
+      "ResourcesTH": "Process Name",
+      "ResourcesEN": "Process Name"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "SC003",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No",
+      "ResourcesEN": "No"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "GD002",
+      "ResourcesTH": "Model Name",
+      "ResourcesEN": "Model Name"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "GD003",
+      "ResourcesTH": "Process Name",
+      "ResourcesEN": "Process Name"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Takt Time (s)",
+      "ResourcesEN": "Takt Time (s)"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Create By",
+      "ResourcesEN": "Create By"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "GD007",
+      "ResourcesTH": "Create Date",
+      "ResourcesEN": "Create Date"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "GD008",
+      "ResourcesTH": "Update By",
+      "ResourcesEN": "Update By"
+    },
+    {
+      "ScreenCode": "PMS060",
+      "ObjectID": "GD009",
+      "ResourcesTH": "Update Date",
+      "ResourcesEN": "Update Date"
+    }
+  ],
+  "PMS061": [
+    {
+      "ScreenCode": "PMS061",
+      "ObjectID": "IP001",
+      "ResourcesTH": "Model Name",
+      "ResourcesEN": "Model Name"
+    },
+    {
+      "ScreenCode": "PMS061",
+      "ObjectID": "IP002",
+      "ResourcesTH": "Process Name",
+      "ResourcesEN": "Process Name"
+    },
+    {
+      "ScreenCode": "PMS061",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Takt Time",
+      "ResourcesEN": "Takt Time"
+    },
+    {
+      "ScreenCode": "PMS061",
+      "ObjectID": "IP004",
+      "ResourcesTH": "(Sec)",
+      "ResourcesEN": "(Sec)"
+    },
+    {
+      "ScreenCode": "PMS061",
+      "ObjectID": "IP005",
+      "ResourcesTH": "Active",
+      "ResourcesEN": "Active"
+    },
+    {
+      "ScreenCode": "PMS061",
+      "ObjectID": "H001",
+      "ResourcesTH": "Cycle Time/Takt Time Master Detail",
+      "ResourcesEN": "Cycle Time/Takt Time Master Detail"
+    }
   ]
 }

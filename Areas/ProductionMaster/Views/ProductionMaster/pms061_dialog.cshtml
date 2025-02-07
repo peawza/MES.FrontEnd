@@ -1,5 +1,50 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@inject IMessageLocalizer localizer
+
+
+
+
+<div id="window-dialog" style="align-items: center; ">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row form-group justify-content-start">
+                <input type="hidden" id="status-mode" value="" />
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-model-name"  class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS061", "IP001"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-model-name" name="ip-model-name" required validationMessage="@localizer["FieldRequired",@Resources["PMS061", "IP001"]]" maxlength="50" />
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-process-name" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS061", "IP002"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-process-name" name="ip-process-name" required validationMessage="@localizer["FieldRequired",@Resources["PMS061", "IP002"]]" maxlength="250" />
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-takt-time" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS061", "IP003"] <span class="text-color-red"> *</span>
+                    </label>
+                   <div class="d-flex">
+                        <div class="w-80">
+                            <input id="ip-takt-time" name="ip-takt-time" required validationMessage="@localizer["FieldRequired",@Resources["PMS061", "IP003"]]" maxlength="250" />
+                        </div>
+                        <label for="ip-takt-time" class="col-form-label text-left text-md-start w-20 pl-2 ml-2">
+                            @Resources["PMS061", "IP004"]
+                        </label>
+                   </div>
+                 
+                    
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-status" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS061", "IP005"]
+                    </label>
+                    <input id="ip-status" name="ip-status" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

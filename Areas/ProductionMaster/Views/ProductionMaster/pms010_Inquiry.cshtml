@@ -1,4 +1,9 @@
-﻿
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc
+
+
+
+
 @{
 
     var objectId = (string)ViewBag.ObjectId;
@@ -30,8 +35,6 @@
     };
 
 }
-@inject IMessageLocalizer localizer
-
 
 
 <script type="text/javascript">
@@ -42,67 +45,74 @@
     var messageDialog = new MessageDialog();
 </script>
 
+
+
 <div id="search-container" class="card bg-light">
     <div class="card-body m-2">
         <div class="row g-3 d-flex justify-content-lg-center">
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <label for="sc-process-code" class="form-label">
-                    @Resources["PMS020", "SC001"]
+                    @Resources["PMS010", "SC001"]
                 </label>
-                <input id="sc-process-code" class="form-control" type="text" />
+                <input id="sc-plant-code" class="form-control" type="text" placeholder="@Resources["PMS010", "SC001"]" />
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <label for="sc-process-name" class="form-label">
-                    @Resources["PMS020", "SC002"]
+                    @Resources["PMS010", "SC002"]
                 </label>
-                <input id="sc-process-name" class="form-control" type="text" />
+                <input id="sc-plant-name" class="form-control" type="text" placeholder="@Resources["PMS010", "SC002"]" />
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <label for="sc-status" class="form-label">
-                    @Resources["PMS020", "SC003"]
+                    @Resources["PMS010", "SC003"]
                 </label>
                 <input id="sc-status" class="form-control" type="text" />
             </div>
 
-         
+
         </div>
     </div>
 </div>
 
+<div id="message-container" class="alert alert-danger animated fadeIn mt-1" style="display:none"></div>
 
-<div class="row form-group justify-content-between mt-3">
+<div class="w-100  mt-2 justify-content-right">
 
-    <div class="col-md-6 col-12 text-md-start text-left mb-2 mb-md-0">
-        @Html.NewButton().Events(ev => ev.Click("newdocumentButtonClicked"))
-    </div>
+    <div class="row pl-1 pr-1">
+        <div class="mr-auto" style="margin-left:10px">
+            @if (permissions.AllowNew)
+            {
 
-    <div class="col-md-6 col-12 text-md-end text-right">
-        @Html.SearchButton().Events(ev => ev.Click("searchButtonClicked"))
-        @Html.ImportButton().Events(ev => ev.Click("exportButtonClicked"))
+                @Html.NewButton().Events(ev => ev.Click("newdocumentButtonClicked"))
+            }
 
-        @if (permissions.AllowExport)
-        {
-            @Html.ExportButton().Events(ev => ev.Click("exportButtonClicked"))
-        }
+        </div>
+        <div class="  pl-md-0">
 
-        @Html.ClearButton().Events(ev => ev.Click("clearButtonClicked"))
+
+            @Html.SearchButton().Events(ev => ev.Click("searchButtonClicked"))
+
+            @if (permissions.AllowExport)
+            {
+                @Html.ExportButton().Events(ev => ev.Click("exportButtonClicked"))
+            }
+
+
+            @Html.ClearButton().Events(ev => ev.Click("clearButtonClicked"))
+        </div>
+
     </div>
 </div>
 
 
-<div id="message-container" class="alert alert-danger animated fadeIn mt-1" style="display:none"></div>
+<div id="grid-inquiry" class="mt-3"></div>
+
+@await Html.PartialAsync("pms011_dialog")
 
 
-<div id="grid-inquiry"></div>
-
-
-@await Html.PartialAsync("pms021_dialog")
-@* defer *@
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms020/pms020_funtion.js" asp-append-version="true" ></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms020/pms020_eventbutton.js" asp-append-version="true" ></script>
-<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms020/pms021_dialog.js" asp-append-version="true" ></script>
-@* <script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms020/pms021_eventbutton.js" asp-append-version="true" async></script> *@
-
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms010/pms010_funtion.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms010/pms010_eventButton.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/assets/js/screenfuntion/production/master/pms010/pms011_dialog.js" asp-append-version="true"></script>

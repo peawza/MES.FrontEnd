@@ -1,5 +1,66 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@inject IMessageLocalizer localizer
+
+
+
+
+<div id="window-dialog" style="align-items: center; ">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row form-group justify-content-start">
+                <input type="hidden" id="status-mode" value="" />
+
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-line-code" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS031", "IP001"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-line-code" name="ip-line-code" required validationMessage="@localizer["FieldRequired",@Resources["PMS031", "IP001"]]" maxlength="50" />
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-line-name" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS031", "IP002"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-line-name" name="ip-line-name" required validationMessage="@localizer["FieldRequired",@Resources["PMS031", "IP002"]]" maxlength="250" />
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="ip-status" class="col-form-label text-left text-md-start w-50">
+                                @Resources["PMS031", "IP003"] <span class="text-color-red"> *</span>
+                            </label>
+                        </div>
+                        <div class="col-8 ">
+                            <div class="row justify-content-center">
+
+                                <button class="k-warning k-button k-button-sm k-rounded-sm k-button-solid k-button-solid-base" id="upload-image-button" name="upload-image-button" onclick="uploadImage()"><i class="fa-solid fa-folder"></i><span class="k-button-text">Browse</span></button>
+                                <button class="k-warning k-button k-button-sm k-rounded-sm k-button-solid k-button-solid-base" id="delete-image-button" name="delete-image-button" onclick="delelteImage()"><i class="fa-solid fa-trash"></i><span class="k-button-text">Clear</span></button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col pl-0">
+                        <div class="image size-fixed scale-fill">
+                            <img src="/assets/images/no-photo.jpg" id="displayurl-picture" width="312" height="200" onerror="if (this.src != 'noimage.jpg') this.src = '/assets/images/no-photo.jpg';" />
+                        </div>
+                    </div>
+                    <div class="col pl-0 d-none">
+                        <input type="hidden" id="hidden-picture">
+                        <input accept="image/*;capture=camera" aria-label="files" id="ip-picture" name="ip-picture" style="width:460px;" type="file" data-role="upload" autocomplete="off">
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-status" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS031", "IP004"]
+                    </label>
+                    <input id="ip-status" name="ip-status" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
