@@ -109,7 +109,7 @@ async function serachData() {
         app.ui.uiEnable(["#export-button"], true);
     } catch (e) {
 
-        // ui_loading.hide();
+        // 
     } finally {
 
     }
@@ -223,7 +223,7 @@ let grid_inquire = {
                                         } catch (e) {
                                             //confirmationDialogDeleteOpen = 0;
                                         } finally {
-                                            ui_loading.hide();
+                                            
                                             //confirmationDialogDeleteOpen = 0;
                                         }
 

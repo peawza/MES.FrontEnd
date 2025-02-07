@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
+
+
+<div id="daterangepicker" title="daterangepicker"></div>
+
+
+<script>
+    $(document).ready(function() {
+        // create DateRangePicker from input HTML element
+        $("#daterangepicker").kendoDateRangePicker({
+            //format: "HH:mm",  // Display only time
+            //timeFormat: "HH:mm",
+            // start: "time",
+            // end: "time",
+            // min: new Date(2024, 1, 1, 0, 0),  // Minimum time 00:00
+            // max: new Date(2024, 1, 1, 23, 59), // Maximum time 23:59
+            //disableDates: function () { return true; }, // Disable calendar selection
+            change: function (e) {
+                console.log("Selected time range:", this.value());
+            }
+        });
+    });
+</script>

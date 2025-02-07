@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.Collections;
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
 
 namespace WEB.APP.MvcWebApp.Navigation
 {
@@ -19,7 +14,7 @@ namespace WEB.APP.MvcWebApp.Navigation
         //private readonly SiteMapDbContext _dbContext;
         private readonly IMemoryCache _cache;
 
-        public DbSiteMapProvider( IMemoryCache cache)
+        public DbSiteMapProvider(IMemoryCache cache)
         {
             //_dbContext = dbContext;
             _cache = cache;
@@ -41,8 +36,12 @@ namespace WEB.APP.MvcWebApp.Navigation
                 {
                     new Screen { ScreenId = "S001", Name = "Dashboard", ModuleCode = "MOD01", IconClass = "icon-dashboard", Seq = 1, SupportDeviceType = "WEB", ChildScreen = "None", MainMenuFlag = true, PermissionFlag = true },
                     new Screen { ScreenId = "S002", Name = "Reports", ModuleCode = "MOD02", IconClass = "icon-reports", Seq = 2, SupportDeviceType = "WEB", ChildScreen = "None", MainMenuFlag = true, PermissionFlag = true },
-                    new Screen { ScreenId = "S003", Name = "Settings", ModuleCode = "MOD03", IconClass = "icon-settings", Seq = 3, SupportDeviceType = "MOBILE", ChildScreen = "Preferences", MainMenuFlag = false, PermissionFlag = true }
+                    new Screen { ScreenId = "S003", Name = "Settings", ModuleCode = "MOD03", IconClass = "icon-settings", Seq = 3, SupportDeviceType = "MOBILE", ChildScreen = "None", MainMenuFlag = false, PermissionFlag = true },
+                    new Screen { ScreenId = "PMS020", Name = "Machine Stop Reason Master", ModuleCode = "MOD03", IconClass = "icon-settings", Seq = 3, SupportDeviceType = "WEB", ChildScreen = "None", MainMenuFlag = false, PermissionFlag = true }
+                    
+                //PMS020
                 };
+
                 var screens = modules_List.Join(
                             screens_List.Where(s => s.SupportDeviceType == "WEB"),
                             module => module.ModuleCode,
@@ -99,7 +98,8 @@ namespace WEB.APP.MvcWebApp.Navigation
                 {
                     new Screen { ScreenId = "S001", Name = "Dashboard", ModuleCode = "MOD01", IconClass = "icon-dashboard", Seq = 1, SupportDeviceType = "WEB", ChildScreen = "None", MainMenuFlag = true, PermissionFlag = true },
                     new Screen { ScreenId = "S002", Name = "Reports", ModuleCode = "MOD02", IconClass = "icon-reports", Seq = 2, SupportDeviceType = "WEB", ChildScreen = "None", MainMenuFlag = true, PermissionFlag = true },
-                    new Screen { ScreenId = "S003", Name = "Settings", ModuleCode = "MOD03", IconClass = "icon-settings", Seq = 3, SupportDeviceType = "MOBILE", ChildScreen = "Preferences", MainMenuFlag = false, PermissionFlag = true }
+                    new Screen { ScreenId = "S003", Name = "Settings", ModuleCode = "MOD03", IconClass = "icon-settings", Seq = 3, SupportDeviceType = "MOBILE", ChildScreen = "Preferences", MainMenuFlag = false, PermissionFlag = true },
+                    new Screen { ScreenId = "PMS020", Name = "Machine Stop Reason Master", ModuleCode = "MOD03", IconClass = "icon-settings", Seq = 3, SupportDeviceType = "WEB", ChildScreen = "None", MainMenuFlag = false, PermissionFlag = true }
                 };
                 var screens = modules_List.Join(
                             screens_List.Where(s => s.SupportDeviceType == "WEB"),
@@ -133,9 +133,9 @@ namespace WEB.APP.MvcWebApp.Navigation
                 }
                 return nodes;
             });
-            
+
             return siteMapNodes;
-           
+
         }
 
         private void CreateSitMapNode(SiteMapNode parent, IEnumerable<ScreenDataView> screens)

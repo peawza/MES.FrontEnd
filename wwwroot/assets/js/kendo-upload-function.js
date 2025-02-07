@@ -34,7 +34,7 @@
         var upload = $("#" + idUpload).getKendoUpload();
         document.getElementById(idUpload).setAttribute("accept", ".jpg, .jpeg, .png, .bmp, .gif, .jfif, .webp");
         upload.wrapper.find(".k-upload-button").prepend("<i class='fa-solid fa-folder d-none  d-md-flex d-sm-none'></i> <i class='fa-duotone fa-camera d-flex d-md-none d-sm-flex '></i>")
-        upload.wrapper.find(".k-upload-button").after(`<div class='k-danger k-button k-button-md k-rounded-md k-button-solid k-button-solid-base k-upload-button-remove' id='delete' aria-label='Picture' onclick="kendoUploadImage.RemoveFile('${idUpload}','${idDisplay}','${modeupload}','${imageNull}')"><i class='fa-solid fa-trash'></i><span>${Resources("COMMON", "DELETEFILE")} </span></div>`)
+        upload.wrapper.find(".k-upload-button").after(`<div class='k-danger k-button k-button-md k-rounded-md k-button-solid k-button-solid-base k-upload-button-remove' id='${idUpload}-delete' aria-label='Picture' onclick="kendoUploadImage.RemoveFile('${idUpload}','${idDisplay}','${modeupload}','${imageNull}')"><i class='fa-solid fa-trash'></i><span>${Resources("COMMON", "DELETEFILE")} </span></div>`)
 
 
     },

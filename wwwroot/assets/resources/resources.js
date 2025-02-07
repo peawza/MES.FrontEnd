@@ -710,5 +710,235 @@ let _data_LocalizedResources ={
       "ResourcesTH": "Machine Stop Reason Master Detail",
       "ResourcesEN": "Machine Stop Reason Master Detail"
     }
+  ],
+  "PMS052": [
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "SC001",
+      "ResourcesTH": "Shift Name",
+      "ResourcesEN": "Shift Name"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No",
+      "ResourcesEN": "No"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD002",
+      "ResourcesTH": "Shift Name",
+      "ResourcesEN": "Shift Name"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD003",
+      "ResourcesTH": "Start Time",
+      "ResourcesEN": "Start Time"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD004",
+      "ResourcesTH": "End Time",
+      "ResourcesEN": "End Time"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD005",
+      "ResourcesTH": "Duration",
+      "ResourcesEN": "Duration"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Description",
+      "ResourcesEN": "Description"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD007",
+      "ResourcesTH": "Type Work",
+      "ResourcesEN": "Type Work"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD008",
+      "ResourcesTH": "Create By",
+      "ResourcesEN": "Create By"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD009",
+      "ResourcesTH": "Create Date",
+      "ResourcesEN": "Create Date"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD010",
+      "ResourcesTH": "Update By",
+      "ResourcesEN": "Update By"
+    },
+    {
+      "ScreenCode": "PMS052",
+      "ObjectID": "GD011",
+      "ResourcesTH": "Update Date",
+      "ResourcesEN": "Update Date"
+    }
+  ],
+  "PMS053": [
+    {
+      "ScreenCode": "PMS053",
+      "ObjectID": "IP001",
+      "ResourcesTH": "Shift Name",
+      "ResourcesEN": "Shift Name"
+    },
+    {
+      "ScreenCode": "PMS053",
+      "ObjectID": "IP002",
+      "ResourcesTH": "Shift Type",
+      "ResourcesEN": "Shift Type"
+    },
+    {
+      "ScreenCode": "PMS053",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Start Time",
+      "ResourcesEN": "Start Time"
+    },
+    {
+      "ScreenCode": "PMS053",
+      "ObjectID": "IP004",
+      "ResourcesTH": "End Time",
+      "ResourcesEN": "End Time"
+    },
+    {
+      "ScreenCode": "PMS053",
+      "ObjectID": "IP005",
+      "ResourcesTH": "Active",
+      "ResourcesEN": "Active"
+    },
+    {
+      "ScreenCode": "PMS053",
+      "ObjectID": "IP006",
+      "ResourcesTH": "Description",
+      "ResourcesEN": "Description"
+    },
+    {
+      "ScreenCode": "PMS053",
+      "ObjectID": "H001",
+      "ResourcesTH": "Shift Time Master Detail",
+      "ResourcesEN": "Shift Time Master Detail"
+    }
+  ],
+  "PMS050": [
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "SC001",
+      "ResourcesTH": "Shift",
+      "ResourcesEN": "Shift"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "SC002",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD001",
+      "ResourcesTH": "No",
+      "ResourcesEN": "No"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD002",
+      "ResourcesTH": "Shift Code",
+      "ResourcesEN": "Shift Code"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD003",
+      "ResourcesTH": "Shift Name",
+      "ResourcesEN": "Shift Name"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD004",
+      "ResourcesTH": "Start Time",
+      "ResourcesEN": "Start Time"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD005",
+      "ResourcesTH": "End Time",
+      "ResourcesEN": "End Time"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD006",
+      "ResourcesTH": "Status",
+      "ResourcesEN": "Status"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD007",
+      "ResourcesTH": "Create By",
+      "ResourcesEN": "Create By"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD008",
+      "ResourcesTH": "Create Date",
+      "ResourcesEN": "Create Date"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD009",
+      "ResourcesTH": "Update By",
+      "ResourcesEN": "Update By"
+    },
+    {
+      "ScreenCode": "PMS050",
+      "ObjectID": "GD010",
+      "ResourcesTH": "Update Date",
+      "ResourcesEN": "Update Date"
+    }
+  ],
+  "PMS051": [
+    {
+      "ScreenCode": "PMS051",
+      "ObjectID": "IP001",
+      "ResourcesTH": "Shift Code",
+      "ResourcesEN": "Shift Code"
+    },
+    {
+      "ScreenCode": "PMS051",
+      "ObjectID": "IP002",
+      "ResourcesTH": "Shift Name",
+      "ResourcesEN": "Shift Name"
+    },
+    {
+      "ScreenCode": "PMS051",
+      "ObjectID": "IP003",
+      "ResourcesTH": "Start Time",
+      "ResourcesEN": "Start Time"
+    },
+    {
+      "ScreenCode": "PMS051",
+      "ObjectID": "IP004",
+      "ResourcesTH": "End Time",
+      "ResourcesEN": "End Time"
+    },
+    {
+      "ScreenCode": "PMS051",
+      "ObjectID": "IP005",
+      "ResourcesTH": "Active",
+      "ResourcesEN": "Active"
+    },
+    {
+      "ScreenCode": "PMS051",
+      "ObjectID": "H001",
+      "ResourcesTH": "Shift Master Detail",
+      "ResourcesEN": "Shift Master Detail"
+    }
   ]
 }

@@ -33,10 +33,21 @@ window.addEventListener("load", async (event) => {
 
     ip_status = $("#ip-status").data("kendoSwitch");
 
+    kendoUploadImage.using("ip-picture", "displayurl-picture", "hidden-picture");
+    ip_picture_before = $("#ip-picture").data("kendoUpload")
 
 
 
 });
+
+
+function uploadImage() {
+
+    document.getElementById("ip-picture").click();
+}
+function delelteImage() {
+    document.getElementById("ip-picture-delete").click();
+}
 
 
 let validataDialog = $("#window-dialog").kendoValidator(
@@ -86,7 +97,7 @@ let dialog_windows = {
     save: async (e) => {
 
         if (!validataDialog.validate()) {
-            ui_loading.hide();
+            
             //console.log("XXXXXX XXXXXXX");
 
             return;
@@ -204,7 +215,7 @@ function onCancelDialog(e) {
 function onSaveDialog(e) {
 
     if (!validataDialog.validate()) {
-        ui_loading.hide();
+        
         return;
     }
 
@@ -218,7 +229,7 @@ function onSaveDialog(e) {
 
 }
 var kendoWindow = $("#window-dialog").kendoWindow({
-    width: "50%",
+    width: "40%",
     /*height: '60%',*/
     title: `line Master Detail`,
     visible: false,

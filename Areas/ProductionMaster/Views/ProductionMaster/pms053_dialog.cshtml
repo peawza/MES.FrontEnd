@@ -1,36 +1,12 @@
 ﻿@inject IMessageLocalizer localizer
-<style>
-    #window-dialog.k-window-content {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-</style>
+
+@* 
 <div id="window-dialog" style="align-items: center; ">
     <div class=" col-12">
-        @*     <fieldset class="scheduler-border col-12 ">
-        <legend class="scheduler-border"> NG Type Maintenance</legend> *@
         <div class="control-group ">
             <form id="input-information">
                 <input id="status-mode" type="hidden" value="" />
-                @* <input id="ip-shiftcode" type="hidden" value="" /> *@
                 <input id="ip-pattern" type="hidden" value="" />
-
-
-
-
-
-
-
-                @* <div class="row pt-2">
-                <input id="status-mode" type="hidden" value="" />
-                <input id="return-screap-id" type="hidden" value="" />
-
-                <label for="search" class="col-form-label  col-4"> Shift / Pattern Code  <span class="text-color-red"> *</span> </label>
-                <div class="col-4">
-                <input name="ip-shift-code" id="ip-shift-code" style="width:100%;" required validationMessage="Shift / Pattern Code is required" />
-                </div>
-
-                </div> *@
                 <div class="row pt-2">
                     <label class="col-4 col-form-label block-label">
                         Shift / Pattern Name
@@ -90,12 +66,7 @@
 
             </form>
         </div>
-
-
-
-        @* </fieldset> *@
     </div>
-
     <div class="k-edit-buttons k-actions-end" id="newedit" style="margin: 1rem 0rem -1rem;">
         <button type="button" id="windowsSaveButton" class="k-primary k-button k-button-md k-rounded-md k-button-solid k-button-solid-base">
             <span class="k-icon k-i-save k-button-icon"></span><span class="k-button-text" id="text-export">SAVE</span>
@@ -107,4 +78,54 @@
 </div>
 
 
+
+ *@
+
+
+<div id="window-dialog" style="align-items: center; ">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row form-group justify-content-start">
+                <input type="hidden" id="status-mode" value="" />
+
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-shift-code" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS053", "IP001"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-shift-name" name="ip-shift-name" class="w-100" required validationMessage="@Message["FieldRequired",@Resources["PMS053", "IP001"]]" maxlength="50" />
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-shift-name" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS053", "IP002"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-shift-type" name="ip-shift-type" class="w-100" required validationMessage="@Message["FieldRequired",@Resources["PMS053", "IP002"]]" maxlength="250" />
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-shift-code" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS053", "IP003"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-shift-start-time" name="ip-shift-start-time" class="w-100" required validationMessage="@Message["FieldRequired",@Resources["PMS053", "IP003"]]" maxlength="50" />
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-shift-name" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS053", "IP004"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-shift-end-time" name="ip-shift-end-time" class="w-100" required validationMessage="@Message["FieldRequired",@Resources["PMS053", "IP004"]]" maxlength="250" />
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-status" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS053", "IP005"]
+                    </label>
+                    <input id="ip-status" name="ip-status" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

@@ -191,7 +191,7 @@ function onCancelDialog(e) {
 function onSaveDialog(e) {
 
     if (!validataDialog.validate()) {
-        ui_loading.hide();
+        
         return;
     }
 

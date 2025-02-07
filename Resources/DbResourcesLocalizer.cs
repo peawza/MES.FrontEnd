@@ -53,7 +53,7 @@ namespace WEB.APP.Localization
             if (_isLoaded) return;
 
             using var client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("http://localhost:5001/api/v1/auth/Resources/getresources");
+            HttpResponseMessage response = await client.GetAsync("http://localhost:5001/messystem/getresources");
 
             if (response.IsSuccessStatusCode)
             {

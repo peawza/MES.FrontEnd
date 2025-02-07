@@ -1,94 +1,48 @@
-﻿@inject IMessageLocalizer localizer
-<style>
-    #window-dialog.k-window-content {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-</style>
+﻿
 <div id="window-dialog" style="align-items: center; ">
-    <div class=" col-12">
-        @*     <fieldset class="scheduler-border col-12 ">
-        <legend class="scheduler-border"> NG Type Maintenance</legend> *@
-        <div class="control-group ">
-            <form id="ng-type-information">
-                <div class="row pt-2">
-                    <input id="status-mode" type="hidden" value="" />
-                    <input id="return-screap-id" type="hidden" value="" />
 
-                    <label for="search" class="col-form-label  col-4"> Shift / Pattern Code  <span class="text-color-red"> *</span> </label>
-                    <div class="col-4">
-                        <input name="ip-shift-code" id="ip-shift-code" style="width:100%;" required validationMessage="Shift / Pattern Code is required" />
-                    </div>
+    <div class="card">
+        <div class="card-body">
 
-                </div>
-                <div class="row pt-2">
-                    <label class="col-4 col-form-label block-label">
-                        Shift / Pattern Name
-                        <span style="color: red">*</span>
+            <div class="row form-group justify-content-start">
+                <input type="hidden" id="status-mode" value="" />
+
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-shift-code" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS051", "IP001"] <span class="text-color-red"> *</span>
                     </label>
-                    <span class="col-4">
-                        <input name="ip-shift-name" id="ip-shift-name" style="width:100%;" required validationMessage="Shift / Pattern Name is required">
-                    </span>
-
+                    <input id="ip-shift-code" name="ip-shift-code" class="w-100" required validationMessage="@Message["FieldRequired",@Resources["PMS051", "IP001"]]" maxlength="50" />
                 </div>
-                <div class="row pt-2">
-                    <label class="col-4 col-form-label block-label">
-                        Start Time
-                        <span style="color: red">*</span>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-shift-name" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS051", "IP002"] <span class="text-color-red"> *</span>
                     </label>
-                    <span class="col-4">
-                        <input name="ip-start-time" id="ip-start-time" style="width:100%;" required validationMessage=" Start Time is required">
-                    </span>
-
+                    <input id="ip-shift-name" name="ip-shift-name" class="w-100" required validationMessage="@Message["FieldRequired",@Resources["PMS051", "IP002"]]" maxlength="250" />
                 </div>
-                <div class="row pt-2">
-                    <label class="col-4 col-form-label block-label">
-                        End Time
-                        <span style="color: red">*</span>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-shift-code" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS051", "IP003"] <span class="text-color-red"> *</span>
                     </label>
-                    <span class="col-4">
-                        <input name="ip-end-time" id="ip-end-time" style="width:100%;" required validationMessage=" End Time is required">
-                    </span>
-
+                    <input id="ip-shift-start-time" name="ip-shift-start-time" class="w-100" required validationMessage="@Message["FieldRequired",@Resources["PMS051", "IP003"]]" maxlength="50" />
                 </div>
 
-
-                @* <div class="row pt-2">
-                <label class="col-4 col-form-label block-label">
-                Description
-                </label>
-                <span class="col-4">
-                <textarea id="ip-description"></textarea>
-                </span>
-
-                </div> *@
-
-                <div class="row pt-2">
-                    <div class="col-4 ml-2"></div>
-                    <span class=" col-4">
-                        <input type="checkbox" id="ip-active" />
-
-                    </span>
-
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-shift-name" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS051", "IP004"] <span class="text-color-red"> *</span>
+                    </label>
+                    <input id="ip-shift-end-time" name="ip-shift-end-time" class="w-100" required validationMessage="@Message["FieldRequired",@Resources["PMS051", "IP004"]]" maxlength="250" />
                 </div>
 
-            </form>
+                <div class="col-lg-2 col-md-6 col-sm-12 mt-2 mb-2">
+                    <label for="ip-status" class="col-form-label text-left text-md-start w-100">
+                        @Resources["PMS051", "IP005"]
+                    </label>
+                    <input id="ip-status" name="ip-status" />
+                </div>
+            </div>
         </div>
-
-
-
-        @* </fieldset> *@
-    </div>
-
-    <div class="k-edit-buttons k-actions-end" id="newedit" style="margin: 1rem 0rem -1rem;">
-        <button type="button" id="windowsSaveButton" class="k-primary k-button k-button-md k-rounded-md k-button-solid k-button-solid-base">
-            <span class="k-icon k-i-save k-button-icon"></span><span class="k-button-text" id="text-export">SAVE</span>
-        </button>
-        <button type="button" id="windowsCancalButton" class="k-warning  k-button k-button-md k-rounded-md k-button-solid k-button-solid-base">
-            <span class="k-icon k-i-arrow-left k-button-icon"></span><span class="k-button-text">CANCEL</span>
-        </button>
     </div>
 </div>
-
-
 

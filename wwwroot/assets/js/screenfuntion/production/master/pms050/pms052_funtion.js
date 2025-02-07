@@ -1,240 +1,156 @@
-﻿
+﻿let ScreenCode = "STS050"
 var date = new Date(), y = date.getFullYear(), m = date.getMonth();
 var firstDay = new Date(y, m, 1);
 var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-//#region Input
 
 
-let sc_shift_pattern, sc_status
-let dataShiftList = []
-var state = [
-    { text: "All", value: 'All' },
-    { text: "Active", value: true },
-    { text: "Inactive", value: false }
-];
-let statusWorkTime = [
-    //{ text: "All", value: 'All' },
-    { text: "Work period", textGrid: "Work", value: "W" },
-    { text: "Break period", textGrid: "Break", value: "B" },
-    { text: "Setup period", textGrid: "Setup", value: "S" }
-];
 
-function diffInMinutes(startTime, endTime) {
-    // แปลงเวลาเป็นนาที
-    function timeToMinutes(time) {
-        const [hours, minutes] = time.split(':').map(Number);
-        return hours * 60 + minutes;
-    }
-
-    const startMinutes = timeToMinutes(startTime);
-    const endMinutes = timeToMinutes(endTime);
-
-    // ตรวจสอบว่าเวลาเดียวกันหรือไม่
-    if (startMinutes === endMinutes) {
-        return 1440; // 24 ชั่วโมง = 1440 นาที
-    }
-
-    // ตรวจสอบว่าต้องข้ามวันหรือไม่
-    let diffMinutes;
-    if (endMinutes >= startMinutes) {
-        diffMinutes = endMinutes - startMinutes;
-    } else {
-        diffMinutes = (24 * 60 - startMinutes) + endMinutes;
-    }
-
-    return diffMinutes;
+//Data Search JSON
+function getRandomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString();
 }
 
-async function CreateUI() {
-    $("#sc-shift-pattern").kendoDropDownList({
-        dataTextField: "shiftName",
-        dataValueField: "shiftCode",
-        dataSource: dataShiftList,
-        optionLabel: '- Select All  -'
-    });
-    sc_shift_pattern = $("#sc-shift-pattern").data("kendoDropDownList");
+function getRandomBoolean() {
+    return Math.random() < 0.5;
+}
 
+function getRandomString(prefix, length = 3) {
+    return prefix + Math.random().toString(36).substring(2, 2 + length).toUpperCase();
+}
 
-    //$("#sc-status").kendoDropDownList({
-    //    dataTextField: "text",
-    //    dataValueField: "value",
-    //    dataSource: state,
-    //    index: 1,
+function generateRandomData(count = 10) {
+    const users = ["User1", "User2", "User3", "User4", "User5", "User6", "User7", "User8"];
+    const data = [];
 
-    //});
+    for (let i = 0; i < count; i++) {
+        //const createDate = getRandomDate(new Date(2023, 0, 1), new Date());
+        //const updateDate = getRandomDate(new Date(createDate), new Date());
 
-    //sc_status = $("#sc-status").data("kendoDropDownList");
+        data.push({
+            FGCode: getRandomString("FG"),
+            FGName: `Product ${i + 1}`,
+            Status: getRandomBoolean(),
+            CreateBy: users[Math.floor(Math.random() * users.length)],
+            CreateDateTime: new Date(),
+            UpdateBy: users[Math.floor(Math.random() * users.length)],
+            UpdateDateTime: new Date()
+        });
+    }
 
-    ui_loading = $("#ajax-notifications").kendoNotification({
-        show: onNotificationShow, hide: onNotificationHide,
-        position: {
-            pinned: true,
-            bottom: 10,
-            left: 10
-        },
-        animation: {
-            open: {
-                effects: "fadeIn"
-            },
-            close: {
-                effects: "fadeOut"
-            }
-        },
-        width: 400,
-        autoHideAfter: 0,
-        stacking: "down",
-        templates: [
-            {
-                type: "progress",
-                template: "<div class=\"\"><i class=\"fa-duotone fa-spinner-third fa-spin\"></i> #= message #</div>"
-            }
-        ]
-    }).data("kendoNotification");
-
+    return data;
 }
 
 
+let DataSearch = generateRandomData(1000)
 
-//#endregion
-
-
-
-//window.addEventListener("load", (event) => {
-//    console.log("page is fully loaded");
-//});
+// Input  Search
+let sc_shift;
 
 
-//  1
+// DataAPI
+//let dataGetBUItemCombo, dataAdjustmentStatus, dataGetBusinessUnitCombo;
+let dataShift = null;
 
 document.addEventListener("DOMContentLoaded", async (event) => {
-    //console.log("DOMContentLoaded !");
-    dataShiftList = common.APIPost("/api/product/getcomboshift", {})
+
+
+
     await CreateUI();
+    await grid_inquire.using([]);
 
-
-    await loadUIDialog();
-
-    await serachData();
 });
+async function CreateUI() {
 
+
+    $("#sc-shift").kendoDropDownList({
+        dataSource: dataShift,
+        filter: "contains",
+        //minLength: 1,
+        dataTextField: "DisplayName",
+        dataValueField: "MiscCode"
+        , optionLabel: Resources("COMMON", "DropDownAll"),
+    });
+    sc_shift = $("#sc-shift").data("kendoDropDownList");
+    
+}
 
 // 2
 $(document).ready(async function () {
 
-    //console.log(" document ready!");
 
-    await grid_inquire.using([]);
 
+    await LoadDefault();
 });
 
 // 3
-window.addEventListener("load", async (event) => {
-    //console.log("load !");
-
+window.addEventListener("load", (event) => {
 
 });
 
-//document.addEventListener("readystatechange", (event) => {
-//    console.log("readystatechange !");
-//});
 
-
-async function serachData() {
-
-
-
-    //public string ? ReturnID { get; set; }
-    //       public DateTime ? StartDate { get; set; }
-    //       public DateTime ? ToDate { get; set; }
-
-    //       public string ? CompanyReturnScrap { get; set; }
-
-    let SendData = {
-        //ListTransport: ListTranspot.value(),
-        ShiftName: sc_shift_pattern.value(),
-        // IsActiveString: sc_status.value(),
-
-
-    };
-
-    ui_loading.show({ message: app.messages.ajax.loading }, "progress");
-
-
-    try {
-        await app.ui.clearAlert("#message-container");
-        let DataCallApi = await APIPost("/master/shiftpatterndetails/search", SendData);
-        if (DataCallApi.length == 0) {
-            Event.showWarning("Data Not Found");
-            grid_inquire.using([]);
-            app.ui.uiEnable(["#export-button"], false);
-            return;
-        }
-        for (var i = 0; i < DataCallApi.length; i++) {
-            let data_rows = DataCallApi[i]
-            data_rows.No = i + 1;
-            //data_rows.StockDate = kendo.toString(new Date(data_rows.StockDate), formatDatePicker);
-            data_rows.CreateDate = data_rows.CreateDate !== null ? kendo.toString(new Date(data_rows.CreateDate), formatDatePicker) : "";
-            data_rows.UpdateDate = data_rows.UpdateDate !== null ? kendo.toString(new Date(data_rows.UpdateDate), formatDatePicker) : "";
-
-            //data_rows.WasteProcessorName = data_rows.Vendorid !== null ? dataWasteProcessor.find(item => item.WasteProcessorID === data_rows.Vendorid)?.WasteProcessorNameTH : "";
-        }
-
-
-        grid_inquire.using(DataCallApi);
-
-        app.ui.uiEnable(["#export-button"], true);
-
-        //console.log(DataCallApi);
-        //ui_loading.hide();
-    } catch (e) {
-        app.ui.uiEnable(["#export-button"], false);
-        console.log(e);
-        // ui_loading.hide();
-    } finally {
-        ui_loading.hide();
-    }
-
-}
 
 async function LoadDefault() {
 
     $("#message-container").css("display", "none");
     await ui.Input.Clear("search-container", () => {
-        sc_status.value("true")
+
+
     });
     await app.ui.clearAlert("#message-container");
     app.ui.uiEnable(["#export-button"], false);
     await grid_inquire.using([]);
 }
+async function serachData() {
 
 
+
+    let SendData = {
+
+    };
+
+
+    try {
+        //let DataCallApi = await APIPost("/api/transaction/sts050/searchtransfer", SendData);
+        let DataCallApi = DataSearch;
+        await app.ui.clearAlert("#message-container");
+
+        if (DataCallApi.length == 0) {
+            Event.showWarning(Message("Warning", "DataNotFound"));
+            grid_inquire.using([]);
+            app.ui.uiEnable(["#export-button"], false);
+            return;
+        }
+        grid_inquire.using(DataCallApi);
+
+        app.ui.uiEnable(["#export-button"], true);
+    } catch (e) {
+
+        // 
+    } finally {
+
+    }
+
+}
+var record_details = 0;
 
 let grid_inquire = {
     grid_ID: "#grid-inquiry",
     using: async (DataApi) => {
-
         if ($(grid_inquire.grid_ID).data("kendoGrid") == undefined) {
             await grid_inquire.create(DataApi)
         } else {
             await grid_inquire.update(DataApi);
         }
     },
-    create: async (DataApi) => {
-        //console.log("AAAA");
-
-
+    create: (DataApi) => {
 
         let dataSource = new kendo.data.DataSource({
             transport: {
                 read: function (e) {
-                    // On success.
-                    //e.success([]);
                     e.success(DataApi);
                 },
                 destroy: function (e) {
-                    // On success.
                     e.success();
-
                 },
                 create: function (e) {
                     // On success.
@@ -248,17 +164,21 @@ let grid_inquire = {
                     }
                 }
             },
-
             page: 1,
             pageSize: GridPageSizeDefault(),
 
         });
+
+        // var record = 0;
         let grid = $(grid_inquire.grid_ID).kendoGrid({
             dataSource: dataSource,
             pageable: {
                 pageSizes: GridPageSizes(),
 
             },
+            filterable: GridFillterable(),
+            sortable: true,
+            reorderable: true,
             excel: {
                 allPages: true
             }, excelExport: function (e) {
@@ -268,47 +188,43 @@ let grid_inquire = {
                 setPagerInfoToToolbar(grid_inquire.grid_ID),
                 { name: "search", text: Resources("COMMON", "ToolbarSearch") }
             ],
-            scrollable: true,
             columns: [
                 {
-                    field: "No",
-                    title: "No",
-                    width: "60px", attributes: { class: "text-center " },
-                    //template: dataItem => grid.dataSource.indexOf(dataItem) + 1
+
+                    title: Resources("PMS052", "GD001"),
+                    width: "60px", attributes: { class: "k-text-center " },
+                    headerAttributes: { "data-no-reorder": "true" },
+                    template: dataItem => grid.dataSource.indexOf(dataItem) + 1
+
                 },
                 {
-                    //field: "No",
-                    title: "",
-                    width: "130px", attributes: { class: "text-center " },
+                    width: "160px", attributes: { class: "k-text-center " },
                     command: [
-
                         {
                             name: "editmode",
-                            text: ``,
-                            iconClass: "k-icon k-i-edit",
-                            className: "k-button k-button-icontext btn-editmode btn-icon-grid",
-                            visible: function (dataItem) { return permissions.AllowEdit && dataItem.CheckReject != 5 },
+                            text: `<span class='k-icon k-i-edit'></span>`,
+                            className: "k-button k-button-icontext btn-editmode ",
+                            visible: function (dataItem) { return permissions.AllowEdit },
                             click: function (e) {
                                 e.preventDefault();
                                 var tr = $(e.target).closest("tr"); // get the current table row (tr)
                                 var data = this.dataItem(tr);
-                                console.log("Click =>>>>>> ", data);
+                                //console.log(data);
                                 dialog_windows.edit(e, data);
                             },
                         },
                         {
-                            className: "k-button k-button-icontext btn-delete k-danger"
+                            className: "btn-delete-grid btn-remove k-danger "
 
                             , name: "remove", text: "", iconClass: "k-icon k-i-trash"
-                            , visible: function (dataItem) { return permissions.AllowDelete && dataItem.CheckReject != 5 }
+                            , visible: function (dataItem) { return permissions.AllowDelete }
                             , click: async function (e) {
                                 // prevent page scroll position change
                                 e.preventDefault();
                                 var tr = $(e.target).closest("tr"); // get the current table row (tr)
                                 var data = await this.dataItem(tr);
 
-                                let dataShiftCode = data.ShiftCode;
-                                let dataPattern = data.Pattern;
+                                let dataTransportID = data.TransportID;
                                 const confirmationDialog = new ConfirmationDialog("dialogdelete");
                                 confirmationDialog.open({
                                     yes: async function () {
@@ -317,7 +233,7 @@ let grid_inquire = {
                                         try {
 
 
-                                            let ApiDelete = await APIPost("/master/shiftpatterndetails/delete", { ShiftCode: dataShiftCode, Pattern: dataPattern })
+                                            let ApiDelete = await APIPost("/smartwastesystem/sws100/deletetransportplan", { TransportID: dataTransportID })
                                             var grid = $(grid_inquire.grid_ID).data("kendoGrid");
                                             grid.removeRow(tr);
                                             await grid.data('kendoGrid').refresh();
@@ -328,7 +244,7 @@ let grid_inquire = {
                                         } catch (e) {
                                             //confirmationDialogDeleteOpen = 0;
                                         } finally {
-                                            ui_loading.hide();
+                                            
                                             //confirmationDialogDeleteOpen = 0;
                                         }
 
@@ -342,10 +258,7 @@ let grid_inquire = {
 
 
 
-                                }, common.format("Are you sure you want to delete?"));
-                                //, common.format("Confirm Delete CutTriesID : {0} ? ", data.CutTriesID));
-
-                                //console.log(data.CutTriesID);
+                                }, common.format(Message("Confirm", "ConfirmDelete")));
                                 $(document).ready(function () {
                                     try {
                                         var Selector = document.querySelectorAll("#dialogdelete");
@@ -356,114 +269,108 @@ let grid_inquire = {
                                         }
                                     } catch (e) {
 
-                                        console.log(e);
-
                                     }
                                 });
 
                             }
-                        },
-
-
-                    ]
+                        }]
 
                 },
+
                 {
+
                     field: "ShiftName",
-                    title: "Shift / Pattern Name",
-                    width: "220px", attributes: { class: "k-text-center " }
-                    //template: dataItem => grid.dataSource.indexOf(dataItem) + 1
+                    title: Resources("PMS052", "GD002"),
+                    attributes: { class: "k-text-right" },
+                    width: "250px"
                 },
                 {
-                    field: "StartTime",
-                    title: "Start Time",
-                    width: "120px", attributes: { class: "text-center " },
-                    template: (data) => {
-                        if (data.StartTime !== null) {
-                            return convertToHHMM(data.StartTime);
-                        }
-                        return "";
-                    }
+                    field: "ShiftStartTime",
+                    title: Resources("PMS052", "GD003"),
+                    attributes: { class: "k-text-left" },
+                    width: "200px"
                 },
                 {
-                    field: "EndTime",
-                    title: "End Time",
-                    width: "120px", attributes: { class: "text-center " },
-                    template: (data) => {
-                        if (data.EndTime !== null) {
-                            return convertToHHMM(data.EndTime);
-                        }
-                        return "";
-                    }
+                    field: "ShiftEndTime",
+                    title: Resources("PMS052", "GD004"),
+                    attributes: { class: "k-text-left" },
+                    width: "180px",
                 },
                 {
-                    field: "DurationInMinutes",
-                    title: "Duration (Min)",
-                    width: "120px", attributes: { class: "text-center " }
+                    field: "Duration",
+                    title: Resources("PMS052", "GD005"),
+                    attributes: { class: "k-text-left" },
+                    width: "180px",
+                    filterable: kendo_grid.filter.filter_true_false,
                 },
                 {
                     field: "Description",
-                    title: "Description",
-                    width: "320px"//, attributes: { class: "text-center " },
+                    title: Resources("PMS052", "GD006"),
+                    attributes: { class: "k-text-left" },
+                    width: "180px",
+
                 },
                 {
-                    field: "Type",
-                    title: "Type Work",
-                    width: "180px", attributes: { class: "text-center " },
-                    template: function (data) {
-                        if (data.Type !== null) {
-                            let textDisplay = statusWorkTime.find(item => item.value === data.Type).textGrid;
-                            //console.log(textDisplay);
-                            //k-primary
-                            if (data.Type == "W") {
-                                return `<span class="badge badge-success fs-md">${textDisplay}</span>`;
-                            } else if (data.Type == "S"){
-                                return `<span class="badge badge-primary fs-md">${textDisplay}</span>`
-                            }
-                            else {
-
-                                return `<span class="badge badge-warning fs-md">${textDisplay}</span>`
-                            }
-                        }
-                        return "";
-                    }
+                    field: "TypeWork",
+                    title: Resources("PMS052", "GD007"),
+                    attributes: { class: "k-text-left" },
+                    width: "180px",
+                   
                 },
-                { field: "CreateBy", title: "Create By", headerAttributes: { class: "k-text-center !k-justify-content-center" }, attributes: { style: "text-align: left" } },
-                { field: "CreateDate", title: "Create Date", headerAttributes: { class: "k-text-center !k-justify-content-center" }, attributes: { style: "text-align: center" } },
-                { field: "UpdateBy", title: "Upadate By", headerAttributes: { class: "k-text-center !k-justify-content-center" }, attributes: { style: "text-align: left" } },
-                { field: "UpdateDate", title: "Update Date", headerAttributes: { class: "k-text-center !k-justify-content-center" }, attributes: { style: "text-align: center" } }
+                {
+                    field: "CreateBy",
+                    title: Resources("PMS052", "GD008"),
+                    attributes: { class: "text-left " },
+                    width: "200px"
+                    //template: dataItem => grid.dataSource.indexOf(dataItem) + 1
+                },
 
+                {
+                    field: "CreateDateTime",
+                    title: Resources("PMS052", "GD009"),
+                    attributes: { class: "text-center " },
+                    width: "160px",
+                    format: `{0:${formatDateTimePicker}}`,
+                    filterable: false
+                },
 
+                {
 
-
-
+                    field: "UpdateBy",
+                    title: Resources("PMS052", "GD010"),
+                    attributes: { class: "text-left " },
+                    width: "200px"
+                },
+                {
+                    field: "UpdateDateTime",
+                    title: Resources("PMS052", "GD011"),
+                    attributes: { class: "text-center " },
+                    width: "160px",
+                    format: `{0:${formatDateTimePicker}}`,
+                    filterable: false
+                },
 
             ],
             dataBound: function (e) {
-                var preferedHeight = Math.round($(window).height() - $(grid_inquire.grid_ID).position().top) - 120;
+                var preferedHeight = Math.round($(window).height() - $(grid_inquire.grid_ID).position().top) - 200;
                 let grid = $(grid_inquire.grid_ID).data('kendoGrid');
-                if (preferedHeight < 300) {
+                if (preferedHeight < 240) {
                     preferedHeight = 540;
                 }
                 app.ui.toggleVScrollable(grid, { height: preferedHeight });
                 movePagerInfoToToolbar(grid_inquire.grid_ID)
-                //console.log(preferedHeight);
-
             },
             noRecords: kendo_grid.noRecords
 
         }).data("kendoGrid");
-
-
     },
     update: (DataApi) => {
         let dataSource = new kendo.data.DataSource({
             data: DataApi,
             pageSize: GridPageSizeDefault()
         });
-
-
         $(grid_inquire.grid_ID).data("kendoGrid").setDataSource(dataSource);
-    },
 
+
+    },
 }

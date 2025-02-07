@@ -17,7 +17,7 @@ namespace WEB.APP.MvcWebApp.Identity
             IOptions<IdentityOptions> optionsAccessor
             //MSDBContext context
             //, ICommonService commonService
-            
+
             )
             : base(userManager, roleManager, optionsAccessor)
         {

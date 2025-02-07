@@ -1,285 +1,274 @@
 ﻿
+
 let ip_hiden_Mode = $("#status-mode")
-let ip_hiden_Pattern = $("#ip-pattern")
-let ip_shift_code, ip_shift_type, ip_start_time, ip_end_time, ip_description;
+let text_mode = $("#text-mode");
+
+let hidden_create_by = $("#hidden-create-by");
+
+let hidden_create_date = $("#hidden-create-date-time");
+
+let hidden_update_by = $("#hidden-update-by");
+let hidden_update_date = $("#hidden-update-date-time");
 
 
+//Input
 
-
-
-
+let ip_shift_name, ip_shift_type, ip_shift_start_time, ip_shift_end_time, ip_status;
 let arryDisableInputNoWorking = []
-async function loadUIDialog() {
+window.addEventListener("load", async (event) => {
+    
 
-    $("#ip-shift-code").kendoDropDownList({
-        dataTextField: "shiftName",
-        dataValueField: "shiftCode",
-        dataSource: dataShiftList,
-        optionLabel: '- Select -'
+    $("#ip-shift-name").kendoDropDownList({
+        dataSource: dataShift,
+        filter: "contains",
+        //minLength: 1,
+        dataTextField: "DisplayName",
+        dataValueField: "MiscCode"
+        , optionLabel: Resources("COMMON", "DropDownAll"),
     });
-    ip_shift_code = $("#ip-shift-code").data("kendoDropDownList");
+    ip_shift_name = $("#ip-shift-name").data("kendoDropDownList");
+
 
     $("#ip-shift-type").kendoDropDownList({
-        dataTextField: "text",
-        dataValueField: "value",
-        dataSource: statusWorkTime,
-        optionLabel: '- Select  -'
-
+        dataSource: dataShift,
+        filter: "contains",
+        //minLength: 1,
+        dataTextField: "DisplayName",
+        dataValueField: "MiscCode"
+        , optionLabel: Resources("COMMON", "DropDownAll"),
     });
     ip_shift_type = $("#ip-shift-type").data("kendoDropDownList");
-
-    $("#ip-start-time").kendoTimePicker({
+   
+    $("#ip-shift-start-time").kendoTimePicker({
         adaptiveMode: "auto",
         componentType: "modern"
     });
-    ip_start_time = $("#ip-start-time").data("kendoTimePicker");
-    ui.TimePickerClick("#ip-start-time");
+    ip_shift_start_time = $("#ip-shift-start-time").data("kendoTimePicker");
+    ui.TimePickerClick("#ip-shift-start-time");
 
 
-    $("#ip-end-time").kendoTimePicker({
+    $("#ip-shift-end-time").kendoTimePicker({
         adaptiveMode: "auto",
         componentType: "modern"
     });
-    ip_end_time = $("#ip-end-time").data("kendoTimePicker");
-    ui.TimePickerClick("#ip-end-time");
+    ip_shift_end_time = $("#ip-shift-end-time").data("kendoTimePicker");
+    ui.TimePickerClick("#ip-shift-end-time");
+   
 
-
-
-    $("#ip-description").kendoTextArea({
-        rows: 3,
+    $("#ip-status").kendoSwitch({
     });
-    ip_description = $("#ip-description").data("kendoTextArea");
 
-}
+    ip_status = $("#ip-status").data("kendoSwitch");
+
+
+
+
+});
+
 
 let validataDialog = $("#window-dialog").kendoValidator(
     {
-        //validationSummary: true,
         messages: {
             required: function (input) {
 
                 //return "Please input Start Test ."
-            },
-            custom: "Please enter valid value for my custom rule",
-        }, rules: {
-            custom: function (input) {
-                if (input.is("[name=ip-cut-stock]")) {
-                    return input.val() === true;
-                }
-                return true;
             }
-        }
 
+        }
         , validateOnBlur: false
     }
 ).data('kendoValidator');
-
 let dialog_windows = {
     new: async (e, data) => {
         validataDialog.reset()
-        ui.display("windowsSaveButton");
-        await ui.Input.Clear("window-dialog", () => {
-            ip_description.value("");
-            ip_start_time.value("");
-            ip_end_time.value("");
-            //ip_return_date.value(new Date());
-        });
-        ip_hiden_Mode.val("new");
-        ui.Input.DisableCondition("window-dialog", true, arryDisableInputNoWorking)
+        await ui.Input.Clear("window-dialog");
 
-        // dialog_windows.checkWorkFlow("new", null);
-        ip_shift_code.enable(true);
+        await dialog_windows.setValue(data);
         window_dialog.open();
+        ip_hiden_Mode.val("new");
+        text_mode.html("New");
+        //ip_item_group_code.enable(true);
+
+
+
+
+
     },
     edit: async (e, data) => {
-        ui.display("windowsSaveButton");
+        //console.log("Edit Data => ",data);
+        await ui.Input.Clear("window-dialog");
+        ip_item_group_code.enable(false);
 
-        await ui.Input.Clear("window-dialog", () => {
-            ip_description.value("");
-            ip_start_time.value("");
-            ip_end_time.value("");
-            //ip_return_date.value(new Date());
-        });
         ip_hiden_Mode.val("edit");
-        await ui.Input.DisableCondition("window-dialog", true, arryDisableInputNoWorking)
+        text_mode.html("Edit");
         await dialog_windows.setValue(data);
-        ip_shift_code.enable(false);
+
         window_dialog.open();
 
 
-    },
-    view: async (e, data) => {
-        ui.hiden("windowsSaveButton");
-        //ui.hiden("validate-stock-type");
-        await ui.Input.Clear("window-dialog", () => {
-            //ip_description.value("");
-            //ip_start_time.value("");
-            //ip_end_time.value("");
-            //ip_return_date.value(new Date());
-        });
-        // ui.Input.DisableCondition("window-dialog", false, arryDisableInputNoWorking)
-        await dialog_windows.setValue(data);
-        //ip_section.enable(false);
-        ui.Input.DisableCondition("window-dialog", false, arryDisableInputNoWorking)
 
-        //dialog_windows.checkWorkFlow("view", null);
-        window_dialog.open();
+
+
     },
     save: async (e) => {
-        ui_loading.show({ message: app.messages.ajax.loading }, "progress");
-        let StatusMode = $("#status-mode").val();
-
 
         if (!validataDialog.validate()) {
-            ui_loading.hide();
+            //ui_loading.hide();
+            //console.log("XXXXXX XXXXXXX");
+
             return;
         }
 
-
-
-
-        let result = null
+        let result
         try {
-            //let StatusModel = $("#status-mode").val();
-            //console.log(dialog_windows.getValue());
+            //let dataSendAPI = dialog_windows.getValue();
 
-            // DisplayName = dataWasteProcessorTransportor.find(item => item.WasteProcessorID === data.ProcessorID).WasteProcessorNameTH;
+            let StatusMode = $("#status-mode").val();
+
+
 
             let Send_DataApiSave = dialog_windows.getValue()
-            //let dataProcessorAndWasteTransport = dataWasteProcessorTransportor.find(item => item.WasteTransportorID === "WT001")
 
-            result = await APIPost("/master/shiftpatterndetails/save", Send_DataApiSave);
-            //console.log("result =>>>>  ", result.StockID);
-            //ip_StockID.val(result.StockID)
-            await serachData();
+            if (StatusMode == "new") {
+                //add Data
+                //grid_inquire.addData({ pr: 2, pp: 5, codecut: 555 });
+
+                console.log(dialog_windows.getValue());
 
 
+                let Send_DataApiSave = dialog_windows.getValue()
+
+                result = await APIPost("/api/master/mas030/insertitemgroup", Send_DataApiSave);
+
+
+
+            } else if (StatusMode == "edit") {
+
+                result = await APIPost("/api/master/mas030/updateitemgroup", Send_DataApiSave);
+
+                //add Update Index Data
+            }
 
         } catch (e) {
-            console.log("Erorr", e);
+
+
 
         } finally {
-            await ui.Input.Clear("window-dialog");
-            ui_loading.hide();
-            $("#window-dialog").data("kendoWindow").close();
+            if (result.MessageCode == "UpdateSuccess" || result.MessageCode == "SaveSuccess") {
+                await ui.Input.Clear("window-dialog");
+                await serachData();
+
+                showSuccess(result.MessageName);
+                validataDialog.reset()
+                $("#window-dialog").data("kendoWindow").close();
+
+            } else {
+                messageDialog.error(format(result.MessageName, ip_item_group_code.value()), () => {
+                    ip_item_group_code.focus()
+
+                });
+            }
         }
 
-        return result
+
+
+    },
+    setValue: async (data) => {
+
+        //console.log("Mode =>", ip_hiden_Mode.val(), data);
+        if (ip_hiden_Mode.val() == "edit") {
+
+
+
+
+        } else {
+            //ip_status.value(true)
+            //ip_status.value("");
+
+            ip_status.value(true);
+        }
+
 
     },
     getValue: () => {
 
 
         return {
-            Mode: ip_hiden_Mode.val(),
-            Pattern: ip_hiden_Pattern.val(),
-            ShiftCode: ip_shift_code.value(),
-            Type: ip_shift_type.value(),
-            StartTime: kendo.toString(new Date(ip_start_time.value()), "HH:mm:ss"),
-            EndTime: kendo.toString(new Date(ip_end_time.value()), "HH:mm:ss"),
-            DurationInMinutes: diffInMinutes(kendo.toString(new Date(ip_start_time.value()), "HH:mm:ss"), kendo.toString(new Date(ip_end_time.value()), "HH:mm:ss")),
-            Description: ip_description.value(),
+            FGCode: ip_fg_code.value(),
+            FGName: ip_fg_name.value(),
+            Status: Number(ip_status.value()),
 
         }
 
 
-    },
-    setValue: async (data) => {
-        console.log(data);
-        // let result_API_User = await APIPost("/api/getuserinfo", { username: data.CreateBy });
-        // dropdown_Section_update("ip-section", result_API_User.sectionsList)
-        //ip_shift_code.value(data.NGCode);
-        //ip_ng_type_name.value(data.NGName);
-        ip_hiden_Pattern.val(data.Pattern);
-        ip_shift_code.value(data.ShiftCode);
-        ip_shift_type.value(data.Type);
-        ip_start_time.value(data.StartTime);
-        ip_end_time.value(data.EndTime);
-        ip_description.value(data.Description);
-        //if (data.IsActive == true) {
+    }
 
-        //    document.getElementById("ip-active").checked = true;
-        //} else {
-        //    document.getElementById("ip-active").checked = false;
+}
 
+function onCancelDialog(e) {
+    var confirmationDialog = new ConfirmationDialog();
+    confirmationDialog.open({
+        yes: function () {
+            validataDialog.reset()
+            $("#window-dialog").data("kendoWindow").close();
 
-        //}
-
-
-        // ip_StockID.val(data.StockID);
-        // ip_Status.val(data.Status);
-        // ip_stock_date.value(data.StockDate);
-        // ip_qty.value(data.Qty);
-        // ip_scrap_id.value(data.ScrapID);
-        // ip_reason.value(data.Reason);
-        // if (data.StockType == "CUT") {
-        //     document.getElementById("ip-cut-stock").checked = true;
-        // } else if (data.StockType == "ADD") {
-        //     document.getElementById("ip-add-stock").checked = true;
-        // }
-
-        // ip_create_by.value(data.CreateBy)
-        // ip_plan_date.value(data.CreateDate)
-        // ip_phone_number.value(data.Tel)
-        // ip_section.value(data.Section)
-
-        // //ip_remark.value(data.Remark)+
-        // ip_Status.val(data.nextSeq)
-        //// console.log(data);
-        // text_status.html(data.HTMLStatus);
-    },
-
-
+        }
+    }, Message("Confirmation", "ConfirmExitDialog"), "Confirmation");
 
 
 }
 
 
+function onSaveDialog(e) {
 
-
-
-$("#windowsCancalButton").kendoButton({
-    click: function () {
-        //ui.Input.Clear("window-export-from-input");
-        validataDialog.reset()
-        $("#window-dialog").data("kendoWindow").close();
-
+    if (!validataDialog.validate()) {
+        
+        return;
     }
-});
 
-$("#windowsSaveButton").kendoButton({
-    click: async function (e) {
+    const TextConfirmation = Message("Confirmation", "ConfirmSave")
+    var confirmationDialogShowDetails = new ConfirmationDialog("dialogshowdetails");
+    confirmationDialogShowDetails.open({
+        yes: function () {
+            dialog_windows.save(e);
+        }
+    }, TextConfirmation, "Confirmation ");
 
-
-        const TextConfirmation = "Are you sure you want to save data?"
-        var confirmationDialogShowDetails = new ConfirmationDialog("dialogshowdetails");
-        confirmationDialogShowDetails.open({
-            yes: function () {
-                dialog_windows.save(e);
-            }
-        }, TextConfirmation, "Confirmation ");
-
-    }
-});
-
-$("#window-dialog").kendoWindow({
-    width: "40%",
-    //height: '300px',
-    title: "Shift / Pattern Detail Maintenance",
+}
+var kendoWindow = $("#window-dialog").kendoWindow({
+    width: "50%",
+    /*height: '60%',*/
+    title: Resources("PMS081", "H001"),
     visible: false,
     modal: true,
     draggable: false,
     resizable: false,
-    //actions: [
-    //    "Close"
-    //],
     open: function () {
         this.center();
+
+
     }
 });
+//kendoWindow.title(`<i class="fas fa-database" style="padding-right:10px;"></i> ng Master Detail`);
+// Wait for the window to initialize and then modify the title
+setTimeout(function () {
+    var titleElement = $("#window-dialog_wnd_title"); // Select the title element
+    titleElement.prepend(' <i class="fas fa-database" style="padding: 5px;"></i>');
+}, 100);
+$("#window-dialog").data("kendoWindow").wrapper.append(`
+            <div class="dropdown-divider m-0"></div>
+            <div class="k-dialog-actions k-actions k-actions-horizontal k-actions-center ">
+                <button type="button" id="windowsSaveButton" class="k-dark k-button k-button-md k-rounded-md k-button-solid k-button-solid-base" onclick="onSaveDialog()">
+                    <span class="k-icon k-i-save k-button-icon"></span><span class="k-button-text" id="text-export">Save</span>
+                </button>
+                <button type="button" id="windowsCancalButton" class="  k-button k-button-md k-rounded-md k-button-solid k-button-solid-base" onclick="onCancelDialog()">
+                    <span class="k-icon k-i-arrow-left k-button-icon"></span><span class="k-button-text">CANCEL</span>
+                </button>
+                
+            </div>
+        `);
 
 let window_dialog = $("#window-dialog").data("kendoWindow");
 $("#window-dialog").parent().find(".k-window-action").css("visibility", "hidden");
-
 
 

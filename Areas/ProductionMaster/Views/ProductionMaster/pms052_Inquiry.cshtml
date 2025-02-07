@@ -3,32 +3,6 @@
 @using Microsoft.AspNetCore.Mvc
 
 
-<style>
-    .k-grid td {
-        border-bottom: 1px solid white;
-        border-right: 1px solid white;
-    }
-
-    .k-grid button.k-button-icontext {
-        color: white;
-        /*  */
-    }
-
-    .btn-icon-grid {
-        background-color: #11439E !important;
-    }
-
-    .k-grid {
-        border: 0.1mm solid white;
-    }
-
-    .k-window-titlebar {
-        background-color: #11439E;
-        color: white;
-    }
-
-</style>
-
 
 @{
 
@@ -70,27 +44,47 @@
 </script>
 
 
-<div id="search-container" class="card bg-light">
+@* <div id="search-container" class="card bg-light">
     <div class="card-body">
         <div class="row form-group justify-content-center">
-
-            @* <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-1  text-left text-md-right mt-2 mb-2">@MessageResources["SWS120", "SC001"]  </label>
-            <div class="col-lg-2 col-sm-4 mt-2 mb-2">
-            <input id="sc-list" style="width:100%;" />
-            </div> *@
 
             <label for="search" class="col-form-label  col-sm-5 col-md-2 col-lg-1  text-left text-md-right mt-2 mb-2">Shift / Pattern Name :</label>
             <div class="col-lg-2 col-sm-4 mt-2 mb-2">
                 <input id="sc-shift-pattern" style="width:100%;" />
             </div>
 
-
-
-
         </div>
 
     </div>
 </div>
+ *@
+
+
+<div id="search-container" class="card bg-light">
+    <div class="card-body m-2">
+        <div class="row g-3 d-flex justify-content-lg-center">
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <label for="sc-shift" class="form-label">
+                    @Resources["PMS052", "SC001"]
+                </label>
+                <input id="sc-shift" name="sc-shift" class="form-control" type="text" placeholder="@Resources["PMS052", "SC001"]" />
+            </div>
+
+         @*    <div class="col-lg-3 col-md-6 col-sm-12">
+                <label for="sc-status" class="form-label">
+                    @Resources["PMS050", "SC002"]
+                </label>
+                <input id="sc-status" name="sc-status" class="form-control" type="text" placeholder="@Resources["PMS050", "SC002"]" />
+            </div>
+
+ *@
+
+
+        </div>
+    </div>
+</div>
+
 
 
 
