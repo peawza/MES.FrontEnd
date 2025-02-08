@@ -17,10 +17,15 @@ let ip_fg_code, ip_fg_name, ip_status
 let arryDisableInputNoWorking = ["ip-item-group-name", "ip-status"]
 window.addEventListener("load", async (event) => {
     //console.log("load !");
-    $("#ip-model-name").kendoTextBox({
-
+    $("#ip-model-name").kendoDropDownList({
+        dataSource: dataStatus,
+        filter: "contains",
+        //minLength: 1,
+        dataTextField: "DisplayName",
+        dataValueField: "MiscCode"
+        , optionLabel: Resources("COMMON", "DropDownAll"),
     });
-    ip_model_name = $("#ip-model-name").data("kendoTextBox");
+    ip_model_name = $("#ip-model-name").data("kendoDropDownList");
     //$("#ip-process-name").kendoTextBox({
 
     //});
@@ -122,7 +127,7 @@ let dialog_windows = {
                 //add Data
                 //grid_inquire.addData({ pr: 2, pp: 5, codecut: 555 });
 
-                console.log(dialog_windows.getValue());
+                //console.log(dialog_windows.getValue());
 
 
                 let Send_DataApiSave = dialog_windows.getValue()
@@ -172,6 +177,7 @@ let dialog_windows = {
 
         } else {
             ip_status.value(true)
+           
             //ip_status.value("");
         }
 
@@ -225,7 +231,7 @@ function onSaveDialog(e) {
 var kendoWindow = $("#window-dialog").kendoWindow({
     width: "50%",
     /*height: '60%',*/
-    title: Resources("PMS081","H001"),
+    title: Resources("PMS061","H001"),
     visible: false,
     modal: true,
     draggable: false,

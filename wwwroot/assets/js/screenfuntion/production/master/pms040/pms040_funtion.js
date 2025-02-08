@@ -44,8 +44,8 @@ function generateRandomData(count = 10) {
 let DataSearch = generateRandomData(100)
 
 // Input  Search
-let sc_ng_code, sc_ng_name, sc_status;
-
+//let sc_machine_name, sc_line_name, sc_status;
+let sc_machine_name, sc_line_name, sc_status;
 
 // DataAPI
 //let dataGetBUItemCombo, dataAdjustmentStatus, dataGetBusinessUnitCombo;
@@ -60,14 +60,14 @@ document.addEventListener("DOMContentLoaded", async (event) => {
    
 });
 async function CreateUI() {
-    $("#sc-ng-code").kendoTextBox({
+    $("#sc-machine-name").kendoTextBox({
 
     });
-    sc_ng_code = $("#sc-ng-code").data("kendoTextBox");
-    $("#sc-ng-name").kendoTextBox({
+    sc_machine_name = $("#sc-machine-name").data("kendoTextBox");
+    $("#sc-line-name").kendoTextBox({
 
     });
-    sc_ng_name = $("#sc-ng-name").data("kendoTextBox");
+    sc_line_name = $("#sc-line-name").data("kendoTextBox");
   
 
     $("#sc-status").kendoDropDownList({
@@ -198,7 +198,7 @@ let grid_inquire = {
             columns: [
                 {
 
-                    title: Resources("PMS100","GD001"),
+                    title: Resources("PMS040","GD001"),
                     width: "60px", attributes: { class: "k-text-center " },
                     headerAttributes: { "data-no-reorder": "true" },
                     template: dataItem => grid.dataSource.indexOf(dataItem) + 1
@@ -282,77 +282,89 @@ let grid_inquire = {
                             }
                         }]
 
-                },
-
-                {
-
-                    field: "FGCode",
-                    title: Resources("PMS100", "GD002"),
-                    attributes: { class: "k-text-right" },
-                    width: "250px"
-                },
-                {
-                    field: "FGName",
-                    title: Resources("PMS100", "GD003"),
-                    attributes: { class: "k-text-left" },
-                    width: "200px"
-                },
-                {
+                },{
+                    field: "MachineCode",
+                    title: Resources("PMS040", "GD002"),
+                    width: "160px",
+                    attributes: { class: "k-text-center" }
+                },{
+                    field: "MachineName",
+                    title: Resources("PMS040", "GD003"),
+                    width: "240px",
+                    attributes: { class: "k-text-center" }
+                },{
+                    field: "LineName",
+                    title: Resources("PMS040", "GD004"),
+                    width: "150px",
+                    attributes: { class: "k-text-center" }
+                },{
+                    field: "ProcessName",
+                    title: Resources("PMS040", "GD005"),
+                    width: "200px",
+                    attributes: { class: "k-text-center" }
+                },{
                     field: "Status",
-                    title: Resources("PMS100", "GD004"),
-                    attributes: { class: "k-text-left" },
-                    width: "180px",
+                    title: Resources("PMS040", "GD006"),
+                    width: "120px",
+                    attributes: { class: "k-text-center" },
                     filterable: kendo_grid.filter.filter_true_false,
                     template: (data) => {
 
                         return kendo_grid.template.Active_Inactive(data.Status)
 
                     }
-                    
-                },
-                {
+                },{
+                    field: "RuntimeHours",
+                    title: Resources("PMS040", "GD007"),
+                    width: "150px",
+                    attributes: { class: "k-text-right" }
+                },{
+                    field: "WarningHours",
+                    title: Resources("PMS040", "GD008"),
+                    width: "150px",
+                    attributes: { class: "k-text-right" }
+                },{
+                    field: "DangerHours",
+                    title: Resources("PMS040", "GD009"),
+                    width: "150px",
+                    attributes: { class: "k-text-right" }
+                },{
+                    field: "NotifyStatus",
+                    title: Resources("PMS040", "GD010"),
+                    width: "150px",
+                    attributes: { class: "k-text-center" }
+                },{
+                    field: "TaktTime",
+                    title: Resources("PMS040", "GD011"),
+                    width: "150px",
+                    attributes: { class: "k-text-right" }
+                },{
                     field: "CreateBy",
-                    title: Resources("PMS100", "GD005"),
-                    attributes: { class: "text-left " },
-                    width: "200px"
-                    //template: dataItem => grid.dataSource.indexOf(dataItem) + 1
-                },
-
-                {
-                    field: "CreateDateTime",
-                    title: Resources("PMS100", "GD006"),
-                    attributes: { class: "text-center " },
-                    width: "160px",
-                    template: (data) => {
-                        if (data.CreateDateTime != null) {
-                            return kendo.toString(new Date(data.CreateDateTime), formatDateTimePicker)
-                        }
-                        return "";
-                    },
+                    title: Resources("PMS040", "GD012"),
+                    width: "150px",
+                    attributes: { class: "k-text-center" }
+                }, {
+                    field: "CreateDate",
+                    title: Resources("PMS040", "GD013"),
+                    width: "150px",
+                    attributes: { class: "k-text-center" },
+                    format: `{0:${formatDateTimePicker}}`,
                     filterable: false
-                },
-
-                {
-                    
+                },{
                     field: "UpdateBy",
-                    title: Resources("PMS100", "GD007"),
-                    attributes: { class: "text-left " },
-                    width: "200px"
-                },
-                {
-                    field: "UpdateDateTime",
-                    title: Resources("PMS100", "GD008"),
-                    attributes: { class: "text-center " },
-                    width: "160px",
-                    template: (data) => {
-                        if (data.UpdateDateTime != null) {
-                            return kendo.toString(new Date(data.UpdateDateTime), formatDateTimePicker)
-                        }
-                        return "";
-                    },
+                    title: Resources("PMS040", "GD014"),
+                    width: "150px",
+                    attributes: { class: "k-text-center" }
+                },{
+                    field: "UpdateDate",
+                    title: Resources("PMS040", "GD015"),
+                    width: "150px",
+                    attributes: { class: "k-text-center" },
                     format: `{0:${formatDateTimePicker}}`,
                     filterable: false
                 },
+            
+
 
             ],
             dataBound: function (e) {

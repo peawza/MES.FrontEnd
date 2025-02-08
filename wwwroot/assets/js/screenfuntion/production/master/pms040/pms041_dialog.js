@@ -13,28 +13,101 @@ let hidden_update_date = $("#hidden-update-date-time");
 
 //Input
 
-let ip_fg_code, ip_fg_name, ip_status
+let status_mode, ip_machine_code, ip_machine_name, ip_line_name, ip_process_name;
+let ip_machine_warning_time,ip_machine_danger_time, ip_machine_takt_time;
+let ip_picture,ip_machine_location_image_left,ip_machine_location_image_top, ip_status, ip_calculate_quantity_flag;
 let arryDisableInputNoWorking = ["ip-item-group-name", "ip-status"]
 window.addEventListener("load", async (event) => {
     //console.log("load !");
-    $("#ip-fg-code").kendoTextBox({
+
+    $("#ip-machine-code").kendoTextBox({
 
     });
-    ip_fg_code = $("#ip-fg-code").data("kendoTextBox");
-    $("#ip-fg-name").kendoTextBox({
+    ip_machine_code = $("#ip-machine-code").data("kendoTextBox");
+    $("#ip-machine-name").kendoTextBox({
 
     });
-    ip_fg_name = $("#ip-fg-name").data("kendoTextBox");
+    ip_machine_name = $("#ip-machine-name").data("kendoTextBox");
+    $("#ip-line-name").kendoDropDownList({
+        dataSource: dataStatus,
+        filter: "contains",
+        //minLength: 1,
+        dataTextField: "DisplayName",
+        dataValueField: "MiscCode"
+        , optionLabel: Resources("COMMON", "DropDownAll"),
+
+    });
+    ip_line_name = $("#ip-line-name").data("kendoDropDownList");
+    $("#ip-process-name").kendoDropDownList({
+        dataSource: dataStatus,
+        filter: "contains",
+        //minLength: 1,
+        dataTextField: "DisplayName",
+        dataValueField: "MiscCode"
+        , optionLabel: Resources("COMMON", "DropDownAll"),
+
+    });
+    ip_process_name = $("#ip-process-name").data("kendoDropDownList");
+    $("#ip-machine-warning-time").kendoNumericTextBox({
+
+        decimals: 0,
+        spinners: false,
+        format: "n0"
+    });
+    ip_machine_warning_time = $("#ip-machine-warning-time").data("kendoNumericTextBox");
+    $("#ip-machine-danger-time").kendoNumericTextBox({
+        decimals: 0,
+        spinners: false,
+        format: "n0"
+
+    });
+    ip_machine_danger_time = $("#ip-machine-danger-time").data("kendoNumericTextBox");
+    $("#ip-machine-takt-time").kendoNumericTextBox({
+        decimals: 0,
+        spinners: false,
+        format: "n0"
+    });
+    ip_machine_takt_time = $("#ip-machine-takt-time").data("kendoNumericTextBox");
+
+    kendoUploadImage.using("ip-picture", "displayurl-picture", "hidden-picture");
+    ip_picture_before = $("#ip-picture").data("kendoUpload")
+
+    $("#ip-machine-location-image-left").kendoTextBox({
+
+    });
+    ip_machine_location_image_left = $("#ip-machine-location-image-left").data("kendoTextBox");
+    $("#ip-machine-location-image-top").kendoTextBox({
+
+    });
+    ip_machine_location_image_top = $("#ip-machine-location-image-top").data("kendoTextBox");
+
+
+
+
     
     $("#ip-status").kendoSwitch({
+
     });
 
     ip_status = $("#ip-status").data("kendoSwitch");
 
 
+    $("#ip-calculate-quantity-flag").kendoSwitch({
+
+    });
+    ip_calculate_quantity_flag = $("#ip-calculate-quantity-flag").data("kendoSwitch");
+
 
 
 });
+
+function uploadImage() {
+
+    document.getElementById("ip-picture").click();
+}
+function delelteImage() {
+    document.getElementById("ip-picture-delete").click();
+}
 
 
 let validataDialog = $("#window-dialog").kendoValidator(
@@ -154,6 +227,7 @@ let dialog_windows = {
 
         } else {
             ip_status.value(true)
+            ip_calculate_quantity_flag.value(true)
             //ip_status.value("");
         }
 
@@ -205,9 +279,9 @@ function onSaveDialog(e) {
 
 }
 var kendoWindow = $("#window-dialog").kendoWindow({
-    width: "50%",
+    width: "40%",
     /*height: '60%',*/
-    title: Resources("PMS081","H001"),
+    title: Resources("PMS041","H001"),
     visible: false,
     modal: true,
     draggable: false,

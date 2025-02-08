@@ -1093,32 +1093,20 @@ let _data_LocalizedResources ={
     {
       "ScreenCode": "PMS040",
       "ObjectID": "GD007",
-      "ResourcesTH": "Runtime Hours",
-      "ResourcesEN": "Runtime Hours"
+      "ResourcesTH": "Runtime<br>Hours",
+      "ResourcesEN": "Runtime<br>Hours"
     },
     {
       "ScreenCode": "PMS040",
       "ObjectID": "GD008",
-      "ResourcesTH": "Warning Hours",
-      "ResourcesEN": "Warning Hours"
-    },
-    {
-      "ScreenCode": "PMS040",
-      "ObjectID": "GD009",
-      "ResourcesTH": "Danger Hours",
-      "ResourcesEN": "Danger Hours"
+      "ResourcesTH": "Warning<br>Hours",
+      "ResourcesEN": "Warning<br>Hours"
     },
     {
       "ScreenCode": "PMS040",
       "ObjectID": "GD010",
       "ResourcesTH": "Notify Status",
       "ResourcesEN": "Notify Status"
-    },
-    {
-      "ScreenCode": "PMS040",
-      "ObjectID": "GD011",
-      "ResourcesTH": "Takt Time (Sec.)",
-      "ResourcesEN": "Takt Time (Sec.)"
     },
     {
       "ScreenCode": "PMS040",
@@ -1143,6 +1131,18 @@ let _data_LocalizedResources ={
       "ObjectID": "GD015",
       "ResourcesTH": "Update Date",
       "ResourcesEN": "Update Date"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD009",
+      "ResourcesTH": "Danger<br>Hours",
+      "ResourcesEN": "Danger<br>Hours"
+    },
+    {
+      "ScreenCode": "PMS040",
+      "ObjectID": "GD011",
+      "ResourcesTH": "Takt <br> Time (Sec.)",
+      "ResourcesEN": "Takt <br> Time (Sec.)"
     }
   ],
   "PMS041": [
@@ -1184,12 +1184,6 @@ let _data_LocalizedResources ={
     },
     {
       "ScreenCode": "PMS041",
-      "ObjectID": "IP007",
-      "ResourcesTH": "Takt Time (Sec.)",
-      "ResourcesEN": "Takt Time (Sec.)"
-    },
-    {
-      "ScreenCode": "PMS041",
       "ObjectID": "IP008",
       "ResourcesTH": "Image",
       "ResourcesEN": "Image"
@@ -1217,6 +1211,18 @@ let _data_LocalizedResources ={
       "ObjectID": "IP012",
       "ResourcesTH": "Calculate Quantity Flag",
       "ResourcesEN": "Calculate Quantity Flag"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "H001",
+      "ResourcesTH": "Machine Master Detail",
+      "ResourcesEN": "Machine Master Detail"
+    },
+    {
+      "ScreenCode": "PMS041",
+      "ObjectID": "IP007",
+      "ResourcesTH": "Takt Time (Sec.)",
+      "ResourcesEN": "Takt Time (Sec.)"
     }
   ],
   "PMS060": [
