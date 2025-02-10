@@ -302,7 +302,7 @@ let grid_inquire = {
                     title: Resources("PMS050", "GD004"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
-                    filterable: kendo_grid.filter.filter_true_false,
+                    filterable: kendo_grid.filter.filter_Active,
                     //template: (data) => {
 
                     //    return kendo_grid.template.Active_Inactive(data.Status)
@@ -315,7 +315,7 @@ let grid_inquire = {
                     title: Resources("PMS050", "GD005"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
-                    filterable: kendo_grid.filter.filter_true_false,
+                    filterable: kendo_grid.filter.filter_Active,
                     //template: (data) => {
 
                     //    return kendo_grid.template.Active_Inactive(data.Status)
@@ -328,7 +328,7 @@ let grid_inquire = {
                     title: Resources("PMS050", "GD006"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
-                    filterable: kendo_grid.filter.filter_true_false,
+                    filterable: kendo_grid.filter.filter_Active,
                     template: (data) => {
 
                         return kendo_grid.template.Active_Inactive(data.Status)

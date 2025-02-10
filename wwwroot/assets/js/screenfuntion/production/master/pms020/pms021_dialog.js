@@ -130,11 +130,11 @@ let dialog_windows = {
 
 
         } finally {
-            if (result.MessageCode == "UpdateSuccess" || result.MessageCode == "SaveSuccess") {
+            if (result.MessageCode == "UpdateSuccess"|| result.MessageCode == "SaveSuccess") {
                 await ui.Input.Clear("window-dialog");
                 await serachData();
 
-                showSuccess(result.MessageName);
+                showSuccess(Message("Information", "SaveSuccess"));
                 validataDialog.reset()
                 $("#window-dialog").data("kendoWindow").close();
 
@@ -200,7 +200,7 @@ function onCancelDialog(e) {
             $("#window-dialog").data("kendoWindow").close();
 
         }
-    }, Message("Confirmation", "ConfirmExitDialog"), "Confirmation");
+    }, Message("Confirm", "ConfirmExit"), "Confirmation");
 
 
 }
@@ -213,7 +213,7 @@ function onSaveDialog(e) {
         return;
     }
 
-    const TextConfirmation = Message("Confirmation", "ConfirmSave")
+    const TextConfirmation = Message("Confirm", "ConfirmSave")
     var confirmationDialogShowDetails = new ConfirmationDialog("dialogshowdetails");
     confirmationDialogShowDetails.open({
         yes: function () {

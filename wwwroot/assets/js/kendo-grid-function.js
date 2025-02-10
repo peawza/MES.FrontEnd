@@ -255,7 +255,34 @@ let kendo_grid = {
             extra: false,
 
         },
+        filter_Active: {
+            ui: function (element) {
+                //console.log(element);
+                // 
+                element.kendoDropDownList({
+                    dataSource: [
+                        { text: "Active", value: true },
+                        { text: "Inactive", value: false }
+                    ],
+                    dataTextField: "text",
+                    dataValueField: "value",
+                    optionLabel: Resources("COMMON", "DropDownAll"),
+                });
 
+                $(document).ready(function () {
+                    // Add 'd-none' class to the dropdown with the title "Operator"
+                    $($('.k-filter-menu-container .k-picker.k-dropdownlist.k-picker-solid.k-picker-md.k-rounded-md')[0]).addClass('d-none');
+                });
+            }
+            , operators: {
+                string: {
+                    contains: "Contains",
+                }
+            },
+            extra: false,
+
+        },
+        
     },
     template: {
         Active_Inactive: (data) => {

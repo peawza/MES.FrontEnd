@@ -307,7 +307,7 @@ let grid_inquire = {
                     title: Resources("PMS040", "GD006"),
                     width: "120px",
                     attributes: { class: "k-text-center" },
-                    filterable: kendo_grid.filter.filter_true_false,
+                    filterable: kendo_grid.filter.filter_Active,
                     template: (data) => {
 
                         return kendo_grid.template.Active_Inactive(data.Status)

@@ -301,7 +301,7 @@ let grid_inquire = {
                     title: Resources("PMS052", "GD005"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
-                    filterable: kendo_grid.filter.filter_true_false,
+                    filterable: kendo_grid.filter.filter_Active,
                 },
                 {
                     field: "Description",

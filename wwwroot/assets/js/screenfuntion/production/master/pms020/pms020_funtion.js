@@ -108,13 +108,13 @@ async function serachData() {
         //console.log(DataCallApi);
         await app.ui.clearAlert("#message-container");
 
-        if (DataCallApi.length == 0) {
+        if (DataCallApi.data.length == 0) {
             Event.showWarning(Message("Warning", "DataNotFound"));
             grid_inquire.using([]);
             app.ui.uiEnable(["#export-button"], false);
             return;
         }
-        grid_inquire.using(DataCallApi);
+        grid_inquire.using(DataCallApi.data);
 
         app.ui.uiEnable(["#export-button"], true);
     } catch (e) {
@@ -231,14 +231,16 @@ let grid_inquire = {
                                                 "deleteby": "system"
 
                                             })
-                                            
+                                            console.log(ApiDelete);
 
-                                            if (ApiDelete == "Ok") {
+                                            if (ApiDelete.StatusCode == "Ok") {
+                                                console.log("AAAA");
+                                                showSuccess(Message("Information", "DeleteSuccess"));
                                                 var grid = $(grid_inquire.grid_ID).data("kendoGrid");
                                                 grid.removeRow(tr);
                                                 await grid.data('kendoGrid').refresh();
 
-                                                showSuccess(Message("",""));
+                                                
                                             }
 
                                             // confirmationDialogDeleteOpen = 0;
@@ -302,7 +304,7 @@ let grid_inquire = {
                     title: Resources("PMS020", "GD005"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
-                    filterable: kendo_grid.filter.filter_true_false,
+                    filterable: kendo_grid.filter.filter_Active,
                     template: (data) => {
 
                         return kendo_grid.template.Active_Inactive(data.Isactive)
