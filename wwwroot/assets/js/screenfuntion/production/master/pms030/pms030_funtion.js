@@ -211,7 +211,7 @@ let grid_inquire = {
                                 confirmationDialog.open({
                                     yes: async function () {
 
-                                        ui_loading.show({ message: app.messages.ajax.loading }, "progress");
+                                         
                                         try {
 
 

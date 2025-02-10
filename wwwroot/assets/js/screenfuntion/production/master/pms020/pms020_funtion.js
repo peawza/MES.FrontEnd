@@ -53,7 +53,7 @@ async function CreateUI() {
         dataValueField: "MiscCode"
         , optionLabel: Resources("COMMON","DropDownAll"),
     });
-    sc_adjustment_status = $("#sc-status").data("kendoDropDownList");
+    sc_status = $("#sc-status").data("kendoDropDownList");
 }
 
 // 2
@@ -89,25 +89,26 @@ async function serachData() {
    
 
     let SendData = {
-        "ProcessCode": null,
-        "ProcessName": null,
-        "IsActive": null
+        "ProcessCode": sc_process_code.value(),
+        "ProcessName": sc_process_name.value(),
+        "IsActive": sc_status.value()
     };
 
 
     try {
         //let DataCallApi = await APIPost("http://localhost:4443/api/production/master/pms020/search", SendData);
 
-  
-        
+
+
         //APIGet("http://localhost:4443/api/production/master/WeatherForecast", null);
         //APIGet("http://localhost:5001/messystem/getresources", null);
-        let DataCallApi = await APIPost("http://localhost:5301/pms020/search", SendData);
+        //http://localhost:6301/
+        let DataCallApi = await APIPost("http://localhost:4443/api/production/master/pms020/search", SendData);
         //let DataCallApi = [];
-        console.log(DataCallApi);
+        //console.log(DataCallApi);
         await app.ui.clearAlert("#message-container");
 
-        if (DataCallApi.ResultHeader.length == 0) {
+        if (DataCallApi.length == 0) {
             Event.showWarning(Message("Warning", "DataNotFound"));
             grid_inquire.using([]);
             app.ui.uiEnable(["#export-button"], false);
@@ -117,7 +118,7 @@ async function serachData() {
 
         app.ui.uiEnable(["#export-button"], true);
     } catch (e) {
-        console.log(e);
+        //console.log(e);
         // 
     } finally {
 
@@ -175,15 +176,19 @@ let grid_inquire = {
             excel: {
                 allPages: true
             }, excelExport: function (e) {
-                GridExcelExport(e, "Miscellaneous")
+                GridExcelExport(e, "Process_Master")
             },
-            toolbar: ["search"],
+            toolbar: [
+                setPagerInfoToToolbar(grid_inquire.grid_ID),
+                { name: "search", text: Resources("COMMON", "ToolbarSearch") }
+            ],
             columns: [
                 {
 
                     title: Resources("PMS020","GD001"),
                     width: "60px", attributes: { class: "k-text-center " },
-                    headerAttributes: { "data-no-reorder": "true" }
+                    headerAttributes: { "data-no-reorder": "true" },
+                    template: dataItem => grid.dataSource.indexOf(dataItem) + 1
                 },
                 {
                     width: "160px", attributes: { class: "k-text-center " },
@@ -212,21 +217,29 @@ let grid_inquire = {
                                 var tr = $(e.target).closest("tr"); // get the current table row (tr)
                                 var data = await this.dataItem(tr);
 
-                                let dataTransportID = data.TransportID;
+                                let dataProcesscode = data.Processcode;
                                 const confirmationDialog = new ConfirmationDialog("dialogdelete");
                                 confirmationDialog.open({
                                     yes: async function () {
 
-                                        ui_loading.show({ message: app.messages.ajax.loading }, "progress");
+                                         
                                         try {
 
 
-                                            let ApiDelete = await APIPost("/smartwastesystem/sws100/deletetransportplan", { TransportID: dataTransportID })
-                                            var grid = $(grid_inquire.grid_ID).data("kendoGrid");
-                                            grid.removeRow(tr);
-                                            await grid.data('kendoGrid').refresh();
+                                            let ApiDelete = await APIPost("http://localhost:4443/api/production/master/pms020/delete",{
+                                                "ProcessCode": dataProcesscode,
+                                                "deleteby": "system"
 
+                                            })
+                                            
 
+                                            if (ApiDelete == "Ok") {
+                                                var grid = $(grid_inquire.grid_ID).data("kendoGrid");
+                                                grid.removeRow(tr);
+                                                await grid.data('kendoGrid').refresh();
+
+                                                showSuccess(Message("",""));
+                                            }
 
                                             // confirmationDialogDeleteOpen = 0;
                                         } catch (e) {
@@ -267,7 +280,7 @@ let grid_inquire = {
 
                 {
 
-                    field: "ProcessCode",
+                    field: "Processcode",
                     title: Resources("PMS020", "GD002"),
                     attributes: { class: "k-text-right" },
                     width: "250px"
@@ -279,20 +292,25 @@ let grid_inquire = {
                 //    width: "200px"
                 //},
                 {
-                    field: "ProcessNameEN",
+                    field: "Processname",
                     title: Resources("PMS020", "GD004"),
                     attributes: { class: "k-text-left" },
                     width: "200px"
                 },
                 {
-                    field: "Status",
+                    field: "Isactive",
                     title: Resources("PMS020", "GD005"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
-                    filterable: kendo_grid.filter.filter_true_false
+                    filterable: kendo_grid.filter.filter_true_false,
+                    template: (data) => {
+
+                        return kendo_grid.template.Active_Inactive(data.Isactive)
+
+                    }
                 },
                 {
-                    field: "CreateBy",
+                    field: "Createby",
                     title: Resources("PMS020", "GD006"),
                     attributes: { class: "text-left " },
                     width: "200px"
@@ -300,34 +318,35 @@ let grid_inquire = {
                 },
 
                 {
-                    field: "CreateDateTime",
+                    field: "Createdate",
                     title: Resources("PMS020", "GD007"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
-                        if (data.CreateDateTime != null) {
-                            return kendo.toString(new Date(data.CreateDateTime), formatDateTimePicker)
+                        if (data.Createdate != null) {
+                            return kendo.toString(new Date(data.Createdate), formatDateTimePicker)
                         }
                         return "";
                     },
+                    format: `{0:${formatDateTimePicker}}`,
                     filterable: false
                 },
 
                 {
                     
-                    field: "UpdateBy",
+                    field: "Updateby",
                     title: Resources("PMS020", "GD008"),
                     attributes: { class: "text-left " },
                     width: "200px"
                 },
                 {
-                    field: "UpdateDateTime",
+                    field: "Updatedate",
                     title: Resources("PMS020", "GD009"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
-                        if (data.UpdateDateTime != null) {
-                            return kendo.toString(new Date(data.UpdateDateTime), formatDateTimePicker)
+                        if (data.Updatedate != null) {
+                            return kendo.toString(new Date(data.Updatedate), formatDateTimePicker)
                         }
                         return "";
                     },
@@ -343,6 +362,8 @@ let grid_inquire = {
                     preferedHeight = 540;
                 }
                 app.ui.toggleVScrollable(grid, { height: preferedHeight });
+                movePagerInfoToToolbar(grid_inquire.grid_ID);
+
             },
             noRecords: kendo_grid.noRecords
 

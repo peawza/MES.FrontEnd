@@ -4,7 +4,17 @@ function searchButtonClicked(e) {
     serachData();
 }
 
+
+async function ImportButtonClicked(e) {
+    //var gridexport = $(grid_inquire.grid_ID).data("kendoGrid");
+    //gridexport.saveAsExcel();
+
+
+}
+
 async function exportButtonClicked(e) {
+    var gridexport = $(grid_inquire.grid_ID).data("kendoGrid");
+    gridexport.saveAsExcel();
    
 
 }

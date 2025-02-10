@@ -81,7 +81,7 @@
 
     <div class="col-md-6 col-12 text-md-end text-right">
         @Html.SearchButton().Events(ev => ev.Click("searchButtonClicked"))
-        @Html.ImportButton().Events(ev => ev.Click("exportButtonClicked"))
+        @Html.ImportButton().Events(ev => ev.Click("ImportButtonClicked"))
 
         @if (permissions.AllowExport)
         {

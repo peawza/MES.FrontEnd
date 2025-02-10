@@ -1,4 +1,5 @@
-﻿function onNotificationShow(e) {
+﻿let api_axios_delay = 200;
+function onNotificationShow(e) {
     document.getElementById('loadingOverlay').classList.remove('d-none');
     document.getElementById('loadingOverlay').innerText = '';
 }

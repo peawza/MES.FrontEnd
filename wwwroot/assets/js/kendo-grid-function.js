@@ -129,14 +129,21 @@ function GridExcelExport(e, filename, displayColumeNo) {
                     cell.value = date;
                     cell.format = "dd/MM/yyyy";
                 }
-            } else if (cell.value && typeof cell.value === "object") {
+            } else if (cell.value && typeof cell.value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?$/.test(cell.value)) {
+                var date = kendo.parseDate(cell.value, "yyyy-MM-ddTHH:mm:ss.fff");
+                if (date) {
+                    cell.value = date;
+                    cell.format = "dd/MM/yyyy";
+                }
+            }
+            else if (cell.value && typeof cell.value === "object") {
                 var date = kendo.parseDate(cell.value, "yyyy-MM-ddTHH:mm:ss");
                 if (date) {
                     cell.value = date;
                     cell.format = "dd/MM/yyyy HH:mm:ss";
                 }
             }
-            console.log("typeof cell.value =>", typeof cell.value);
+            //console.log("typeof cell.value =>", typeof cell.value);
         }
     }
 }

@@ -14,14 +14,14 @@ ConfigureWebHostBuilder WebHost = builder.WebHost;
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
-       policy =>
-       {
-           policy.AllowAnyOrigin()
-                 .AllowAnyHeader()
-                 .AllowAnyMethod();
-       });
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5137") // Explicitly allow frontend origin
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials(); // Use only if credentials (cookies, auth headers) are required
+        });
 });
-
 // Add services to the container.
 
 builder.Services.AddControllersWithViews(options =>
@@ -86,6 +86,8 @@ app.UseRequestLocalization(localizationOptions);
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+
+app.UseCors("AllowAll");
 app.UseRouting();
 
 app.UseAuthorization();

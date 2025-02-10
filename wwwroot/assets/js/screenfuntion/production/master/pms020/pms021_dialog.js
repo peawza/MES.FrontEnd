@@ -64,7 +64,7 @@ let dialog_windows = {
         ip_hiden_Mode.val("new");
         text_mode.html("New");
         //ip_item_group_code.enable(true);
-
+        ip_process_code.enable(true);
 
 
 
@@ -73,7 +73,7 @@ let dialog_windows = {
     edit: async (e, data) => {
         //console.log("Edit Data => ",data);
         await ui.Input.Clear("window-dialog");
-        ip_item_group_code.enable(false);
+        ip_process_code.enable(false);
 
         ip_hiden_Mode.val("edit");
         text_mode.html("Edit");
@@ -114,13 +114,13 @@ let dialog_windows = {
 
                 let Send_DataApiSave = dialog_windows.getValue()
 
-                result = await APIPost("/api/master/mas030/insertitemgroup", Send_DataApiSave);
+                result = await APIPost("http://localhost:4443/api/production/master/pms020/insert", Send_DataApiSave);
 
 
 
             } else if (StatusMode == "edit") {
 
-                result = await APIPost("/api/master/mas030/updateitemgroup", Send_DataApiSave);
+                result = await APIPost("http://localhost:4443/api/production/master/pms020/update", Send_DataApiSave);
 
                 //add Update Index Data
             }
@@ -159,9 +159,9 @@ let dialog_windows = {
             hidden_update_date.val(common.DateTime(data.UpdateDateTime));
 
 
-            ip_item_group_code.value(data.ItemGroupCode);
-            ip_item_group_name.value(data.ItemGroupName);
-            ip_status.value(data.Status);
+            ip_process_code.value(data.Processcode);
+            ip_Process_name_en.value(data.Processname);
+            ip_status.value(data.Isactive);
 
 
         } else {
@@ -179,9 +179,11 @@ let dialog_windows = {
 
 
         return {
-            ItemGroupCode: ip_item_group_code.value(),
-            ItemGroupName: ip_item_group_name.value(),
-            Status: Number(ip_status.value()),
+            processCode: ip_process_code.value(),
+            processName: ip_Process_name_en.value(),
+            isActive: ip_status.value(),
+            updateBy: "system",
+            createdBy: "system",
 
         }
 
