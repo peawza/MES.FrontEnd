@@ -89,13 +89,22 @@ async function serachData() {
    
 
     let SendData = {
-       
+        "ProcessCode": null,
+        "ProcessName": null,
+        "IsActive": null
     };
 
 
     try {
-        //let DataCallApi = await APIPost("/api/transaction/sts050/searchtransfer", SendData);
-        let DataCallApi = [];
+        //let DataCallApi = await APIPost("http://localhost:4443/api/production/master/pms020/search", SendData);
+
+  
+        
+        //APIGet("http://localhost:4443/api/production/master/WeatherForecast", null);
+        //APIGet("http://localhost:5001/messystem/getresources", null);
+        let DataCallApi = await APIPost("http://localhost:5301/pms020/search", SendData);
+        //let DataCallApi = [];
+        console.log(DataCallApi);
         await app.ui.clearAlert("#message-container");
 
         if (DataCallApi.ResultHeader.length == 0) {
@@ -108,7 +117,7 @@ async function serachData() {
 
         app.ui.uiEnable(["#export-button"], true);
     } catch (e) {
-
+        console.log(e);
         // 
     } finally {
 
