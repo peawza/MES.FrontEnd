@@ -282,7 +282,7 @@ let grid_inquire = {
 
                 {
 
-                    field: "Processcode",
+                    field: "processcode",
                     title: Resources("PMS020", "GD002"),
                     attributes: { class: "k-text-right" },
                     width: "250px"
@@ -294,13 +294,13 @@ let grid_inquire = {
                 //    width: "200px"
                 //},
                 {
-                    field: "Processname",
+                    field: "processname",
                     title: Resources("PMS020", "GD004"),
                     attributes: { class: "k-text-left" },
                     width: "200px"
                 },
                 {
-                    field: "Isactive",
+                    field: "isactive",
                     title: Resources("PMS020", "GD005"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
@@ -312,7 +312,7 @@ let grid_inquire = {
                     }
                 },
                 {
-                    field: "Createby",
+                    field: "createby",
                     title: Resources("PMS020", "GD006"),
                     attributes: { class: "text-left " },
                     width: "200px"
@@ -320,13 +320,13 @@ let grid_inquire = {
                 },
 
                 {
-                    field: "Createdate",
+                    field: "createdate",
                     title: Resources("PMS020", "GD007"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
-                        if (data.Createdate != null) {
-                            return kendo.toString(new Date(data.Createdate), formatDateTimePicker)
+                        if (data.createdate != null) {
+                            return kendo.toString(new Date(data.createdate), formatDateTimePicker)
                         }
                         return "";
                     },
@@ -336,19 +336,19 @@ let grid_inquire = {
 
                 {
                     
-                    field: "Updateby",
+                    field: "updateby",
                     title: Resources("PMS020", "GD008"),
                     attributes: { class: "text-left " },
                     width: "200px"
                 },
                 {
-                    field: "Updatedate",
+                    field: "updatedate",
                     title: Resources("PMS020", "GD009"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
-                        if (data.Updatedate != null) {
-                            return kendo.toString(new Date(data.Updatedate), formatDateTimePicker)
+                        if (data.updatedate != null) {
+                            return kendo.toString(new Date(data.updatedate), formatDateTimePicker)
                         }
                         return "";
                     },

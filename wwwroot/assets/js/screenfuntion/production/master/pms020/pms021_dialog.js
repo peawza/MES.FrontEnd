@@ -130,7 +130,7 @@ let dialog_windows = {
 
 
         } finally {
-            if (result.MessageCode == "UpdateSuccess"|| result.MessageCode == "SaveSuccess") {
+            if (result.data.messageCode == "UpdateSuccess" || result.data.messageCode == "SaveSuccess") {
                 await ui.Input.Clear("window-dialog");
                 await serachData();
 
@@ -138,9 +138,12 @@ let dialog_windows = {
                 validataDialog.reset()
                 $("#window-dialog").data("kendoWindow").close();
 
-            } else {
-                messageDialog.error(format(result.MessageName, ip_item_group_code.value()), () => {
-                    ip_item_group_code.focus()
+            }
+
+            else {
+                //howSuccess(Message("Warning", "DataAlreadyExist"));
+                messageDialog.error(Message("Warning", "DataAlreadyExist", ip_process_code.value() ), () => {
+                    ip_process_code.focus()
 
                 });
             }
@@ -153,15 +156,12 @@ let dialog_windows = {
 
         //console.log("Mode =>", ip_hiden_Mode.val(), data);
         if (ip_hiden_Mode.val() == "edit") {
-            hidden_create_by.val(data.CreateBy);
-            hidden_create_date.val(common.DateTime(data.CreateDateTime));
-            hidden_update_by.val(data.UpdateBy);
-            hidden_update_date.val(common.DateTime(data.UpdateDateTime));
+            
 
 
-            ip_process_code.value(data.Processcode);
-            ip_Process_name_en.value(data.Processname);
-            ip_status.value(data.Isactive);
+            ip_process_code.value(data.processcode);
+            ip_Process_name_en.value(data.processname);
+            ip_status.value(data.isactive);
 
 
         } else {
