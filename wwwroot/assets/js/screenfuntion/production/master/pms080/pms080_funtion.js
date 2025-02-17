@@ -39,7 +39,7 @@ async function CreateUI() {
         dataValueField: "MiscCode"
         , optionLabel: Resources("COMMON","DropDownAll"),
     });
-    sc_adjustment_status = $("#sc-status").data("kendoDropDownList");
+    sc_status = $("#sc-status").data("kendoDropDownList");
 }
 
 // 2
@@ -72,16 +72,19 @@ async function serachData() {
    
 
     let SendData = {
-       
+        "NgCode": sc_ng_code.value(),
+        "NgName": sc_ng_name.value(),
+        "IsActive": sc_status.value()
     };
 
 
+
     try {
-        //let DataCallApi = await APIPost("/api/transaction/sts050/searchtransfer", SendData);
-        let DataCallApi = [];
+        let DataCallApi = await APIPost(_url_callapi+"api/production/master/pms080/search", SendData);
+        //let DataCallApi = [];
         await app.ui.clearAlert("#message-container");
 
-        if (DataCallApi.ResultHeader.length == 0) {
+        if (DataCallApi.data.length == 0) {
             Event.showWarning(Message("Warning", "DataNotFound"));
             grid_inquire.using([]);
             app.ui.uiEnable(["#export-button"], false);
@@ -149,11 +152,13 @@ let grid_inquire = {
             excel: {
                 allPages: true
             }, excelExport: function (e) {
-                GridExcelExport(e, "Miscellaneous")
+                GridExcelExport(e, "Ng")
             },
             toolbar: [
                 setPagerInfoToToolbar(grid_inquire.grid_ID),
-                { name: "search", text: Resources("COMMON", "ToolbarSearch") }
+                //{ name: "export", text: "export" },
+                { name: "search", text: Resources("COMMON", "ToolbarSearch") },
+                
             ],
             columns: [
                 {

@@ -108,14 +108,13 @@ let dialog_windows = {
 
 
                 let Send_DataApiSave = dialog_windows.getValue()
-
-                result = await APIPost("/api/master/mas030/insertitemgroup", Send_DataApiSave);
+                result = await APIPost("http://localhost:4443/api/production/master/pms080/insert", Send_DataApiSave);
 
 
 
             } else if (StatusMode == "edit") {
 
-                result = await APIPost("/api/master/mas030/updateitemgroup", Send_DataApiSave);
+                result = await APIPost("http://localhost:4443/api/production/master/pms080/update", Send_DataApiSave);
 
                 //add Update Index Data
             }
@@ -148,15 +147,15 @@ let dialog_windows = {
 
         //console.log("Mode =>", ip_hiden_Mode.val(), data);
         if (ip_hiden_Mode.val() == "edit") {
-            hidden_create_by.val(data.CreateBy);
-            hidden_create_date.val(common.DateTime(data.CreateDateTime));
-            hidden_update_by.val(data.UpdateBy);
-            hidden_update_date.val(common.DateTime(data.UpdateDateTime));
+            //hidden_create_by.val(data.CreateBy);
+            //hidden_create_date.val(common.DateTime(data.CreateDateTime));
+            //hidden_update_by.val(data.UpdateBy);
+            //hidden_update_date.val(common.DateTime(data.UpdateDateTime));
 
 
-            ip_item_group_code.value(data.ItemGroupCode);
-            ip_item_group_name.value(data.ItemGroupName);
-            ip_status.value(data.Status);
+            ip_ng_code.value(data.ip_ng_code);
+            ip_ng_name.value(data.ip_ng_name);
+            ip_status.value(data.ip_status);
 
 
         } else {
@@ -171,6 +170,7 @@ let dialog_windows = {
             NGCode: ip_ng_code.value(),
             NGName: ip_ng_name.value(),
             Status: Number(ip_status.value()),
+            CreateBy: _user_create_by,
 
         }
     }
@@ -208,7 +208,8 @@ function onSaveDialog(e) {
 
 }
 var kendoWindow = $("#window-dialog").kendoWindow({
-    width: "50%",
+    width: "30%",
+    minWidth: 500,
     /*height: '60%',*/
     title: Resources("PMS081","H001"),
     visible: false,
