@@ -1,7 +1,12 @@
 let ScreenCode = "STS050"
 var date = new Date(), y = date.getFullYear(), m = date.getMonth();
-var firstDay = new Date(y, m , 1);
+var firstDay = new Date(y, m, 1);
 var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+
+
+
+
 
 
 // Input  Search
@@ -10,15 +15,15 @@ let sc_ng_code, sc_ng_name, sc_status;
 
 // DataAPI
 //let dataGetBUItemCombo, dataAdjustmentStatus, dataGetBusinessUnitCombo;
-let dataStatus  = null;
+let dataStatus = null;
 
 document.addEventListener("DOMContentLoaded", async (event) => {
-    
-    
+
+
 
     await CreateUI();
     await grid_inquire.using([]);
-   
+
 });
 async function CreateUI() {
     $("#sc-ng-code").kendoTextBox({
@@ -29,7 +34,7 @@ async function CreateUI() {
 
     });
     sc_ng_name = $("#sc-ng-name").data("kendoTextBox");
-  
+
 
     $("#sc-status").kendoDropDownList({
         dataSource: dataStatus,
@@ -37,7 +42,7 @@ async function CreateUI() {
         //minLength: 1,
         dataTextField: "DisplayName",
         dataValueField: "MiscCode"
-        , optionLabel: Resources("COMMON","DropDownAll"),
+        , optionLabel: Resources("COMMON", "DropDownAll"),
     });
     sc_status = $("#sc-status").data("kendoDropDownList");
 }
@@ -61,7 +66,8 @@ async function LoadDefault() {
 
     $("#message-container").css("display", "none");
     await ui.Input.Clear("search-container", () => {
-       
+
+
     });
     await app.ui.clearAlert("#message-container");
     app.ui.uiEnable(["#export-button"], false);
@@ -69,7 +75,7 @@ async function LoadDefault() {
 }
 async function serachData() {
 
-   
+
 
     let SendData = {
         "NgCode": sc_ng_code.value(),
@@ -78,10 +84,10 @@ async function serachData() {
     };
 
 
-
     try {
-        let DataCallApi = await APIPost(_url_callapi+"api/production/master/pms080/search", SendData);
-        //let DataCallApi = [];
+        //let DataCallApi = await APIPost("/api/transaction/sts050/searchtransfer", SendData);
+        //let DataCallApi = DataSearch;
+        let DataCallApi = await APIPost(_url_callapi + "/api/production/master/pms080/search", SendData);
         await app.ui.clearAlert("#message-container");
 
         if (DataCallApi.data.length == 0) {
@@ -90,7 +96,7 @@ async function serachData() {
             app.ui.uiEnable(["#export-button"], false);
             return;
         }
-        grid_inquire.using(DataCallApi);
+        grid_inquire.using(DataCallApi.data);
 
         app.ui.uiEnable(["#export-button"], true);
     } catch (e) {
@@ -113,7 +119,7 @@ let grid_inquire = {
         }
     },
     create: (DataApi) => {
-  
+
         let dataSource = new kendo.data.DataSource({
             transport: {
                 read: function (e) {
@@ -139,7 +145,7 @@ let grid_inquire = {
 
         });
 
-       // var record = 0;
+        // var record = 0;
         let grid = $(grid_inquire.grid_ID).kendoGrid({
             dataSource: dataSource,
             pageable: {
@@ -152,21 +158,20 @@ let grid_inquire = {
             excel: {
                 allPages: true
             }, excelExport: function (e) {
-                GridExcelExport(e, "Ng")
+                GridExcelExport(e, "Miscellaneous")
             },
             toolbar: [
                 setPagerInfoToToolbar(grid_inquire.grid_ID),
-                //{ name: "export", text: "export" },
-                { name: "search", text: Resources("COMMON", "ToolbarSearch") },
-                
+                { name: "search", text: Resources("COMMON", "ToolbarSearch") }
             ],
             columns: [
                 {
 
-                    title: Resources("PMS080","GD001"),
+                    title: Resources("PMS080", "GD001"),
                     width: "60px", attributes: { class: "k-text-center " },
                     headerAttributes: { "data-no-reorder": "true" },
                     template: dataItem => grid.dataSource.indexOf(dataItem) + 1
+
                 },
                 {
                     width: "160px", attributes: { class: "k-text-center " },
@@ -176,12 +181,15 @@ let grid_inquire = {
                             text: `<span class='k-icon k-i-edit'></span>`,
                             className: "k-button k-button-icontext btn-editmode ",
                             visible: function (dataItem) { return permissions.AllowEdit },
-                            click: function (e) {
+                            click:async function (e) {
                                 e.preventDefault();
                                 var tr = $(e.target).closest("tr"); // get the current table row (tr)
                                 var data = this.dataItem(tr);
-                                //console.log(data);
-                                dialog_windows.edit(e, data);
+                                //console.log(data.ngId);
+                               
+                                let dateAPI = await APIPost(_url_callapi + "/api/production/master/pms080/getngid", { ngId: data.ngId });
+
+                                dialog_windows.edit(e, dateAPI.data);
                             },
                         },
                         {
@@ -200,7 +208,7 @@ let grid_inquire = {
                                 confirmationDialog.open({
                                     yes: async function () {
 
-                                         
+
                                         try {
 
 
@@ -215,7 +223,7 @@ let grid_inquire = {
                                         } catch (e) {
                                             //confirmationDialogDeleteOpen = 0;
                                         } finally {
-                                            
+
                                             //confirmationDialogDeleteOpen = 0;
                                         }
 
@@ -250,32 +258,32 @@ let grid_inquire = {
 
                 {
 
-                    field: "ProcessCode",
+                    field: "ngCode",
                     title: Resources("PMS080", "GD002"),
                     attributes: { class: "k-text-right" },
                     width: "250px"
                 },
-                //{
-                //    field: "ProcessNameTH",
-                //    title: Resources("PMS080", "GD003"),
-                //    attributes: { class: "k-text-left" },
-                //    width: "200px"
-                //},
                 {
-                    field: "ProcessNameEN",
+                    field: "ngName",
                     title: Resources("PMS080", "GD003"),
                     attributes: { class: "k-text-left" },
                     width: "200px"
                 },
                 {
-                    field: "Status",
+                    field: "activeFlag",
                     title: Resources("PMS080", "GD004"),
                     attributes: { class: "k-text-left" },
                     width: "180px",
-                    filterable: kendo_grid.filter.filter_true_false
+                    filterable: kendo_grid.filter.filter_Active,
+                    template: (data) => {
+
+                        return kendo_grid.template.Active_Inactive(data.activeFlag)
+
+                    }
+
                 },
                 {
-                    field: "CreateBy",
+                    field: "createBy",
                     title: Resources("PMS080", "GD005"),
                     attributes: { class: "text-left " },
                     width: "200px"
@@ -283,13 +291,13 @@ let grid_inquire = {
                 },
 
                 {
-                    field: "CreateDateTime",
+                    field: "createDate",
                     title: Resources("PMS080", "GD006"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
-                        if (data.CreateDateTime != null) {
-                            return kendo.toString(new Date(data.CreateDateTime), formatDateTimePicker)
+                        if (data.createDate != null) {
+                            return kendo.toString(new Date(data.createDate), formatDateTimePicker)
                         }
                         return "";
                     },
@@ -297,20 +305,20 @@ let grid_inquire = {
                 },
 
                 {
-                    
-                    field: "UpdateBy",
+
+                    field: "updateBy",
                     title: Resources("PMS080", "GD007"),
                     attributes: { class: "text-left " },
                     width: "200px"
                 },
                 {
-                    field: "UpdateDateTime",
+                    field: "updateDate",
                     title: Resources("PMS080", "GD008"),
                     attributes: { class: "text-center " },
                     width: "160px",
                     template: (data) => {
-                        if (data.UpdateDateTime != null) {
-                            return kendo.toString(new Date(data.UpdateDateTime), formatDateTimePicker)
+                        if (data.updateDate != null) {
+                            return kendo.toString(new Date(data.updateDate), formatDateTimePicker)
                         }
                         return "";
                     },

@@ -44,7 +44,7 @@ function generateRandomData(count = 10) {
 let DataSearch = generateRandomData(100)
 
 // Input  Search
-let sc_ng_code, sc_ng_name, sc_status;
+let sc_fg_code, sc_fg_name, sc_status;
 
 
 // DataAPI
@@ -60,14 +60,14 @@ document.addEventListener("DOMContentLoaded", async (event) => {
    
 });
 async function CreateUI() {
-    $("#sc-ng-code").kendoTextBox({
+    $("#sc-fg-code").kendoTextBox({
 
     });
-    sc_ng_code = $("#sc-ng-code").data("kendoTextBox");
-    $("#sc-ng-name").kendoTextBox({
+    sc_fg_code = $("#sc-fg-code").data("kendoTextBox");
+    $("#sc-fg-name").kendoTextBox({
 
     });
-    sc_ng_name = $("#sc-ng-name").data("kendoTextBox");
+    sc_fg_name = $("#sc-fg-name").data("kendoTextBox");
   
 
     $("#sc-status").kendoDropDownList({

@@ -2,7 +2,7 @@
 var formatDatePicker = "dd/MM/yyyy";
 var formatDateWithTime = "dd/MM/yyyy HH:mm:ss";
 var formatDateWithTime_export = "yyyy/MM/dd HH:mm:ss";
-const _url_callapi = "http://localhost:4443/";
+const _url_callapi = "http://localhost:4443";
 /** Call Api Start **/
 
 //function APIPost(url, data) {

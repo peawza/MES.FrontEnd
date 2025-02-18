@@ -53,7 +53,7 @@ let dialog_windows = {
     new: async (e, data) => {
         validataDialog.reset()
         await ui.Input.Clear("window-dialog");
-
+        ip_ng_code.enable(true);
         await dialog_windows.setValue(data);
         window_dialog.open();
         ip_hiden_Mode.val("new");
@@ -68,7 +68,7 @@ let dialog_windows = {
     edit: async (e, data) => {
         //console.log("Edit Data => ",data);
         await ui.Input.Clear("window-dialog");
-        ip_item_group_code.enable(false);
+        ip_ng_code.enable(false);
 
         ip_hiden_Mode.val("edit");
         text_mode.html("Edit");
@@ -108,35 +108,40 @@ let dialog_windows = {
 
 
                 let Send_DataApiSave = dialog_windows.getValue()
-                result = await APIPost("http://localhost:4443/api/production/master/pms080/insert", Send_DataApiSave);
+                result = await APIPost(_url_callapi + "/api/production/master/pms080/insert", Send_DataApiSave);
 
 
 
             } else if (StatusMode == "edit") {
 
-                result = await APIPost("http://localhost:4443/api/production/master/pms080/update", Send_DataApiSave);
+                result = await APIPost(_url_callapi + "/api/production/master/pms080/update", Send_DataApiSave);
 
                 //add Update Index Data
             }
-
+            result = result.data
         } catch (e) {
 
 
 
         } finally {
-            if (result.MessageCode == "UpdateSuccess" || result.MessageCode == "SaveSuccess") {
+            console.log("Api Call Status ", result);
+            if (result.messageCode == "UpdateSuccess" || result.messageCode == "SaveSuccess") {
                 await ui.Input.Clear("window-dialog");
                 await serachData();
 
-                showSuccess(result.MessageName);
+                showSuccess(Message("Information", "SaveSuccess"));
                 validataDialog.reset()
                 $("#window-dialog").data("kendoWindow").close();
 
             } else {
-                messageDialog.error(format(result.MessageName, ip_item_group_code.value()), () => {
-                    ip_item_group_code.focus()
+          
+
+                messageDialog.error(Message("Warning", "DataAlreadyExist", ip_ng_code.value()), () => {
+                    ip_ng_code.focus()
 
                 });
+
+        
             }
         }
 
@@ -153,9 +158,9 @@ let dialog_windows = {
             //hidden_update_date.val(common.DateTime(data.UpdateDateTime));
 
 
-            ip_ng_code.value(data.ip_ng_code);
-            ip_ng_name.value(data.ip_ng_name);
-            ip_status.value(data.ip_status);
+            ip_ng_code.value(data.ngCode);
+            ip_ng_name.value(data.ngName);
+            ip_status.value(data.activeFlag);
 
 
         } else {
@@ -169,8 +174,10 @@ let dialog_windows = {
         return {
             NGCode: ip_ng_code.value(),
             NGName: ip_ng_name.value(),
-            Status: Number(ip_status.value()),
+            IsActive: ip_status.value(),
             CreateBy: _user_create_by,
+            UpdateBy: _user_update_by,
+
 
         }
     }
